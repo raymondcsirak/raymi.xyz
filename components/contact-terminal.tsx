@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { sendContactEmail } from '@/app/actions'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -12,22 +13,43 @@ export function ContactTerminal() {
     '> Ready to connect. Enter your details below...',
     '> Or reach out directly via social channels'
   ])
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const name = formData.get('name')
-    const email = formData.get('email')
+    if (isSubmitting) return
     
-    setOutput([
-      ...output,
+    setIsSubmitting(true)
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    
+    setOutput(prev => [
+      ...prev,
       `> Processing contact request from ${name}...`,
       `> Email: ${email}`,
-      '> ✓ Message queued for delivery',
-      '> I\'ll get back to you within 24 hours!'
+      '> Establishing secure connection...'
     ])
 
-    e.currentTarget.reset()
+    const result = await sendContactEmail(formData)
+
+    if (result.error) {
+      setOutput(prev => [
+        ...prev,
+        `> Error: ${result.error}`,
+        '> Please try again or contact me directly.'
+      ])
+    } else {
+      setOutput(prev => [
+        ...prev,
+        '> ✓ Message queued for delivery',
+        '> I\'ll get back to you within 24 hours!'
+      ])
+      form.reset()
+    }
+    
+    setIsSubmitting(false)
   }
 
   return (
@@ -86,10 +108,11 @@ export function ContactTerminal() {
 
                   <Button 
                     type="submit"
-                    className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-bold pixel-border"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-bold pixel-border disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4 mr-2" />
-                    $ SEND_MESSAGE
+                    {isSubmitting ? 'SENDING...' : '$ SEND_MESSAGE'}
                   </Button>
                 </form>
               </div>
@@ -149,7 +172,7 @@ export function ContactTerminal() {
                     <span>+40 748 077 749</span>
                   </a>
                   <a 
-                    href="/resume.pdf"
+                    href="/Raymond_Csirak.pdf"
                     target="_blank"
                     className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >

@@ -86,7 +86,7 @@ export function HeroSection() {
                 size="lg" 
                 variant="outline"
                 className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground dark:hover:bg-secondary dark:hover:text-secondary-foreground dark:border-secondary font-bold pixel-border"
-                onClick={() => window.open('/resume.pdf', '_blank')}
+                onClick={() => window.open('/Raymond_Csirak.pdf', '_blank')}
               >
                 <span className="mr-2">$</span> VIEW_RESUME
               </Button>

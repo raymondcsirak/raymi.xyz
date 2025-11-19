@@ -52,10 +52,10 @@ export function PixelatedNav() {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+            <a href="https://github.com/raymi" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+            <a href="https://linkedin.com/in/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
             <a href="mailto:hello@raymi.xyz" className="text-foreground hover:text-primary transition-colors">
@@ -93,10 +93,10 @@ export function PixelatedNav() {
               ./contact
             </button>
             <div className="flex gap-4 pt-4 border-t border-primary/30">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+              <a href="https://github.com/raymi" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+              <a href="https://linkedin.com/in/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
               <a href="mailto:hello@raymi.xyz" className="text-foreground hover:text-primary transition-colors">
