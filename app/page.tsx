@@ -13,7 +13,7 @@ export default function Page() {
       <HeroSection />
       <TerminalAbout />
       <SkillsGrid />
-      <ProjectsShowcase />
+      {/* <ProjectsShowcase /> */}
       <ExperienceTimeline />
       <ContactTerminal />
     </main>

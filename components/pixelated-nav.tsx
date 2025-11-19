@@ -39,9 +39,9 @@ export function PixelatedNav() {
             <button onClick={() => scrollToSection('skills')} className="text-foreground hover:text-primary transition-colors">
               ./skills
             </button>
-            <button onClick={() => scrollToSection('projects')} className="text-foreground hover:text-primary transition-colors">
+            {/* <button onClick={() => scrollToSection('projects')} className="text-foreground hover:text-primary transition-colors">
               ./projects
-            </button>
+            </button> */}
             <button onClick={() => scrollToSection('experience')} className="text-foreground hover:text-primary transition-colors">
               ./experience
             </button>
@@ -83,9 +83,9 @@ export function PixelatedNav() {
             <button onClick={() => scrollToSection('skills')} className="block text-foreground hover:text-primary transition-colors">
               ./skills
             </button>
-            <button onClick={() => scrollToSection('projects')} className="block text-foreground hover:text-primary transition-colors">
+            {/* <button onClick={() => scrollToSection('projects')} className="block text-foreground hover:text-primary transition-colors">
               ./projects
-            </button>
+            </button> */}
             <button onClick={() => scrollToSection('experience')} className="block text-foreground hover:text-primary transition-colors">
               ./experience
             </button>

@@ -82,11 +82,11 @@ export function ProjectsShowcase() {
                   </div>
 
                   <div className="flex gap-3 pt-2">
-                    <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground dark:border-primary dark:hover:bg-primary dark:hover:text-primary-foreground">
                       <Github className="w-4 h-4 mr-2" />
                       Code
                     </Button>
-                    <Button size="sm" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                    <Button size="sm" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground dark:border-accent dark:hover:bg-accent dark:hover:text-accent-foreground">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Details
                     </Button>
