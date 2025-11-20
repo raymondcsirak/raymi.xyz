@@ -5,17 +5,34 @@ import { Button } from '@/components/ui/button'
 import { ChevronDown } from 'lucide-react'
 
 export function HeroSection() {
-  const [displayText, setDisplayText] = useState('')
-  const fullText = '> Orchestrating Infrastructure, Automating Excellence'
+  const [line1, setLine1] = useState('')
+  const [line2, setLine2] = useState('')
+  const [cursorLine, setCursorLine] = useState(1)
+  
+  const textLine1 = '> Orchestrating Infrastructure'
+  const textLine2 = '> Automating Excellence'
   
   useEffect(() => {
-    let index = 0
+    let currentIndex = 0
+    let currentLine = 1
+    
     const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayText(fullText.slice(0, index))
-        index++
-      } else {
-        clearInterval(timer)
+      if (currentLine === 1) {
+        if (currentIndex <= textLine1.length) {
+          setLine1(textLine1.slice(0, currentIndex))
+          currentIndex++
+        } else {
+          currentLine = 2
+          currentIndex = 0
+          setCursorLine(2)
+        }
+      } else if (currentLine === 2) {
+        if (currentIndex <= textLine2.length) {
+          setLine2(textLine2.slice(0, currentIndex))
+          currentIndex++
+        } else {
+          clearInterval(timer)
+        }
       }
     }, 50)
     
@@ -67,11 +84,25 @@ export function HeroSection() {
               </h2>
             </div>
 
-            <div className="bg-card/50 backdrop-blur-sm border border-primary/30 p-6 pixel-border max-w-2xl mx-auto">
-              <p className="text-lg md:text-xl text-muted-foreground font-mono">
-                {displayText}
-                <span className="terminal-cursor text-primary">█</span>
-              </p>
+            <div className="bg-card/50 backdrop-blur-sm border border-primary/30 p-6 pixel-border max-w-2xl mx-auto relative">
+              {/* Invisible placeholder to maintain size */}
+              <div className="invisible" aria-hidden="true">
+                <p className="text-lg md:text-xl font-mono leading-relaxed text-left inline-block">
+                  {textLine1}<br />
+                  {textLine2}
+                </p>
+              </div>
+              
+              {/* Visible typing text positioned absolutely over the placeholder */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-center items-center">
+                <p className="text-lg md:text-xl text-muted-foreground font-mono leading-relaxed text-left inline-block">
+                  {line1}
+                  {cursorLine === 1 && <span className="terminal-cursor text-primary">█</span>}
+                  <br />
+                  {line2}
+                  {cursorLine === 2 && <span className="terminal-cursor text-primary">█</span>}
+                </p>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-4 justify-center items-center">
@@ -80,7 +111,7 @@ export function HeroSection() {
                 className="bg-primary hover:bg-primary/80 text-primary-foreground font-bold pixel-border group"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <span className="mr-2">$</span> HIRE_ME
+                <span className="mr-2">$</span> LET'S_TALK
               </Button>
               <Button 
                 size="lg" 
@@ -94,11 +125,11 @@ export function HeroSection() {
 
             <div className="flex justify-center items-center gap-4 text-sm text-muted-foreground pt-8">
               <span className="text-accent">●</span>
-              <span>Available for hire</span>
+              <span># Ready to help</span>
               <span className="text-accent">●</span>
-              <span>Satu Mare, RO</span>
+              <span># Satu Mare, RO</span>
               <span className="text-accent">●</span>
-              <span>10+ years exp</span>
+              <span># 15+ years exp</span>
             </div>
           </div>
         </div>
