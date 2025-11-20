@@ -141,7 +141,7 @@ export function ContactTerminal() {
                 <div className="space-y-3">
                   <a 
                     href="mailto:hello@raymi.xyz"
-                    className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >
                     <Mail className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                     <span>hello@raymi.xyz</span>
@@ -150,7 +150,7 @@ export function ContactTerminal() {
                     href="https://github.com/raymondcsirak"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >
                     <Github className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                     <span>github.com/raymondcsirak</span>
@@ -159,14 +159,14 @@ export function ContactTerminal() {
                     href="https://linkedin.com/in/raymondcsirak"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >
                     <Linkedin className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                     <span>linkedin.com/in/raymondcsirak</span>
                   </a>
                   <a 
                     href="tel:+40748077749"
-                    className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >
                     <Mail className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                     <span>+40 748 077 749</span>
@@ -174,7 +174,7 @@ export function ContactTerminal() {
                   <a 
                     href="/Raymond_Csirak.pdf"
                     target="_blank"
-                    className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >
                     <FileText className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                     <span>Download Resume</span>

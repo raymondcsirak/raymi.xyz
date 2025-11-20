@@ -137,7 +137,7 @@ export function HeroSection() {
 
       <button 
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-primary"
+        className="cursor-pointer absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-primary"
       >
         <ChevronDown className="w-8 h-8" />
       </button>

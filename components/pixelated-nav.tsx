@@ -33,19 +33,19 @@ export function PixelatedNav() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <button onClick={() => scrollToSection('about')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('about')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
               ./about
             </button>
-            <button onClick={() => scrollToSection('skills')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('skills')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
               ./skills
             </button>
-            {/* <button onClick={() => scrollToSection('projects')} className="text-foreground hover:text-primary transition-colors">
+            {/* <button onClick={() => scrollToSection('projects')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
               ./projects
             </button> */}
-            <button onClick={() => scrollToSection('experience')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('experience')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
               ./experience
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('contact')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
               ./contact
             </button>
           </div>
@@ -77,19 +77,19 @@ export function PixelatedNav() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-primary/30 pt-4">
-            <button onClick={() => scrollToSection('about')} className="block text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('about')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
               ./about
             </button>
-            <button onClick={() => scrollToSection('skills')} className="block text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('skills')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
               ./skills
             </button>
-            {/* <button onClick={() => scrollToSection('projects')} className="block text-foreground hover:text-primary transition-colors">
+            {/* <button onClick={() => scrollToSection('projects')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
               ./projects
             </button> */}
-            <button onClick={() => scrollToSection('experience')} className="block text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('experience')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
               ./experience
             </button>
-            <button onClick={() => scrollToSection('contact')} className="block text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('contact')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
               ./contact
             </button>
             <div className="flex gap-4 pt-4 border-t border-primary/30">
