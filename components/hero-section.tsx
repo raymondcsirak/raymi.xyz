@@ -63,7 +63,7 @@ export function HeroSection() {
               </h1>
               {/* Adjusted subtitle size to match new proportions */}
               <h2 className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-secondary mt-2" style={{ fontFamily: 'var(--font-pixel)' }}>
-                DevOps <span className="text-primary mx-2">//</span> Platform Engineer
+                Building <span className="text-primary mx-2">//</span> Fixing <span className="text-primary mx-2">Systems</span>
               </h2>
             </div>
 

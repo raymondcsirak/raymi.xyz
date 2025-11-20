@@ -147,13 +147,13 @@ export function ContactTerminal() {
                     <span>hello@raymi.xyz</span>
                   </a>
                   <a 
-                    href="https://github.com"
+                    href="https://github.com/raymondcsirak"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
                   >
                     <Github className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                    <span>github.com/raymi</span>
+                    <span>github.com/raymondcsirak</span>
                   </a>
                   <a 
                     href="https://linkedin.com/in/raymondcsirak"
