@@ -17,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://raymi.xyz'),
   title: {
-    default: 'Raymi | DevOps Engineer',
-    template: '%s | Raymi'
+    default: 'Raymond Csirak | DevOps Engineer',
+    template: '%s | Raymond Csirak'
   },
   description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration. Let\'s build something extraordinary.',
   generator: 'Next.js',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Raymi | DevOps Engineer',
+    title: 'Raymond Csirak | DevOps Engineer',
     description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration.',
     url: 'https://raymi.xyz',
     siteName: 'Raymi.xyz',
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
         url: '/og-image.png', // We might need to generate this if it doesn't exist, but standard practice to include
         width: 1200,
         height: 630,
-        alt: 'Raymi - DevOps Engineer',
+        alt: 'Raymond Csirak- DevOps Engineer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Raymi | DevOps Engineer',
+    title: 'Raymond Csirak | DevOps Engineer',
     description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration.',
     creator: '@raymondcsirak', // Assuming this handle based on github/linkedin pattern, or generic
     images: ['/og-image.png'],
