@@ -28,7 +28,7 @@ export function PixelatedNav() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <Terminal className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
-            <span className="text-foreground font-bold tracking-tight text-lg">RAYMI<span className="text-primary">.XYZ</span></span>
+            <span className="text-foreground font-bold tracking-tight text-lg">raymi<span className="text-primary">.xyz</span></span>
           </div>
 
           {/* Desktop Navigation */}
