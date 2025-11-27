@@ -10,7 +10,7 @@ export function PixelatedNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -23,42 +23,37 @@ export function PixelatedNav() {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isOpen ? 'bg-background/95 backdrop-blur-sm border-b border-primary/30' : ''}`}>
-      <div className="container mx-auto px-4 py-4">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isOpen ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'}`}>
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Terminal className="w-6 h-6 text-primary" />
-            <span className="text-primary font-bold tracking-wider">{'>'} RAYMI.XYZ</span>
+          <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <Terminal className="w-5 h-5 text-primary transition-transform group-hover:scale-110" />
+            <span className="text-foreground font-bold tracking-tight text-lg">RAYMI<span className="text-primary">.XYZ</span></span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <button onClick={() => scrollToSection('about')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
-              ./about
-            </button>
-            <button onClick={() => scrollToSection('skills')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
-              ./skills
-            </button>
-            {/* <button onClick={() => scrollToSection('projects')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
-              ./projects
-            </button> */}
-            <button onClick={() => scrollToSection('experience')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
-              ./experience
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="cursor-pointer text-foreground hover:text-primary transition-colors">
-              ./contact
-            </button>
+          <div className="hidden md:flex items-center gap-8">
+            {['about', 'skills', 'experience', 'contact'].map((item) => (
+              <button 
+                key={item}
+                onClick={() => scrollToSection(item)} 
+                className="relative text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-1 group"
+              >
+                <span className="absolute -left-3 opacity-0 group-hover:opacity-100 transition-opacity text-primary text-xs">{'>'}</span>
+                {item}
+              </button>
+            ))}
           </div>
 
           {/* Social Links */}
-          <div className="hidden md:flex items-center gap-4">
-            <a href="https://github.com/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+          <div className="hidden md:flex items-center gap-5">
+            <a href="https://github.com/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com/in/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+            <a href="https://linkedin.com/in/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="mailto:hello@raymi.xyz" className="text-foreground hover:text-primary transition-colors">
+            <a href="mailto:hello@raymi.xyz" className="text-muted-foreground hover:text-foreground transition-colors">
               <Mail className="w-5 h-5" />
             </a>
           </div>
@@ -67,40 +62,34 @@ export function PixelatedNav() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-foreground hover:bg-muted"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-primary/30 pt-4">
-            <button onClick={() => scrollToSection('about')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
-              ./about
-            </button>
-            <button onClick={() => scrollToSection('skills')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
-              ./skills
-            </button>
-            {/* <button onClick={() => scrollToSection('projects')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
-              ./projects
-            </button> */}
-            <button onClick={() => scrollToSection('experience')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
-              ./experience
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="cursor-pointer block text-foreground hover:text-primary transition-colors">
-              ./contact
-            </button>
-            <div className="flex gap-4 pt-4 border-t border-primary/30">
-              <a href="https://github.com/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                <Github className="w-5 h-5" />
+          <div className="md:hidden mt-4 pb-6 space-y-2 border-t border-border pt-4 animate-in slide-in-from-top-2">
+            {['about', 'skills', 'experience', 'contact'].map((item) => (
+              <button 
+                key={item}
+                onClick={() => scrollToSection(item)} 
+                className="block w-full text-left px-4 py-3 text-lg font-medium text-foreground hover:bg-muted/50 rounded-md transition-colors"
+              >
+                <span className="text-primary mr-2">./</span>{item}
+              </button>
+            ))}
+            <div className="flex gap-6 pt-6 px-4">
+              <a href="https://github.com/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                <Github className="w-6 h-6" />
               </a>
-              <a href="https://linkedin.com/in/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
+              <a href="https://linkedin.com/in/raymondcsirak" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                <Linkedin className="w-6 h-6" />
               </a>
-              <a href="mailto:hello@raymi.xyz" className="text-foreground hover:text-primary transition-colors">
-                <Mail className="w-5 h-5" />
+              <a href="mailto:hello@raymi.xyz" className="text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="w-6 h-6" />
               </a>
             </div>
           </div>

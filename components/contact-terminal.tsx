@@ -2,16 +2,15 @@
 
 import { useState } from 'react'
 import { sendContactEmail } from '@/app/actions'
-import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import { Mail, Send, Github, Linkedin, FileText } from 'lucide-react'
+import { Mail, Send, Github, Linkedin } from 'lucide-react'
 
 export function ContactTerminal() {
   const [output, setOutput] = useState<string[]>([
-    '> Ready to connect. Enter your details below...',
-    '> Or reach out directly via social channels'
+    'Ready to connect. Enter your details below...',
+    'Or reach out directly via social channels'
   ])
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -27,9 +26,9 @@ export function ContactTerminal() {
     
     setOutput(prev => [
       ...prev,
-      `> Processing contact request from ${name}...`,
-      `> Email: ${email}`,
-      '> Establishing secure connection...'
+      `Processing contact request from ${name}...`,
+      `Email: ${email}`,
+      'Establishing secure connection...'
     ])
 
     const result = await sendContactEmail(formData)
@@ -37,14 +36,14 @@ export function ContactTerminal() {
     if (result.error) {
       setOutput(prev => [
         ...prev,
-        `> Error: ${result.error}`,
-        '> Please try again or contact me directly.'
+        `Error: ${result.error}`,
+        'Please try again or contact me directly.'
       ])
     } else {
       setOutput(prev => [
         ...prev,
-        '> ✓ Message queued for delivery',
-        '> I\'ll get back to you within 24 hours!'
+        '✓ Message queued for delivery',
+        'I\'ll get back to you within 24 hours!'
       ])
       form.reset()
     }
@@ -53,143 +52,130 @@ export function ContactTerminal() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary" style={{ fontFamily: 'var(--font-pixel)' }}>
-            $ ./connect
-          </h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="h-px bg-border flex-1"></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+              Initialize Connection
+            </h2>
+            <div className="h-px bg-border flex-1"></div>
+          </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/30 p-6 pixel-border">
-              <div className="space-y-6">
-                <div className="space-y-2 font-mono text-sm">
-                  <p className="text-muted-foreground">
-                    <span className="text-accent">raymi@devops</span>
-                    <span className="text-primary">:</span>
-                    <span className="text-secondary">~</span>
-                    <span className="text-foreground">$ nano message.txt</span>
-                  </p>
+            <div className="space-y-8">
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-foreground">Send a Message</h3>
+                <p className="text-sm text-muted-foreground">
+                  Have a project in mind or just want to say hi?
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Name</label>
+                  <Input 
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                    className="bg-card/50 border-border focus:border-primary transition-colors"
+                  />
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="text-xs text-primary font-bold mb-1 block">NAME:</label>
-                    <Input 
-                      name="name"
-                      placeholder="John Doe"
-                      required
-                      className="bg-input border-primary/30 focus:border-primary"
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</label>
+                  <Input 
+                    name="email"
+                    type="email"
+                    placeholder="john@company.com"
+                    required
+                    className="bg-card/50 border-border focus:border-primary transition-colors"
+                  />
+                </div>
 
-                  <div>
-                    <label className="text-xs text-primary font-bold mb-1 block">EMAIL:</label>
-                    <Input 
-                      name="email"
-                      type="email"
-                      placeholder="john@company.com"
-                      required
-                      className="bg-input border-primary/30 focus:border-primary"
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Message</label>
+                  <Textarea 
+                    name="message"
+                    placeholder="Let's talk about infrastructure..."
+                    required
+                    rows={5}
+                    className="bg-card/50 border-border focus:border-primary resize-none transition-colors"
+                  />
+                </div>
 
-                  <div>
-                    <label className="text-xs text-primary font-bold mb-1 block">MESSAGE:</label>
-                    <Textarea 
-                      name="message"
-                      placeholder="Let's talk about infrastructure, automation, or collaboration opportunities..."
-                      required
-                      rows={5}
-                      className="bg-input border-primary/30 focus:border-primary resize-none"
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-bold pixel-border disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <Send className="w-4 h-4 mr-2" />
-                    {isSubmitting ? 'SENDING...' : '$ SEND_MESSAGE'}
-                  </Button>
-                </form>
-              </div>
-            </Card>
+                <Button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 transition-all"
+                >
+                  <Send className="w-4 h-4 mr-2" />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </Button>
+              </form>
+            </div>
 
             {/* Terminal Output & Links */}
-            <div className="space-y-6">
-              <Card className="bg-card/50 backdrop-blur-sm border-primary/30 p-6 pixel-border">
-                <div className="space-y-4 font-mono text-sm">
+            <div className="space-y-8">
+              <div className="bg-card/30 border border-border rounded-lg p-6 font-mono text-sm h-[200px] overflow-y-auto custom-scrollbar">
+                <div className="flex gap-2 mb-4 text-muted-foreground border-b border-border pb-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
+                  <span className="ml-2 text-xs">terminal</span>
+                </div>
+                <div className="space-y-2">
                   {output.map((line, i) => (
-                    <p key={i} className="text-muted-foreground leading-relaxed">
+                    <p key={i} className="text-muted-foreground">
+                      <span className="text-primary mr-2">$</span>
                       {line}
                     </p>
                   ))}
-                  <p className="text-muted-foreground">
-                    <span className="text-accent">raymi@devops</span>
-                    <span className="text-primary">:</span>
-                    <span className="text-secondary">~</span>
-                    <span className="text-foreground">$ <span className="terminal-cursor">█</span></span>
-                  </p>
+                  <div className="flex items-center gap-2 text-primary animate-pulse">
+                    <span>$</span>
+                    <span className="w-2 h-4 bg-primary"></span>
+                  </div>
                 </div>
-              </Card>
+              </div>
 
-              <Card className="bg-card/50 backdrop-blur-sm border-secondary/30 p-6 pixel-border">
-                <h3 className="text-lg font-bold text-secondary mb-4">DIRECT_CHANNELS:</h3>
-                <div className="space-y-3">
+              <div className="space-y-4">
+                <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Connect Directly</h3>
+                <div className="grid grid-cols-1 gap-3">
                   <a 
                     href="mailto:hello@raymi.xyz"
-                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 transition-colors group"
                   >
-                    <Mail className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                    <span>hello@raymi.xyz</span>
+                    <div className="p-2 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">hello@raymi.xyz</span>
                   </a>
                   <a 
                     href="https://github.com/raymondcsirak"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 transition-colors group"
                   >
-                    <Github className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                    <span>github.com/raymondcsirak</span>
+                    <div className="p-2 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Github className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">github.com/raymondcsirak</span>
                   </a>
                   <a 
                     href="https://linkedin.com/in/raymondcsirak"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                    className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 transition-colors group"
                   >
-                    <Linkedin className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                    <span>linkedin.com/in/raymondcsirak</span>
-                  </a>
-                  <a 
-                    href="tel:+40748077749"
-                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
-                  >
-                    <Mail className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                    <span>+40 748 077 749</span>
-                  </a>
-                  <a 
-                    href="/Raymond_Csirak.pdf"
-                    target="_blank"
-                    className="cursor-pointer flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
-                  >
-                    <FileText className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                    <span>Download Resume</span>
+                    <div className="p-2 rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Linkedin className="w-4 h-4" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">linkedin.com/in/raymondcsirak</span>
                   </a>
                 </div>
-              </Card>
-
-              <Card className="bg-card/50 backdrop-blur-sm border-accent/30 p-6 pixel-border">
-                <div className="space-y-2 text-sm font-mono">
-                  <p className="text-accent font-bold">STATUS:</p>
-                  <p className="text-muted-foreground">{'>'} Open to opportunities</p>
-                  <p className="text-muted-foreground">{'>'} Available for consulting</p>
-                  <p className="text-muted-foreground">{'>'} Response time: {'<'} 24hrs</p>
-                </div>
-              </Card>
+              </div>
             </div>
           </div>
         </div>
@@ -197,12 +183,9 @@ export function ContactTerminal() {
 
       {/* Footer */}
       <div className="container mx-auto px-4 mt-20">
-        <div className="max-w-4xl mx-auto text-center border-t border-primary/30 pt-8">
-          <p className="text-muted-foreground font-mono text-sm">
-            {'>'} Built with Next.js, TypeScript, and a lot of ☕
-          </p>
-          <p className="text-muted-foreground font-mono text-xs mt-2">
-            © 2025 Raymond Csirak | DevOps Engineer | All rights reserved
+        <div className="max-w-4xl mx-auto text-center border-t border-border pt-8">
+          <p className="text-muted-foreground text-sm">
+            © 2025 Raymond Csirak. All rights reserved.
           </p>
         </div>
       </div>

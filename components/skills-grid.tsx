@@ -44,12 +44,16 @@ const skills = [
 
 export function SkillsGrid() {
   return (
-    <section id="skills" className="py-20 bg-card/20">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-24 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary" style={{ fontFamily: 'var(--font-pixel)' }}>
-            $ ls ./skills
-          </h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="h-px bg-border flex-1"></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+              Technical Arsenal
+            </h2>
+            <div className="h-px bg-border flex-1"></div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skill, index) => {
@@ -57,19 +61,21 @@ export function SkillsGrid() {
               return (
                 <Card 
                   key={index}
-                  className={`bg-card/50 backdrop-blur-sm border-${skill.color}/30 p-6 pixel-border hover:scale-105 transition-transform`}
+                  className="bg-card/30 backdrop-blur-sm border-border hover:border-primary/50 p-6 transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <Icon className={`w-6 h-6 text-${skill.color}`} />
-                      <h3 className={`font-bold text-${skill.color}`}>
+                      <div className="p-2 rounded-md bg-background/50 group-hover:bg-primary/10 transition-colors">
+                        <Icon className={`w-5 h-5 text-${skill.color}`} />
+                      </div>
+                      <h3 className="font-semibold text-foreground text-lg">
                         {skill.title}
                       </h3>
                     </div>
-                    <ul className="space-y-2 text-sm text-muted-foreground font-mono">
+                    <ul className="space-y-2 text-sm text-muted-foreground">
                       {skill.items.map((item, i) => (
                         <li key={i} className="flex items-center gap-2">
-                          <span className={`text-${skill.color}`}>{'>'}</span>
+                          <span className={`w-1 h-1 rounded-full bg-${skill.color}`}></span>
                           {item}
                         </li>
                       ))}

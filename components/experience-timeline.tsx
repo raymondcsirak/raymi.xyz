@@ -19,7 +19,7 @@ const experiences = [
     tech: ['Kubernetes', 'GitLab CI', 'Argo CD', 'Terraform', 'Linux']
   },
   {
-    period: 'Jan 2019 - Present',
+    period: 'Jan 2019 - Mar 2024',
     title: 'Head of Infrastructure | Linux Systems Administrator',
     company: 'noLimits Technologies | Hexalab SRL',
     location: 'Satu Mare, Romania',
@@ -62,40 +62,48 @@ const experiences = [
 
 export function ExperienceTimeline() {
   return (
-    <section id="experience" className="py-20 bg-card/20">
+    <section id="experience" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary" style={{ fontFamily: 'var(--font-pixel)' }}>
-            $ history --experience
-          </h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="h-px bg-border flex-1"></div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+              Experience Log
+            </h2>
+            <div className="h-px bg-border flex-1"></div>
+          </div>
 
-          <div className="space-y-8">
+          <div className="space-y-12 relative">
+            {/* Timeline line */}
+            <div className="absolute left-0 md:left-8 top-4 bottom-4 w-px bg-border"></div>
+
             {experiences.map((exp, index) => (
-              <Card 
-                key={index}
-                className="bg-card/50 backdrop-blur-sm border-primary/30 p-6 md:p-8 pixel-border relative"
-              >
+              <div key={index} className="relative pl-8 md:pl-20">
                 {/* Timeline dot */}
-                <div className="absolute -left-3 top-8 w-6 h-6 bg-primary rounded-full border-4 border-background hidden md:block"></div>
+                <div className="absolute left-[-5px] md:left-[27px] top-1.5 w-3 h-3 rounded-full bg-background border-2 border-primary z-10"></div>
                 
-                <div className="space-y-4">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                <div className="space-y-4 group">
+                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
                     <div>
-                      <h3 className="text-xl font-bold text-primary">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                         {exp.title}
                       </h3>
-                      <p className="text-secondary font-bold">{exp.company}</p>
-                      <p className="text-muted-foreground text-sm">{exp.location}</p>
+                      <p className="text-lg text-muted-foreground font-medium">{exp.company}</p>
                     </div>
-                    <Badge className="bg-accent text-accent-foreground w-fit">
+                    <Badge variant="secondary" className="w-fit font-mono text-xs">
                       {exp.period}
                     </Badge>
                   </div>
 
-                  <ul className="space-y-2 text-sm text-muted-foreground font-mono">
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-muted-foreground"></span>
+                    {exp.location}
+                  </p>
+
+                  <ul className="space-y-2 text-muted-foreground">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex gap-2 leading-relaxed">
-                        <span className="text-primary shrink-0">{'>'}</span>
+                      <li key={i} className="flex gap-3 leading-relaxed text-sm">
+                        <span className="text-primary mt-1.5 text-xs">●</span>
                         <span>{achievement}</span>
                       </li>
                     ))}
@@ -103,18 +111,15 @@ export function ExperienceTimeline() {
 
                   <div className="flex flex-wrap gap-2 pt-2">
                     {exp.tech.map((tech, i) => (
-                      <Badge key={i} variant="outline" className="border-primary/50 text-primary text-xs">
+                      <Badge key={i} variant="outline" className="border-border text-muted-foreground text-xs hover:border-primary/50 hover:text-primary transition-colors">
                         {tech}
                       </Badge>
                     ))}
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
-
-          {/* Timeline line */}
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary/30 hidden md:block" style={{ marginLeft: '1.75rem' }}></div>
         </div>
       </div>
     </section>
