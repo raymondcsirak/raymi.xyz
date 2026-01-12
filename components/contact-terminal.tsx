@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { sendContactEmail } from '@/app/actions'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
@@ -31,21 +30,34 @@ export function ContactTerminal() {
       'Establishing secure connection...'
     ])
 
-    const result = await sendContactEmail(formData)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      })
 
-    if (result.error) {
+      const result = await response.json()
+
+      if (!response.ok || result.error) {
+        setOutput(prev => [
+          ...prev,
+          `Error: ${result.error || 'Unknown error'}`,
+          'Please try again or contact me directly.'
+        ])
+      } else {
+        setOutput(prev => [
+          ...prev,
+          '✓ Message queued for delivery',
+          'I\'ll get back to you within 24 hours!'
+        ])
+        form.reset()
+      }
+    } catch (error) {
       setOutput(prev => [
         ...prev,
-        `Error: ${result.error}`,
+        `Error: Failed to send message`,
         'Please try again or contact me directly.'
       ])
-    } else {
-      setOutput(prev => [
-        ...prev,
-        '✓ Message queued for delivery',
-        'I\'ll get back to you within 24 hours!'
-      ])
-      form.reset()
     }
     
     setIsSubmitting(false)
