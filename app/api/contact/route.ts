@@ -2,15 +2,60 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export const runtime = 'edge'
 
+interface TurnstileVerificationResponse {
+  success: boolean
+  'error-codes'?: string[]
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
     const name = formData.get('name') as string
     const email = formData.get('email') as string
     const message = formData.get('message') as string
+    const turnstileToken = formData.get('turnstileToken') as string
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
+
+    if (turnstileSecret) {
+      if (!turnstileToken) {
+        return NextResponse.json({ error: 'Verification is required' }, { status: 400 })
+      }
+
+      const remoteIpHeader = request.headers.get('cf-connecting-ip')
+      const forwardedFor = request.headers.get('x-forwarded-for')
+      const remoteIp = remoteIpHeader || forwardedFor?.split(',')[0]?.trim()
+
+      const verificationParams = new URLSearchParams({
+        secret: turnstileSecret,
+        response: turnstileToken,
+      })
+
+      if (remoteIp) {
+        verificationParams.set('remoteip', remoteIp)
+      }
+
+      const verificationResponse = await fetch(
+        'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: verificationParams,
+        }
+      )
+
+      const verificationResult =
+        (await verificationResponse.json()) as TurnstileVerificationResponse
+
+      if (!verificationResult.success) {
+        console.error('Turnstile error:', verificationResult)
+        return NextResponse.json({ error: 'Verification failed' }, { status: 400 })
+      }
     }
 
     const response = await fetch('https://api.resend.com/emails', {

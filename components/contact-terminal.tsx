@@ -1,10 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Script from 'next/script'
+import { Github, Linkedin, Mail, Send } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
-import { Mail, Send, Github, Linkedin } from 'lucide-react'
+
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
+declare global {
+  interface Window {
+    turnstile?: {
+      reset: () => void
+    }
+    turnstileCallback?: (token: string) => void
+  }
+}
 
 export function ContactTerminal() {
   const [output, setOutput] = useState<string[]>([
@@ -12,17 +24,40 @@ export function ContactTerminal() {
     'Or reach out directly via social channels'
   ])
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    window.turnstileCallback = (token: string) => {
+      setTurnstileToken(token)
+    }
+
+    return () => {
+      delete window.turnstileCallback
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (isSubmitting) return
-    
+
+    if (turnstileSiteKey && !turnstileToken) {
+      setOutput(prev => [
+        ...prev,
+        'Please complete the verification challenge before sending.'
+      ])
+      return
+    }
+
     setIsSubmitting(true)
     const form = e.currentTarget
     const formData = new FormData(form)
+    if (turnstileToken) {
+      formData.set('turnstileToken', turnstileToken)
+    }
     const name = formData.get('name') as string
     const email = formData.get('email') as string
-    
+
     setOutput(prev => [
       ...prev,
       `Processing contact request from ${name}...`,
@@ -51,6 +86,10 @@ export function ContactTerminal() {
           'I\'ll get back to you within 24 hours!'
         ])
         form.reset()
+        setTurnstileToken(null)
+        if (window.turnstile) {
+          window.turnstile.reset()
+        }
       }
     } catch (error) {
       setOutput(prev => [
@@ -65,6 +104,12 @@ export function ContactTerminal() {
 
   return (
     <section id="contact" className="py-24 bg-background">
+      {turnstileSiteKey ? (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="afterInteractive"
+        />
+      ) : null}
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-16">
@@ -95,6 +140,20 @@ export function ContactTerminal() {
                     className="bg-card/50 border-border focus:border-primary transition-colors"
                   />
                 </div>
+
+                {turnstileSiteKey ? (
+                  <div className="space-y-2">
+                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                      Verification
+                    </label>
+                    <div
+                      className="cf-turnstile"
+                      data-sitekey={turnstileSiteKey}
+                      data-theme="auto"
+                      data-callback="turnstileCallback"
+                    ></div>
+                  </div>
+                ) : null}
 
                 <div className="space-y-2">
                   <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</label>
