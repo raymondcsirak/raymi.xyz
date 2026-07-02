@@ -1,18 +1,6 @@
 import type { Metadata } from 'next'
-import { Press_Start_2P, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-
-const pressStart = Press_Start_2P({ 
-  weight: '400',
-  subsets: ["latin"],
-  variable: '--font-pixel'
-})
-
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ["latin"],
-  variable: '--font-mono'
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://raymi.xyz'),
@@ -95,7 +83,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="dark">
-      <body className={`${pressStart.variable} ${jetbrainsMono.variable} font-mono antialiased`}>
+        <body className="antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
