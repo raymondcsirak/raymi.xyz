@@ -1,6 +1,7 @@
 'use client'
 
-import { Card } from '@/components/ui/card'
+import { MapPin } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 
 const experiences = [
@@ -60,65 +61,223 @@ const experiences = [
   }
 ]
 
-export function ExperienceTimeline() {
+const dotColors = [
+  'bg-primary',
+  'bg-secondary',
+  'bg-accent',
+  'bg-primary',
+]
+
+const borderAccents = [
+  'border-l-primary/60',
+  'border-l-secondary/60',
+  'border-l-accent/60',
+  'border-l-primary/60',
+]
+
+const dotGlows = [
+  'hover:shadow-[0_0_20px_-5px_oklch(0.72_0.16_190/0.5),0_0_40px_-10px_oklch(0.72_0.16_190/0.25)]',
+  'hover:shadow-[0_0_20px_-5px_oklch(0.65_0.20_300/0.5),0_0_40px_-10px_oklch(0.65_0.20_300/0.25)]',
+  'hover:shadow-[0_0_20px_-5px_oklch(0.80_0.18_130/0.5),0_0_40px_-10px_oklch(0.80_0.18_130/0.25)]',
+  'hover:shadow-[0_0_20px_-5px_oklch(0.72_0.16_190/0.5),0_0_40px_-10px_oklch(0.72_0.16_190/0.25)]',
+]
+
+const bulletColors = [
+  'text-primary',
+  'text-secondary',
+  'text-accent',
+  'text-primary',
+]
+
+function TimelineCard({
+  experience,
+  index,
+  isVisible,
+}: {
+  experience: (typeof experiences)[0]
+  index: number
+  isVisible: boolean
+}) {
+  const isEven = index % 2 === 0
+
   return (
-    <section id="experience" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-4 mb-16">
-            <div className="h-px bg-border flex-1"></div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-              Experience Log
-            </h2>
-            <div className="h-px bg-border flex-1"></div>
+    <div
+      className={`
+        relative flex w-full items-start
+        md:items-center
+        ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}
+      `}
+    >
+      <div
+        className={`
+          w-full md:w-[calc(50%-2rem)]
+          ${isEven ? 'md:pr-0' : 'md:pl-0'}
+        `}
+      >
+        <div
+          className={`
+            glass rounded-xl p-6 border-l-2 ${borderAccents[index]}
+            transition-all duration-700 ease-out
+            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+          `}
+          style={{ transitionDelay: `${index * 120}ms` }}
+        >
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div className="flex-1 min-w-0">
+              <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
+                {experience.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1">{experience.company}</p>
+            </div>
+            <Badge
+              variant="outline"
+              className="font-mono text-[10px] shrink-0 tracking-wide border-border/60 text-muted-foreground"
+            >
+              {experience.period}
+            </Badge>
           </div>
 
-          <div className="space-y-12 relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-8 top-4 bottom-4 w-px bg-border"></div>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-4">
+            <MapPin className="size-3 shrink-0" />
+            <span>{experience.location}</span>
+          </div>
 
-            {experiences.map((exp, index) => (
-              <div key={index} className="relative pl-8 md:pl-20">
-                {/* Timeline dot */}
-                <div className="absolute left-[-5px] md:left-[27px] top-1.5 w-3 h-3 rounded-full bg-background border-2 border-primary z-10"></div>
-                
-                <div className="space-y-4 group">
-                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                        {exp.title}
-                      </h3>
-                      <p className="text-lg text-muted-foreground font-medium">{exp.company}</p>
-                    </div>
-                    <Badge variant="secondary" className="w-fit font-mono text-xs">
-                      {exp.period}
-                    </Badge>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground"></span>
-                    {exp.location}
-                  </p>
-
-                  <ul className="space-y-2 text-muted-foreground">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex gap-3 leading-relaxed text-sm">
-                        <span className="text-primary mt-1.5 text-xs">●</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {exp.tech.map((tech, i) => (
-                      <Badge key={i} variant="outline" className="border-border text-muted-foreground text-xs hover:border-primary/50 hover:text-primary transition-colors">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
+          <ul className="space-y-2 mb-4">
+            {experience.achievements.map((achievement, i) => (
+              <li key={`${experience.period}-ach-${i}`} className="flex gap-2.5 leading-relaxed text-sm text-muted-foreground">
+                <span className={`mt-1.5 text-[8px] ${bulletColors[index]} shrink-0`}>●</span>
+                <span>{achievement}</span>
+              </li>
             ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-1.5">
+            {experience.tech.map((tech) => (
+              <Badge
+                key={`${experience.period}-tech-${tech}`}
+                variant="outline"
+                className="border-border/50 text-muted-foreground text-[10px] font-mono tracking-wide hover:border-primary/40 hover:text-primary transition-colors duration-300"
+              >
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-10">
+        <div
+          className={`
+            w-4 h-4 rounded-full ${dotColors[index]}
+            border-[3px] border-background
+            transition-all duration-300
+            ${dotGlows[index]}
+          `}
+        />
+      </div>
+
+      <div className="md:hidden absolute -left-[21px] top-6 z-10">
+        <div
+          className={`
+            w-3.5 h-3.5 rounded-full ${dotColors[index]}
+            border-[3px] border-background
+            transition-all duration-300
+            ${dotGlows[index]}
+          `}
+        />
+      </div>
+
+      <div className="hidden md:block w-[calc(50%-2rem)] shrink-0" />
+    </div>
+  )
+}
+
+export function ExperienceTimeline() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [lineProgress, setLineProgress] = useState(0)
+  const [cardsVisible, setCardsVisible] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCardsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(section)
+
+    const handleScroll = () => {
+      const rect = section.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
+      const sectionTop = rect.top
+      const sectionHeight = rect.height
+
+      const scrolledPastTop = viewportHeight - sectionTop
+      const totalScrollDistance = viewportHeight + sectionHeight
+      const progress = Math.min(
+        Math.max(scrolledPastTop / totalScrollDistance, 0),
+        1
+      )
+      setLineProgress(progress)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  return (
+    <section id="experience" ref={sectionRef} className="py-24 bg-background relative">
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Experience
+              </span>
+            </h2>
+            <p className="mt-3 text-sm font-mono text-muted-foreground tracking-wide">
+              My journey through infrastructure and operations
+            </p>
+            <div className="mt-6 h-px bg-gradient-to-r from-transparent via-border to-transparent max-w-xs mx-auto" />
+          </div>
+
+          <div className="relative">
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px">
+              <div className="absolute inset-0 bg-border/40" />
+              <div
+                className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary via-secondary to-accent origin-top transition-[height] duration-100 ease-linear"
+                style={{ height: `${lineProgress * 100}%` }}
+              />
+            </div>
+
+            <div className="md:hidden absolute left-0 top-0 bottom-0 w-px">
+              <div className="absolute inset-0 bg-border/40" />
+              <div
+                className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary via-secondary to-accent origin-top transition-[height] duration-100 ease-linear"
+                style={{ height: `${lineProgress * 100}%` }}
+              />
+            </div>
+
+            <div className="space-y-12 md:space-y-16 pl-6 md:pl-0">
+              {experiences.map((exp, index) => (
+                <TimelineCard
+                  key={exp.period}
+                  experience={exp}
+                  index={index}
+                  isVisible={cardsVisible}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

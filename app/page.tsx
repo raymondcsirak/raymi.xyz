@@ -1,21 +1,23 @@
-import { HeroSection } from '@/components/hero-section'
-import { TerminalAbout } from '@/components/terminal-about'
-import { SkillsGrid } from '@/components/skills-grid'
-import { ProjectsShowcase } from '@/components/projects-showcase'
+import { AboutSection } from '@/components/about-section'
+import { ContactSection } from '@/components/contact-section'
 import { ExperienceTimeline } from '@/components/experience-timeline'
-import { ContactTerminal } from '@/components/contact-terminal'
-import { PixelatedNav } from '@/components/pixelated-nav'
+import { Footer } from '@/components/footer'
+import { HeroSection } from '@/components/hero-section'
+import { Nav } from '@/components/nav'
+import { ProjectsShowcase } from '@/components/projects-showcase'
+import { SkillsGrid } from '@/components/skills-grid'
 
 export default function Page() {
   return (
     <main className="relative min-h-screen">
-      <PixelatedNav />
+      <Nav />
       <HeroSection />
-      <TerminalAbout />
+      <AboutSection />
       <SkillsGrid />
-      {/* <ProjectsShowcase /> */}
+      <ProjectsShowcase />
       <ExperienceTimeline />
-      <ContactTerminal />
+      <ContactSection />
+      <Footer />
     </main>
   )
 }
