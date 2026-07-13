@@ -13,8 +13,8 @@ npm run dev          # Local development
 npm run lint         # ESLint
 npx tsc --noEmit     # Type checking
 npm run build        # Production build
-npm run pages:build  # Cloudflare Pages build
-npm start            # Serve the production build
+npm run preview      # Build and preview with the Workers runtime
+npm run deploy       # Build and deploy to Cloudflare Workers
 ```
 
 ## Structure
@@ -42,12 +42,12 @@ public/                  Portrait, résumé, and favicon assets
 
 ## Deployment
 
-- Vercel is the primary Git-triggered deployment target.
-- `npm run pages:build` preserves the existing Cloudflare Pages path.
-- `@cloudflare/next-on-pages` is deprecated and does not officially support Next.js 16; migrate it to the OpenNext Cloudflare adapter only as a dedicated deployment change.
+- Cloudflare Workers is the primary Git-triggered deployment target.
+- The site is statically exported to `out/` and deployed with Workers Static Assets.
+- Keep the deployment asset-only unless a feature genuinely requires runtime Worker code.
 
 ## Verification
 
-Before committing, run lint, type checking, and the production build. Run `npm run pages:build` when deployment configuration or dependencies change. Fix all warnings and errors introduced by the work.
+Before committing, run lint, type checking, and the production build. Run `npx wrangler deploy --dry-run` when deployment configuration or dependencies change. Fix all warnings and errors introduced by the work.
 
 Always use conventional commits for git commit messages.

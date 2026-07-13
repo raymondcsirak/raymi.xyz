@@ -19,8 +19,9 @@ npx tsc --noEmit
 npm run build
 ```
 
-## Cloudflare Pages
+## Cloudflare Workers
 
 ```bash
-npm run pages:build
+npm run preview
+npm run deploy
 ```
