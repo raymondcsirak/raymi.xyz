@@ -1,139 +1,53 @@
 # AGENTS.md
 
-This document provides guidelines for AI agents working in this repository.
+Guidelines for agents working in this repository.
 
-## Project Overview
+## Project overview
 
-This is a personal portfolio website built with Next.js 15+, TypeScript, and Tailwind CSS. It features a terminal-inspired design with smooth animations, responsive layouts, and a contact form powered by Resend.
+This is Raymond Csirák's personal portfolio, built with Next.js 16 and TypeScript. It is a static, editorial-style single-page site with custom CSS and a mailto contact link.
 
-## Build Commands
+## Commands
 
 ```bash
-# Development server
-npm run dev
-
-# Production build
-npm run build
-
-# Production build for Cloudflare Pages
-npm run pages:build
-
-# Start production server
-npm start
-
-# Lint codebase
-npm run lint
-
-# Type checking (via TypeScript compiler)
-npx tsc --noEmit
+npm run dev          # Local development
+npm run lint         # ESLint
+npx tsc --noEmit     # Type checking
+npm run build        # Production build
+npm run pages:build  # Cloudflare Pages build
+npm start            # Serve the production build
 ```
 
-## Code Style Guidelines
+## Structure
 
-### TypeScript
-
-- Enable `strict: true` in all TypeScript configurations
-- Use explicit types for function parameters and return values
-- Prefer interfaces over type aliases for object shapes
-- Use `any` sparingly; prefer explicit types or `unknown`
-- Leverage generics when working with reusable components
-
-### React Components
-
-- Use functional components with hooks (`useState`, `useEffect`, etc.)
-- Mark client components with `'use client'` at the top
-- Mark server actions with `'use server'` at the top
-- Use PascalCase for component names (e.g., `PixelatedNav`)
-- Destructure props for clarity
-- Use optional chaining and nullish coalescing for safe access
-
-### Imports
-
-Organize imports in this order:
-1. Node.js built-in modules
-2. External dependencies (React, Radix UI, etc.)
-3. Project utilities (`@/lib/utils`)
-4. Project components (`@/components/ui/*`)
-5. Relative imports
-
-```typescript
-import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import { Menu, X } from 'lucide-react'
+```text
+app/page.tsx             Homepage markup
+app/layout.tsx           Metadata, structured data, and analytics
+app/globals.css          Minimal document-level styles
+app/long-uptime.css      Homepage design and responsive rules
+lib/portfolio-data.ts    Profile and experience content
+public/                  Portrait, résumé, and favicon assets
 ```
 
-### Naming Conventions
+## Conventions
 
-- **Components**: PascalCase (`HeroSection`, `SkillsGrid`)
-- **Functions/variables**: camelCase (`isOpen`, `handleSubmit`)
-- **Constants**: SCREAMING_SNAKE_CASE for config values
-- **Files**: kebab-case for utilities, PascalCase for components
-- **CSS classes**: Use Tailwind's utility classes with `cn()` helper
+- Keep the page server-rendered unless a feature genuinely needs client-side state.
+- Keep profile and experience copy in `lib/portfolio-data.ts` when it is shared or repeated.
+- Use the existing `home-film-*` class naming in `app/long-uptime.css`.
+- Preserve the current Arial/Georgia type pairing and the charcoal, slate, and orange palette unless a redesign is requested.
+- Prefer semantic HTML and keep the skip link, focus styles, alt text, and reduced-motion rules intact.
+- Use explicit TypeScript types for function parameters and object shapes where inference is insufficient.
+- Organize imports as external packages, project aliases, then relative files.
+- Do not add Tailwind, shadcn/ui, a component library, or a client-side animation dependency for simple styling.
+- Never commit secrets or local environment files.
 
-### CSS and Styling
+## Deployment
 
-- Use Tailwind CSS for all styling
-- Use `cn()` from `@/lib/utils` to merge classes safely
-- Follow shadcn/ui patterns for component styling
-- Use CSS variables from `globals.css` for theming colors
-- Use `data-*` attributes sparingly for specific component states
+- Vercel is the primary Git-triggered deployment target.
+- `npm run pages:build` preserves the existing Cloudflare Pages path.
+- `@cloudflare/next-on-pages` is deprecated and does not officially support Next.js 16; migrate it to the OpenNext Cloudflare adapter only as a dedicated deployment change.
 
-### Error Handling
+## Verification
 
-- Wrap async operations in try-catch blocks
-- Return error objects from server actions: `{ error: 'message' }`
-- Log errors with context: `console.error('Action failed:', error)`
-- Provide user-friendly error messages
-- Handle null/undefined cases gracefully with optional chaining
+Before committing, run lint, type checking, and the production build. Run `npm run pages:build` when deployment configuration or dependencies change. Fix all warnings and errors introduced by the work.
 
-### File Structure
-
-```
-/app          - Next.js App Router pages and layouts
-/components   - React components (grouped by feature)
-/components/ui - Base UI components (buttons, inputs, etc.)
-/lib         - Utility functions and configurations
-/public      - Static assets
-```
-
-### Component Patterns
-
-Follow the shadcn/ui pattern for base components:
-- Use `class-variance-authority` (CVA) for variant management
-- Define variants with TypeScript interfaces
-- Use Radix UI primitives for accessibility
-- Export both the component and its variants
-
-Example from `components/ui/button.tsx`:
-```typescript
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-
-const buttonVariants = cva("...", { variants: { variant: {...}, size: {...} } })
-
-function Button({ className, variant, size, ...props }: ...) {
-  return <Comp className={cn(buttonVariants({ variant, size, className }))} {...props} />
-}
-```
-
-### Environment Variables
-
-- Use `.env.local` for local development
-- Prefix Cloudflare/Wrangler variables appropriately
-- Never commit secrets to version control
-- Use `process.env` to access variables
-
-### Deployment
-
-- Vercel for primary deployment (automatic via Git)
-- Cloudflare Pages via `npm run pages:build` for edge deployment
-- Use `next.config.ts` for configuration
-- Output: `.vercel/output` for Vercel, `.cloudflare/pages` for Cloudflare
-
-### Linting and Formatting
-
-- ESLint configured with `next/core-web-vitals` and `next/typescript`
-- Run `npm run lint` before committing
-- Fix all warnings and errors
-- No custom prettier config; rely on editor formatting
+Always use conventional commits for git commit messages.

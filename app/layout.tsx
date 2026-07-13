@@ -1,26 +1,16 @@
 import type { Metadata } from 'next'
-import { Press_Start_2P, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+
 import './globals.css'
-
-const pressStart = Press_Start_2P({ 
-  weight: '400',
-  subsets: ["latin"],
-  variable: '--font-pixel'
-})
-
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ["latin"],
-  variable: '--font-mono'
-})
+import './long-uptime.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://raymi.xyz'),
   title: {
-    default: 'Raymond Csirak | DevOps Engineer',
-    template: '%s | Raymond Csirak'
+    default: 'Raymond Csirák | Senior Site Reliability Engineer',
+    template: '%s | Raymond Csirák'
   },
-  description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration. Let\'s build something extraordinary.',
+  description: 'Senior Site Reliability Engineer building and operating reliable private cloud, Linux, Kubernetes, and infrastructure automation.',
   generator: 'Next.js',
   applicationName: 'Raymi.xyz',
   referrer: 'origin-when-cross-origin',
@@ -37,27 +27,17 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Raymond Csirak | DevOps Engineer',
-    description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration.',
+    title: 'Raymond Csirák | Senior Site Reliability Engineer',
+    description: 'Seventeen years inside infrastructure: Linux, private cloud, Kubernetes, automation, and the teams around them.',
     url: 'https://raymi.xyz',
     siteName: 'Raymi.xyz',
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/og-image.png', // We might need to generate this if it doesn't exist, but standard practice to include
-        width: 1200,
-        height: 630,
-        alt: 'Raymond Csirak- DevOps Engineer',
-      },
-    ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Raymond Csirak | DevOps Engineer',
-    description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration.',
-    creator: '@raymondcsirak', // Assuming this handle based on github/linkedin pattern, or generic
-    images: ['/og-image.png'],
+    card: 'summary',
+    title: 'Raymond Csirák | Senior Site Reliability Engineer',
+    description: 'Seventeen years inside infrastructure: Linux, private cloud, Kubernetes, automation, and the teams around them.',
   },
   robots: {
     index: true,
@@ -80,22 +60,22 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Raymond Csirak',
+    name: 'Raymond Csirák',
     alternateName: 'Raymi',
     url: 'https://raymi.xyz',
-    jobTitle: 'DevOps Engineer',
+    jobTitle: 'Senior Site Reliability Engineer',
     sameAs: [
       'https://github.com/raymondcsirak',
       'https://linkedin.com/in/raymondcsirak',
       'https://raymi.xyz'
     ],
-    description: 'Senior DevOps Engineer specializing in cloud infrastructure, CI/CD pipelines, and Kubernetes orchestration.',
-    knowsAbout: ['DevOps', 'Cloud Computing', 'Kubernetes', 'Docker', 'AWS', 'CI/CD', 'Terraform']
+    description: 'Senior Site Reliability Engineer building and operating reliable private cloud, Linux, Kubernetes, and infrastructure automation.',
+    knowsAbout: ['Site Reliability Engineering', 'OpenStack', 'Linux', 'Kubernetes', 'Infrastructure as Code', 'Puppet', 'Ansible', 'Python']
   }
 
   return (
-    <html lang="en" className="dark">
-      <body className={`${pressStart.variable} ${jetbrainsMono.variable} font-mono antialiased`}>
+    <html lang="en">
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
