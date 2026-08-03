@@ -21,7 +21,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "16.2.10",
     "typescript": "^5",
-    "wrangler": "^4.110.0"
+    "wrangler": "^4.116.0"
   },
   "overrides": {
     "next": {
