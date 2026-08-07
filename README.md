@@ -1,6 +1,6 @@
 # raymi.xyz
 
-Raymond Csirák's personal portfolio, built with Next.js and TypeScript.
+Raymond Csirák's static HTML and CSS portfolio, deployed with Cloudflare Workers Static Assets.
 
 ## Development
 
@@ -9,13 +9,11 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:8787](http://localhost:8787).
 
 ## Checks
 
 ```bash
-npm run lint
-npx tsc --noEmit
 npm run build
 ```
 
