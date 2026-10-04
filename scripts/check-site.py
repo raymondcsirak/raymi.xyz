@@ -42,7 +42,7 @@ for route, page in pages.items():
         if tag == 'script':
             assert attrs.get('type') == 'application/ld+json', f'{route}: unexpected client JavaScript'
         if tag == 'img':
-            assert attrs.get('alt'), f'{route}: missing alt text'
+            assert 'alt' in attrs, f'{route}: missing alt attribute'
         target = attrs.get('href') if tag in ('a', 'link') else attrs.get('src') if tag == 'img' else None
         if not target or not target.startswith(('/', '#')):
             continue

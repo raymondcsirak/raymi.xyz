@@ -21,6 +21,10 @@ Open [http://localhost:8787](http://localhost:8787). The blog is at `/blog/`.
 
 The discarded design studies and their assets have been removed. Numbered routes `/1/` through `/10/` return the custom 404 page.
 
+## Page transitions
+
+Supporting browsers animate the shared pixel portrait, name, and navigation between the homepage and blog. The page content fades with a short vertical shift. This uses CSS cross-document View Transitions, with no JavaScript or navigation interception. Reduced-motion preferences disable the effect; unsupported browsers use normal page loads. The article template inherits the same transition through the shared stylesheet.
+
 ## Publish a post
 
 1. Copy `templates/blog-post.html` to `public/blog/your-slug/index.html`.
