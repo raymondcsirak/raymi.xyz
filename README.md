@@ -23,9 +23,37 @@ The discarded design studies and their assets have been removed. Numbered routes
 
 ## Page transitions
 
-Supporting browsers animate the shared pixel portrait, name, and navigation between the homepage and blog. The page content fades with a short vertical shift. CSS cross-document View Transitions provide the shared-element movement. A small `page-transitions.js` handler replays an entrance fade on each arrival when the browser skips or cannot perform the native transition, including restored history entries. It cancels interrupted entrances on page exit. Reduced-motion preferences disable both effects. Links and history use normal browser navigation. The article template inherits the same transition through the shared stylesheet.
+The site uses native CSS cross-document View Transitions. There is no executable client-side JavaScript, router, or animation dependency. The transparent portrait, name, and navigation are shared between pages. Reduced-motion preferences disable transitions; unsupported browsers navigate normally.
 
-The test article is marked `noindex` and excluded from the sitemap. Its title shares a transition name with its index entry. Remove this test entry and page before publishing real articles. For future shared-title transitions, use a unique name for each article, with the same name on its listing title and article heading.
+Article titles use the word-level technique observed on [Naman Goel's site](https://nmn.sh/blog/2026-02-01-fixing-web-components): each word has a unique transition name shared between the listing and the article. The article renders each word as SVG text in a wrapping flex layout. Flex growth is proportional to word width, so words fill their rows and scale individually as the viewport changes. The browser matches and animates each word's position and size, including when line breaks change. The heading itself has no transition name.
+
+The test article at `/blog/test-post/` is marked `noindex` and excluded from the sitemap. Remove it before publishing real articles.
+
+### Prepare a word title
+
+Use a unique article prefix and word index, including for repeated words. Put a literal space or newline between listing spans so the title remains readable as text:
+
+```html
+<h3 class="home-film-word-title">
+  <span class="home-film-title-word" style="--word-name: your-slug-word-1">A</span>
+  <span class="home-film-title-word" style="--word-name: your-slug-word-2">test</span>
+</h3>
+```
+
+The article uses matching names and proportional SVG widths. These widths are the words' natural advance widths in Georgia at 100px, measured once during authoring. Keep the full title as the heading's accessible label; the SVG copies are decorative to assistive technology. `textLength` preserves the layout if the reader's serif fallback font has different metrics.
+
+```html
+<h1 class="home-film-word-title home-film-fluid-title" aria-label="A test">
+  <span class="home-film-title-word" style="--word-name: your-slug-word-1; --word-width: 67.094">
+    <svg viewBox="0 0 67.094 110" aria-hidden="true" focusable="false"><text x="0" y="85" textLength="67.094" lengthAdjust="spacingAndGlyphs">A</text></svg>
+  </span>
+  <span class="home-film-title-word" style="--word-name: your-slug-word-2; --word-width: 160.602">
+    <svg viewBox="0 0 160.602 110" aria-hidden="true" focusable="false"><text x="0" y="85" textLength="160.602" lengthAdjust="spacingAndGlyphs">test</text></svg>
+  </span>
+</h1>
+```
+
+Use matching words and punctuation in both locations. Never reuse a transition name within one document. No word measurement or text splitting runs in the visitor's browser.
 
 ## Publish a post
 
@@ -61,7 +89,6 @@ With `npm run dev` running:
 ```bash
 npm run build
 python3 scripts/check-site.py
-node --test scripts/page-transitions.test.cjs
 ```
 
 The smoke check covers public pages, local links and fragments, assets, metadata, the custom 404, and removal of the design studies. The article template stays outside the deployment.

@@ -5,6 +5,7 @@ from urllib.error import HTTPError
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 import json
+import re
 import xml.etree.ElementTree as ET
 
 BASE = 'http://127.0.0.1:8787'
@@ -15,11 +16,28 @@ class Page(HTMLParser):
     def __init__(self, html):
         super().__init__()
         self.tags = []
+        self.words = []
+        self.word = None
         self.feed(html)
         self.ids = [attrs['id'] for _, attrs in self.tags if 'id' in attrs]
 
     def handle_starttag(self, tag, attrs):
-        self.tags.append((tag, dict(attrs)))
+        attrs = dict(attrs)
+        self.tags.append((tag, attrs))
+        if 'home-film-title-word' in attrs.get('class', '').split():
+            name = re.search(r'--word-name:\s*([\w-]+)', attrs.get('style', ''))
+            assert name, 'Title word must have a stable name'
+            self.word = {'name': name[1], 'text': ''}
+
+    def handle_data(self, data):
+        if self.word is not None:
+            self.word['text'] += data
+
+    def handle_endtag(self, tag):
+        if tag == 'span' and self.word is not None:
+            self.word['text'] = ' '.join(self.word['text'].split())
+            self.words.append(self.word)
+            self.word = None
 
 
 def fetch(path):
@@ -40,7 +58,7 @@ for route, page in pages.items():
     assert any(tag == 'link' and attrs.get('rel') == 'canonical' and attrs.get('href') == 'https://raymi.xyz' + route for tag, attrs in page.tags), f'{route}: missing canonical'
     for tag, attrs in page.tags:
         if tag == 'script':
-            assert attrs.get('type') == 'application/ld+json' or attrs.get('src') == '/page-transitions.js', f'{route}: unexpected script'
+            assert attrs.get('type') == 'application/ld+json', f'{route}: unexpected executable JavaScript'
         if tag == 'img':
             assert 'alt' in attrs, f'{route}: missing alt attribute'
         target = attrs.get('href') if tag in ('a', 'link') else attrs.get('src') if tag in ('img', 'script') else None
@@ -54,7 +72,15 @@ for route, page in pages.items():
         if link.fragment:
             linked = pages.get(path) or Page(fetch(path).decode())
             assert link.fragment in linked.ids, f'{route}: missing anchor {target}'
-    print(f'PASS {route}: content, metadata, links, fragments, assets')
+    word_names = [word['name'] for word in page.words]
+    assert len(word_names) == len(set(word_names)), f'{route}: duplicate word transition names'
+    if route.startswith('/blog/') and route != '/blog/' and page.words:
+        listing = {word['name']: word['text'] for word in pages['/blog/'].words}
+        for word in page.words:
+            assert listing.get(word['name']) == word['text'], f'{route}: title word does not match listing: {word}'
+        label = next(attrs.get('aria-label') for tag, attrs in page.tags if tag == 'h1')
+        assert label == ' '.join(word['text'] for word in page.words), f'{route}: incorrect accessible title'
+    print(f'PASS {route}: content, metadata, links, fragments, assets, title words')
 
 for path in ('/robots.txt', '/sitemap.xml', '/favicon.ico', '/styles.css', '/profile-pixel-transparent.png', '/Raymond_Csirak.pdf'):
     fetch(path)
@@ -69,7 +95,7 @@ for route, page in pages.items():
 home = fetch('/').decode()
 structured = home.split('<script type="application/ld+json">')[1].split('</script>')[0]
 json.loads(structured)
-for path in [f'/{n}/' for n in range(1, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html']:
+for path in [f'/{n}/' for n in range(1, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html', '/page-transitions.js']:
     try:
         fetch(path)
     except HTTPError as error:

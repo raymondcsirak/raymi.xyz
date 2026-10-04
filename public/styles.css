@@ -209,11 +209,14 @@ body {
 
   .home-film-pixel-card img, .home-film-blog-portrait { view-transition-name: home-film-portrait; }
   .home-film-header > strong, .home-film-home-link > span { view-transition-name: home-film-name; }
-  .home-film-test-title { view-transition-name: home-film-test-title; }
+  .home-film-title-word { view-transition-name: var(--word-name); view-transition-class: home-film-title-word; }
   .home-film-header nav { view-transition-name: home-film-navigation; }
 
   ::view-transition-group(*) { animation-duration: 460ms; animation-timing-function: cubic-bezier(.22,1,.36,1); }
   ::view-transition-old(*), ::view-transition-new(*) { animation-duration: 460ms; }
+  ::view-transition-group(.home-film-title-word),
+  ::view-transition-old(.home-film-title-word),
+  ::view-transition-new(.home-film-title-word) { animation-duration: 650ms; }
   ::view-transition-old(root) { animation: home-film-page-out 180ms ease-out both; mix-blend-mode: normal; }
   ::view-transition-new(root) { animation: home-film-page-in 460ms cubic-bezier(.22,1,.36,1) both; mix-blend-mode: normal; }
 }
@@ -227,3 +230,11 @@ body {
 }
 
 .home-film-blog-entry > .home-film-entry-status { color: var(--film-muted); }
+
+/* Each word is a separate snapshot. SVG text lets the article's words fill
+   their flex rows proportionally, without measuring or splitting text in JS. */
+.home-film-title-word { display: inline-block; }
+.home-film-post-heading .home-film-fluid-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px clamp(12px,3vw,42px); max-width: none; }
+.home-film-fluid-title .home-film-title-word { flex: var(--word-width) 1 0; min-width: min(100%,calc(var(--word-width) * (0.2px + 0.08vw))); }
+.home-film-fluid-title svg { display: block; width: 100%; height: auto; overflow: visible; }
+.home-film-fluid-title text { font: 100px Georgia, 'Times New Roman', serif; letter-spacing: 0; fill: currentColor; }
