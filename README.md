@@ -1,6 +1,6 @@
 # raymi.xyz
 
-Raymond Csirák's static HTML and CSS portfolio, deployed with Cloudflare Workers Static Assets.
+Raymond Csirák's portfolio and blog. Static HTML and custom CSS, deployed with Cloudflare Workers Static Assets. The original design and pixel portrait remain the basis of the site.
 
 ## Development
 
@@ -9,48 +9,55 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:8787](http://localhost:8787).
+Open [http://localhost:8787](http://localhost:8787). The blog is at `/blog/`.
 
-## Design studies
+## Files
 
-The `design/five-directions` branch contains ten independent HTML/CSS designs. The current shortlist keeps `/1/` and `/2/` alongside five new directions at `/6/`–`/10/`. The original homepage remains at `/`.
+- `public/index.html`: homepage, career history, and blog introduction.
+- `public/blog/index.html`: blog index. Currently an empty state, with no published posts.
+- `public/styles.css`: shared portfolio, blog, and article styles.
+- `templates/blog-post.html`: unpublished article template. Nothing in `templates/` is deployed.
+- `public/sitemap.xml`: public page URLs.
 
-| Route | Direction | Interaction |
-| --- | --- | --- |
-| `/1/` | The quiet operator: ivory, vermilion, editorial typography | CSS optical sculpture and expandable notebook outlines |
-| `/2/` | Systems atlas: dark technical blueprint | Exploded infrastructure stack and layer disclosures |
-| `/3/` | The workbench: sage desktop, paper, personal notes | Native radio controls switch work, biography, and notebook views |
-| `/4/` | Built to hold: acid-yellow typographic poster | Problem selector changes the service explanation and contact link |
-| `/5/` | Field journal: burgundy, serif typography, print layout | Expandable paper folios for future writing |
-| `/6/` | Orbit: midnight blue, peach, orbital geometry | Satellite links and rotating CSS rings |
-| `/7/` | Small world: a miniature isometric infrastructure landscape | Native day/night switch and service signposts |
-| `/8/` | Signal: soft olive, technical clarity, oscilloscope | Noise-filter switch and expandable service details |
-| `/9/` | Working canvas: white and cobalt architecture drawing | Keyboard-operated selector highlights three infrastructure paths |
-| `/10/` | Hello, operator: lavender, oversized type, character portrait | Separate client, recruiter, and curiosity disclosures |
+The discarded design studies and their assets have been removed. Numbered routes `/1/` through `/10/` return the custom 404 page.
 
-The new directions keep the existing pixel character, with a transparent cutout for flexible placement. Rejected studies `/3/`–`/5/` remain accessible for reference but are omitted from the updated comparison bar.
+## Publish a post
 
-Each page includes a variant switcher, contact links, and the existing résumé. Career details come from the résumé and original site. Notebook topics are explicitly marked as proposals; no articles or outcome metrics are invented. All controls work without JavaScript. Designs include keyboard focus states, mobile layouts, reduced-motion rules, and `noindex` metadata.
+1. Copy `templates/blog-post.html` to `public/blog/your-slug/index.html`.
+2. Replace every bracketed placeholder. Remove the draft notice, `DRAFT TEMPLATE` label, and authoring comments. Update the table of contents to match your section IDs. Remove any example elements you don't need.
+3. Set the page title, description, Open Graph title and description. Add a canonical link and `og:url` using `https://raymi.xyz/blog/your-slug/`. Set robots to `index, follow`.
+4. Replace `Unpublished` with a `<time datetime="YYYY-MM-DD">Day Month Year</time>` element. Add `<meta property="article:published_time" content="YYYY-MM-DD" />` in the head. Use the actual publication date.
+5. Add an entry to `public/blog/index.html` inside `.home-film-blog-entries`, after the index line. For the first post, remove `.home-film-blog-empty`. Update the published count. Entries go newest first.
+6. Replace the homepage's "First entries to follow" sentence with a link to the new article. Add the article URL to `public/sitemap.xml`.
+7. Run the checks below. Review the article on mobile and desktop, including code blocks, links, and table overflow. Commit and push to the intended branch.
 
-With `npm run dev` running, verify routes, internal links, assets, metadata, controls, and the custom 404:
+Blog entry markup, already styled in `public/styles.css`:
 
-```bash
-python3 scripts/check-variants.py
+```html
+<a class="home-film-blog-entry" href="/blog/your-slug/">
+  <time datetime="YYYY-MM-DD">Day Month Year</time>
+  <div>
+    <h3>Article title</h3>
+    <p>A short description of the problem and what the reader will learn.</p>
+  </div>
+  <span aria-hidden="true">↗</span>
+</a>
 ```
 
-To publish a version preview without changing production traffic:
+Store article images beside the article, reference them with root-relative URLs, and include descriptive alt text and dimensions. Escape `&` and `<` in code blocks. Keep credentials, customer data, and private infrastructure details out of posts.
 
-```bash
-npx wrangler versions upload --preview-alias five-directions
-```
-
-Append `/1/` through `/10/` to the returned version URL. The smoke check also accepts that base URL as its argument.
+No CMS, JavaScript, or build dependency is required. Add an RSS feed when the first article is published, using its real URL and publication date.
 
 ## Checks
 
+With `npm run dev` running:
+
 ```bash
 npm run build
+python3 scripts/check-site.py
 ```
+
+The smoke check covers public pages, local links and fragments, assets, metadata, the custom 404, and removal of the design studies. The article template stays outside the deployment.
 
 ## Cloudflare Workers
 
@@ -58,3 +65,5 @@ npm run build
 npm run preview
 npm run deploy
 ```
+
+Cloudflare's Git integration uploads version previews for the current `design/five-directions` branch. Pushing this branch updates the preview without routing production traffic to it. The branch name is retained so the existing preview address continues to work.

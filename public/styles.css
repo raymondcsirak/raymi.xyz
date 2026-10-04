@@ -84,3 +84,119 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .film-page *, .film-page *::before, .film-page *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Navigation and field notes, shared with the original homepage. */
+.home-film a:focus-visible, .home-film [tabindex]:focus-visible { outline: 3px solid var(--film-accent); outline-offset: 5px; }
+.home-film-header { align-items: center; gap: 24px; }
+.home-film-header nav { display: flex; align-items: center; gap: 24px; font-size: 11px; font-weight: 700; letter-spacing: .02em; }
+.home-film-header nav a { display: flex; align-items: center; min-height: 44px; border-bottom: 1px solid transparent; }
+.home-film-header nav a:hover, .home-film-header nav a[aria-current] { border-bottom-color: currentColor; }
+.home-film-eyebrow { color: var(--film-muted); font-size: 10px; font-weight: 700; line-height: 1.6; letter-spacing: .16em; }
+.home-film-eyebrow b { color: var(--film-accent); margin-right: .2em; font-size: 18px; letter-spacing: -.02em; }
+.home-film-notebook { display: grid; grid-template-columns: 150px minmax(0,1fr); gap: 5vw; padding: 120px 3vw; background: var(--film-panel); border-bottom: 1px solid var(--film-line); }
+.home-film-notebook h2 { margin: 0 0 40px; font: 400 clamp(60px,8vw,140px)/.9 Georgia, serif; letter-spacing: -.04em; }
+.home-film-notebook p { max-width: 48ch; margin-bottom: 30px; color: var(--film-muted); font-size: 18px; line-height: 1.65; }
+.home-film .home-film-text-link { display: inline-flex; gap: 30px; align-items: center; min-height: 44px; padding: 8px 0; border-bottom: 1px solid var(--film-line); font-size: 16px; font-weight: 700; }
+.home-film .home-film-text-link:hover { color: var(--film-accent); border-color: var(--film-accent); }
+
+.home-film-blog { overflow: visible; }
+.home-film-blog-header { position: relative; color: var(--film-ink); border-bottom: 1px solid var(--film-line); }
+.home-film-home-link { font-weight: 800; }
+.home-film-blog-intro { padding: 90px 6vw 70px; }
+.home-film-blog-intro h1 { margin: 65px 0 55px; font: 400 clamp(76px,11.5vw,180px)/.85 Georgia, serif; letter-spacing: -.05em; }
+.home-film-blog-intro h1 > span { color: var(--film-accent); }
+.home-film-blog-deck { display: flex; align-items: end; justify-content: space-between; gap: 45px; }
+.home-film-blog-deck p { max-width: 42ch; margin: 0; color: var(--film-muted); font-size: 19px; line-height: 1.65; }
+.home-film-blog-deck > span { color: var(--film-muted); font-size: 9px; letter-spacing: .14em; }
+.home-film-blog-entries { padding: 0 6vw 100px; }
+.home-film-blog-index-line { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; border-top: 1px solid var(--film-line); border-bottom: 1px solid var(--film-line); }
+.home-film-blog-index-line h2, .home-film-blog-index-line > span { margin: 0; font-size: 10px; line-height: 1.6; letter-spacing: .14em; }
+.home-film-blog-index-line > span { color: var(--film-muted); }
+.home-film-blog-empty { display: grid; grid-template-columns: 80px minmax(0,1fr) auto; align-items: start; gap: 4vw; padding: 65px 0 20px; }
+.home-film-blog-cursor { color: var(--film-accent); font: 90px/.5 Georgia, serif; }
+.home-film-blog-empty h3 { margin: 0 0 25px; font: 400 clamp(30px,3.8vw,56px)/1.06 Georgia, serif; letter-spacing: -.02em; }
+.home-film-blog-empty p:not(.home-film-blog-margin) { max-width: 48ch; color: var(--film-muted); font-size: 16px; line-height: 1.7; }
+.home-film-blog-empty p a { color: var(--film-ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--film-line); }
+.home-film-blog-empty p a:hover { text-decoration-color: var(--film-accent); }
+.home-film-blog-margin { margin: 6px 0 0; color: var(--film-muted); font-size: 9px; line-height: 2; letter-spacing: .08em; }
+.home-film-blog-entry { display: grid; grid-template-columns: 150px minmax(0,1fr) 32px; gap: 4vw; padding: 40px 0; border-bottom: 1px solid var(--film-line); }
+.home-film-blog-entry time { color: var(--film-muted); font-size: 12px; line-height: 1.7; }
+.home-film-blog-entry h3 { margin: 0 0 14px; font: 400 clamp(28px,3.8vw,54px)/1.1 Georgia, serif; letter-spacing: -.025em; }
+.home-film-blog-entry p { max-width: 55ch; margin: 0; color: var(--film-muted); font-size: 16px; line-height: 1.65; }
+.home-film-blog-entry:hover h3, .home-film-blog-entry > span { color: var(--film-accent); }
+.home-film-blog-footer { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 45px; padding: 60px 6vw 35px; background: var(--film-panel); border-top: 1px solid var(--film-line); }
+.home-film-blog-footer > a { width: fit-content; font: 400 clamp(26px,3.4vw,48px)/1.15 Georgia, serif; letter-spacing: -.02em; }
+.home-film-blog-footer nav { display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px; }
+.home-film-blog-footer nav a { display: flex; min-height: 44px; align-items: center; }
+.home-film-blog-footer a:hover { color: var(--film-accent); }
+.home-film-blog-footer > span { grid-column: 1/-1; color: var(--film-muted); font-size: 9px; letter-spacing: .12em; }
+
+/* Article typography. The unpublished template lives in templates/. */
+.home-film-post-heading { padding: 55px 6vw 60px; border-bottom: 1px solid var(--film-line); }
+.home-film-post-heading .home-film-eyebrow { margin-top: 60px; color: var(--film-accent); }
+.home-film-post-heading h1 { max-width: 18ch; margin: 25px 0 35px; font: 400 clamp(48px,7vw,110px)/.98 Georgia, serif; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.home-film-post-summary { max-width: 60ch; color: var(--film-muted); font-size: clamp(18px,2vw,23px); line-height: 1.55; }
+.home-film-post-meta { display: flex; flex-wrap: wrap; gap: 12px 30px; margin-top: 30px; color: var(--film-muted); font-size: 12px; }
+.home-film-post-layout { display: grid; grid-template-columns: 180px minmax(0,760px); gap: 7vw; padding: 70px 6vw 100px; }
+.home-film-post-aside nav { position: sticky; top: 35px; }
+.home-film-post-aside a { display: flex; align-items: center; min-height: 44px; color: var(--film-muted); font-size: 12px; }
+.home-film-post-aside a:hover { color: var(--film-accent); }
+.home-film-prose { min-width: 0; color: #d5d3ce; font: 19px/1.8 Georgia, serif; overflow-wrap: anywhere; }
+.home-film-prose > :first-child { margin-top: 0; }
+.home-film-prose h2, .home-film-prose h3 { color: var(--film-ink); scroll-margin-top: 35px; }
+.home-film-prose h2 { margin: 65px 0 25px; font: 400 clamp(32px,3.6vw,48px)/1.1 Georgia, serif; letter-spacing: -.025em; }
+.home-film-prose h3 { margin: 40px 0 20px; font: 700 23px/1.3 Arial, sans-serif; }
+.home-film-prose p { margin: 0 0 26px; }
+.home-film-prose a:not(.home-film-text-link) { color: var(--film-ink); text-decoration: underline; text-decoration-color: var(--film-accent); text-underline-offset: 4px; }
+.home-film-prose ul, .home-film-prose ol { padding-left: 1.4em; }
+.home-film-prose li { padding-left: .2em; margin-bottom: 12px; }
+.home-film-prose li::marker { color: var(--film-accent); }
+.home-film-prose blockquote { margin: 40px 0; padding: 8px 0 8px 28px; border-left: 2px solid var(--film-accent); color: var(--film-ink); font-size: 27px; line-height: 1.4; }
+.home-film-prose blockquote p { margin: 0; }
+.home-film-prose figure { margin: 35px 0; }
+.home-film-prose img { max-width: 100%; height: auto; display: block; }
+.home-film-prose figcaption, .home-film-prose caption { margin: 15px 0; color: var(--film-muted); text-align: left; font: 12px/1.6 Arial, sans-serif; }
+.home-film-prose code { font: .8em/1.7 'Courier New', monospace; color: #f5b59f; }
+.home-film-prose pre { max-width: 100%; overflow-x: auto; padding: 24px; border: 1px solid var(--film-line); background: var(--film-panel); tab-size: 2; }
+.home-film-prose pre code { font-size: 14px; color: var(--film-ink); }
+.home-film-table-scroll { overflow-x: auto; margin: 35px 0; }
+.home-film-prose table { width: 100%; border-collapse: collapse; text-align: left; font: 14px/1.6 Arial, sans-serif; }
+.home-film-prose th, .home-film-prose td { min-width: 140px; padding: 16px 18px; border: 1px solid var(--film-line); vertical-align: top; }
+.home-film-prose thead { background: var(--film-panel); color: var(--film-ink); }
+.home-film-prose hr { margin: 60px 0 35px; border: 0; border-top: 1px solid var(--film-line); }
+.home-film-prose .home-film-post-signoff, .home-film-prose .home-film-post-notice { color: var(--film-muted); font: 14px/1.7 Arial, sans-serif; }
+.home-film-post-notice { padding: 18px 22px; border: 1px solid var(--film-line); }
+
+@media (max-width: 900px) {
+  .home-film-header > span { display: none; }
+  .home-film-notebook { grid-template-columns: 100px minmax(0,1fr); }
+  .home-film-blog-empty { grid-template-columns: 55px minmax(0,1fr); }
+  .home-film-blog-margin { grid-column: 2; }
+  .home-film-blog-footer { grid-template-columns: 1fr; gap: 25px; }
+  .home-film-post-layout { grid-template-columns: minmax(0,1fr); gap: 40px; }
+  .home-film-post-aside nav { position: static; padding-bottom: 25px; border-bottom: 1px solid var(--film-line); }
+}
+@media (max-width: 560px) {
+  .home-film-header { gap: 12px; padding: 14px 18px; }
+  .home-film-header strong, .home-film-home-link { max-width: 95px; line-height: 1.6; }
+  .home-film-header nav { gap: 16px; font-size: 10px; letter-spacing: 0; }
+  .home-film-notebook { display: block; padding: 80px 22px; }
+  .home-film-notebook h2 { margin-top: 40px; font-size: clamp(48px,11vw,62px); }
+  .home-film-blog-intro { padding: 55px 22px 40px; }
+  .home-film-blog-intro h1 { margin: 45px 0 35px; font-size: clamp(52px,12.5vw,72px); }
+  .home-film-blog-deck { display: block; }
+  .home-film-blog-deck p { font-size: 17px; }
+  .home-film-blog-deck > span { display: block; margin-top: 30px; }
+  .home-film-blog-entries { padding: 0 22px 65px; }
+  .home-film-blog-empty { grid-template-columns: 22px minmax(0,1fr); gap: 24px; padding-top: 40px; }
+  .home-film-blog-cursor { font-size: 40px; }
+  .home-film-blog-empty h3 { font-size: 30px; }
+  .home-film-blog-entry { grid-template-columns: minmax(0,1fr) 20px; gap: 18px; }
+  .home-film-blog-entry time { grid-column: 1/-1; }
+  .home-film-blog-footer { padding: 40px 22px 30px; }
+  .home-film-post-heading { padding: 30px 22px 40px; }
+  .home-film-post-heading .home-film-eyebrow { margin-top: 40px; }
+  .home-film-post-layout { padding: 40px 22px 70px; }
+  .home-film-prose { font-size: 18px; }
+  .home-film-prose pre { padding: 18px; }
+}

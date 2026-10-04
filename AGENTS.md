@@ -4,7 +4,7 @@ Guidelines for agents working in this repository.
 
 ## Project overview
 
-This is Raymond Csirák's personal portfolio. It is a static, editorial-style single-page site built with semantic HTML and custom CSS and deployed with Cloudflare Workers Static Assets.
+This is Raymond Csirák's personal portfolio and blog. It is a static, editorial-style site built with semantic HTML and custom CSS and deployed with Cloudflare Workers Static Assets.
 
 ## Commands
 
@@ -20,6 +20,9 @@ npm run deploy       # Deploy to Cloudflare Workers
 ```text
 public/index.html        Homepage markup, metadata, and structured data
 public/styles.css        Homepage design and responsive rules
+public/blog/index.html   Blog index, initially without published posts
+templates/blog-post.html Unpublished article template (not deployed)
+scripts/check-site.py    Local route, link, asset, and metadata checks
 public/404.html          Custom not-found page
 public/robots.txt        Crawler directives
 public/sitemap.xml       Search-engine sitemap
@@ -45,5 +48,7 @@ public/                  Portrait, résumé, and favicon assets
 ## Verification
 
 Before committing, run `npm run build`, then smoke-test the homepage, static metadata files, assets, and 404 response through `wrangler dev`. Fix all warnings and errors introduced by the work.
+
+With `wrangler dev` running on port 8787, use `python3 scripts/check-site.py`. Follow the publishing steps in `README.md` when adding articles. Keep draft templates outside `public/`.
 
 Always use conventional commits for git commit messages.
