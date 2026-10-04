@@ -29,7 +29,7 @@ def fetch(path):
         assert response.status == 200, path
         return response.read().decode('utf-8')
 
-for number in range(1, 6):
+for number in range(1, 11):
     route = f'/{number}'
     page = Page(fetch(route))
     assert len(page.ids) == len(set(page.ids)), f'{route}: duplicate IDs'
@@ -38,6 +38,8 @@ for number in range(1, 6):
     assert any(tag == 'meta' and attrs.get('name') == 'robots' and 'noindex' in attrs.get('content', '') for tag, attrs in page.tags), f'{route}: preview must not be indexed'
     assert 'mailto:hello@raymi.xyz' in page.links, f'{route}: missing contact'
     assert '/Raymond_Csirak.pdf' in page.links, f'{route}: missing résumé'
+    if number >= 6:
+        assert '/variants/character.png' in page.assets, f'{route}: missing pixel character'
     for tag, attrs in page.tags:
         if tag == 'label':
             assert attrs.get('for') in page.ids, f'{route}: broken control label'

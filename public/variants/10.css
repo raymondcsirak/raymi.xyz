@@ -1,0 +1,305 @@
+.home-film-study-10 {
+  --accent: #594484;
+  --muted: #6c637b;
+  --line: #c9c2d5;
+  color: #30243e;
+  background: #e9e5f2;
+}
+.home-film-study-10 .home-film-brand {
+  font-family: Georgia, serif;
+  font-size: 40px;
+  font-style: italic;
+}
+.home-film-human-hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 8%;
+  padding: 65px 8% 70px;
+  min-height: 690px;
+  align-items: center;
+}
+.home-film-human-name > .home-film-label {
+  color: var(--muted);
+}
+.home-film-human-name h1 {
+  font-size: clamp(80px, 8.7vw, 137px);
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+  font-weight: 500;
+  margin-top: 30px;
+}
+.home-film-human-name h1 > span {
+  color: #9b7bae;
+}
+.home-film-human-pronounce {
+  font:
+    italic 25px Georgia,
+    serif;
+  color: #796289;
+  margin-top: 20px;
+}
+.home-film-human-description {
+  margin-top: 35px;
+}
+.home-film-human-description p {
+  font-size: 16px;
+}
+.home-film-study-10 .home-film-button {
+  padding: 13px 0;
+  border-bottom: 1px solid #796289;
+  margin-top: 22px;
+  gap: 30px;
+}
+.home-film-human-portrait {
+  position: relative;
+  height: 510px;
+}
+.home-film-human-orbit {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  border-radius: 48% 48% 5px 5px;
+  background: #d3cadd;
+  border: 1px solid #b6a6c6;
+}
+.home-film-human-orbit::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid #b6a6c6;
+  border-radius: inherit;
+}
+.home-film-human-portrait > .home-film-character {
+  position: absolute;
+  height: 540px;
+  width: 405px;
+  max-width: none;
+  left: calc(50% - 202px);
+  bottom: 10px;
+  filter: drop-shadow(12px 8px 0 #442d6120);
+}
+.home-film-human-coordinate {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 22px;
+  font:
+    8px/1.5 "Courier New",
+    monospace;
+  color: #524362;
+}
+.home-film-human-easter {
+  position: absolute;
+  z-index: 3;
+  top: 15%;
+  right: -20px;
+}
+.home-film-human-easter summary {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  background: #f7f3fd;
+  border: 1px solid #b6a6c6;
+  display: grid;
+  place-items: center;
+  font:
+    italic 25px Georgia,
+    serif;
+  box-shadow: 2px 3px 0 #b6a6c6;
+}
+.home-film-human-easter p {
+  position: absolute;
+  width: 225px;
+  right: 0;
+  top: 59px;
+  background: #f7f3fd;
+  border: 1px solid #b6a6c6;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 13px;
+  box-shadow: 2px 3px 0 #b6a6c6;
+}
+.home-film-human-index {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 12%;
+  padding: 80px 8%;
+  border-top: 1px solid var(--line);
+  background: #f6f3fa;
+}
+.home-film-human-index-title h2 {
+  font-size: 45px;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+  margin: 25px 0;
+}
+.home-film-human-index-title > p:last-child {
+  color: var(--muted);
+  font-size: 15px;
+}
+.home-film-human-doors details {
+  border-top: 1px solid var(--line);
+}
+.home-film-human-doors summary {
+  display: flex;
+  align-items: start;
+  gap: 22px;
+  padding: 26px 0;
+}
+.home-film-human-doors summary > span {
+  font:
+    10px/2 "Courier New",
+    monospace;
+  color: var(--muted);
+}
+.home-film-human-doors h3 {
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+.home-film-human-doors summary b {
+  font-size: 25px;
+  font-weight: 400;
+  margin-left: auto;
+  transition: transform 0.3s;
+}
+.home-film-human-doors details[open] summary > b {
+  transform: rotate(90deg);
+}
+.home-film-human-doors details > div {
+  margin: 0 20px 25px 35px;
+}
+.home-film-human-doors details p {
+  color: var(--muted);
+  font-size: 15px;
+}
+.home-film-human-doors details a {
+  display: inline-block;
+  padding: 12px 0;
+  margin: 10px 22px 0 0;
+  font-size: 13px;
+  color: #594484;
+}
+.home-film-human-notes {
+  padding: 65px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 12%;
+}
+.home-film-human-notes h2 {
+  font-size: 46px;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+.home-film-human-notes h2 > span {
+  color: #9377ac;
+}
+.home-film-human-notes p {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 510px;
+}
+.home-film-human-note-status {
+  display: block;
+  font:
+    10px "Courier New",
+    monospace;
+  color: #796289;
+  margin-top: 25px;
+}
+.home-film-study-10 .home-film-new-footer {
+  padding-left: 8%;
+  padding-right: 8%;
+}
+@media (max-width: 900px) {
+  .home-film-human-hero {
+    padding-left: 6%;
+    padding-right: 6%;
+    gap: 7%;
+  }
+  .home-film-human-name h1 {
+    font-size: 85px;
+  }
+  .home-film-human-portrait {
+    height: 410px;
+  }
+  .home-film-human-portrait > .home-film-character {
+    height: 425px;
+    width: 319px;
+    left: calc(50% - 159px);
+  }
+}
+@media (max-width: 600px) {
+  .home-film-human-hero {
+    display: block;
+    padding: 40px 6% 45px;
+  }
+  .home-film-human-name h1 {
+    font-size: clamp(65px, 18vw, 100px);
+  }
+  .home-film-human-pronounce {
+    font-size: 23px;
+  }
+  .home-film-human-description {
+    margin-top: 25px;
+  }
+  .home-film-human-portrait {
+    max-width: 280px;
+    height: 350px;
+    margin: 65px auto 0;
+  }
+  .home-film-human-portrait > .home-film-character {
+    height: 390px;
+    width: 293px;
+    left: calc(50% - 146px);
+    bottom: 0;
+  }
+  .home-film-human-easter {
+    right: -10px;
+  }
+  .home-film-human-coordinate {
+    font-size: 7px;
+    left: 13px;
+    bottom: 14px;
+  }
+  .home-film-human-index {
+    display: block;
+    padding: 45px 6%;
+  }
+  .home-film-human-index-title h2 {
+    font-size: 39px;
+  }
+  .home-film-human-doors {
+    margin-top: 30px;
+  }
+  .home-film-human-doors summary {
+    gap: 15px;
+  }
+  .home-film-human-doors h3 {
+    font-size: 24px;
+  }
+  .home-film-human-doors details > div {
+    margin-left: 27px;
+    margin-right: 0;
+  }
+  .home-film-human-doors details p {
+    font-size: 16px;
+  }
+  .home-film-human-notes {
+    display: block;
+    padding: 45px 6%;
+  }
+  .home-film-human-notes h2 {
+    font-size: 36px;
+    margin-top: 25px;
+  }
+  .home-film-study-10 .home-film-new-footer {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
