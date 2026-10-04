@@ -122,7 +122,7 @@ body {
 .home-film-blog-empty p a:hover { text-decoration-color: var(--film-accent); }
 .home-film-blog-margin { margin: 6px 0 0; color: var(--film-muted); font-size: 9px; line-height: 2; letter-spacing: .08em; }
 .home-film-blog-entry { display: grid; grid-template-columns: 150px minmax(0,1fr) 32px; gap: 4vw; padding: 40px 0; border-bottom: 1px solid var(--film-line); }
-.home-film-blog-entry time { color: var(--film-muted); font-size: 12px; line-height: 1.7; }
+.home-film-blog-entry time, .home-film-entry-status { color: var(--film-muted); font-size: 12px; line-height: 1.7; }
 .home-film-blog-entry h3 { margin: 0 0 14px; font: 400 clamp(28px,3.8vw,54px)/1.1 Georgia, serif; letter-spacing: -.025em; }
 .home-film-blog-entry p { max-width: 55ch; margin: 0; color: var(--film-muted); font-size: 16px; line-height: 1.65; }
 .home-film-blog-entry:hover h3, .home-film-blog-entry > span { color: var(--film-accent); }
@@ -194,7 +194,7 @@ body {
   .home-film-blog-cursor { font-size: 40px; }
   .home-film-blog-empty h3 { font-size: 30px; }
   .home-film-blog-entry { grid-template-columns: minmax(0,1fr) 20px; gap: 18px; }
-  .home-film-blog-entry time { grid-column: 1/-1; }
+  .home-film-blog-entry time, .home-film-entry-status { grid-column: 1/-1; }
   .home-film-blog-footer { padding: 40px 22px 30px; }
   .home-film-post-heading { padding: 30px 22px 40px; }
   .home-film-post-heading .home-film-eyebrow { margin-top: 40px; }
@@ -209,6 +209,7 @@ body {
 
   .home-film-pixel-card img, .home-film-blog-portrait { view-transition-name: home-film-portrait; }
   .home-film-header > strong, .home-film-home-link > span { view-transition-name: home-film-name; }
+  .home-film-test-title { view-transition-name: home-film-test-title; }
   .home-film-header nav { view-transition-name: home-film-navigation; }
 
   ::view-transition-group(*) { animation-duration: 460ms; animation-timing-function: cubic-bezier(.22,1,.36,1); }
@@ -224,3 +225,5 @@ body {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.home-film-blog-entry > .home-film-entry-status { color: var(--film-muted); }

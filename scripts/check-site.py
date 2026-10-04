@@ -40,10 +40,10 @@ for route, page in pages.items():
     assert any(tag == 'link' and attrs.get('rel') == 'canonical' and attrs.get('href') == 'https://raymi.xyz' + route for tag, attrs in page.tags), f'{route}: missing canonical'
     for tag, attrs in page.tags:
         if tag == 'script':
-            assert attrs.get('type') == 'application/ld+json', f'{route}: unexpected client JavaScript'
+            assert attrs.get('type') == 'application/ld+json' or attrs.get('src') == '/page-transitions.js', f'{route}: unexpected script'
         if tag == 'img':
             assert 'alt' in attrs, f'{route}: missing alt attribute'
-        target = attrs.get('href') if tag in ('a', 'link') else attrs.get('src') if tag == 'img' else None
+        target = attrs.get('href') if tag in ('a', 'link') else attrs.get('src') if tag in ('img', 'script') else None
         if not target or not target.startswith(('/', '#')):
             continue
         link = urlsplit(target)
@@ -56,11 +56,16 @@ for route, page in pages.items():
             assert link.fragment in linked.ids, f'{route}: missing anchor {target}'
     print(f'PASS {route}: content, metadata, links, fragments, assets')
 
-for path in ('/robots.txt', '/sitemap.xml', '/favicon.ico', '/styles.css', '/profile-pixel.webp', '/Raymond_Csirak.pdf'):
+for path in ('/robots.txt', '/sitemap.xml', '/favicon.ico', '/styles.css', '/profile-pixel-transparent.png', '/Raymond_Csirak.pdf'):
     fetch(path)
 sitemap = ET.fromstring(fetch('/sitemap.xml'))
 locations = {node.text for node in sitemap.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
-assert {'https://raymi.xyz' + route for route in pages} <= locations
+for route, page in pages.items():
+    noindex = any(tag == 'meta' and attrs.get('name') == 'robots' and 'noindex' in attrs.get('content', '') for tag, attrs in page.tags)
+    if noindex:
+        assert 'https://raymi.xyz' + route not in locations, f'{route}: test content in sitemap'
+    else:
+        assert 'https://raymi.xyz' + route in locations, f'{route}: missing from sitemap'
 home = fetch('/').decode()
 structured = home.split('<script type="application/ld+json">')[1].split('</script>')[0]
 json.loads(structured)
