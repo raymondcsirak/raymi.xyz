@@ -205,7 +205,6 @@ body {
 
 /* Shared portrait and navigation connect the pages without a client-side router. */
 @media (prefers-reduced-motion: no-preference) {
-  @view-transition { navigation: auto; }
 
   .home-film-pixel-card img, .home-film-blog-portrait { view-transition-name: home-film-portrait; }
   .home-film-header > strong, .home-film-home-link > span { view-transition-name: home-film-name; }
