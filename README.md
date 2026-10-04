@@ -9,12 +9,12 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:8787](http://localhost:8787). The blog is at `/blog/`. A clearly labeled test article is at `/blog/test-post/`.
+Open [http://localhost:8787](http://localhost:8787). The blog is at `/blog/`.
 
 ## Files
 
 - `public/index.html`: homepage, career history, and blog introduction.
-- `public/blog/index.html`: blog index with a test entry, separate from published articles.
+- `public/blog/index.html`: blog index, ready for the first published article.
 - `public/styles.css`: shared portfolio, blog, and article styles.
 - `templates/blog-post.html`: unpublished article template. Nothing in `templates/` is deployed.
 - `public/sitemap.xml`: public page URLs.
@@ -26,8 +26,6 @@ The discarded design studies and their assets have been removed. Numbered routes
 The site uses native CSS cross-document View Transitions. Each page opts in with a small inline style in its head, so navigation does not race the external stylesheet request. The same inline style sets the dark canvas before external CSS arrives. Page snapshots retain the browser's synchronized crossfade and additive blending to avoid brightness dips; only the named elements move. There is no executable client-side JavaScript, router, or animation dependency. The transparent portrait, name, and navigation are shared between pages. Reduced-motion preferences disable transitions; unsupported browsers navigate normally.
 
 Article titles use the word-level technique observed on [Naman Goel's site](https://nmn.sh/blog/2026-02-01-fixing-web-components): each word has a unique transition name shared between the listing and the article. The article renders each word as SVG text in a wrapping flex layout. Flex growth is proportional to word width, so words fill their rows and scale individually as the viewport changes. The browser matches and animates each word's position and size, including when line breaks change. The heading itself has no transition name.
-
-The test article at `/blog/test-post/` is marked `noindex` and excluded from the sitemap. Remove it before publishing real articles.
 
 ### Prepare a word title
 
@@ -61,7 +59,7 @@ Use matching words and punctuation in both locations. Never reuse a transition n
 2. Replace every bracketed placeholder. Remove the draft notice, `DRAFT TEMPLATE` label, and authoring comments. Update the table of contents to match your section IDs. Remove any example elements you don't need.
 3. Set the page title, description, Open Graph title and description. Add a canonical link and `og:url` using `https://raymi.xyz/blog/your-slug/`. Set robots to `index, follow`.
 4. Replace `Unpublished` with a `<time datetime="YYYY-MM-DD">Day Month Year</time>` element. Add `<meta property="article:published_time" content="YYYY-MM-DD" />` in the head. Use the actual publication date.
-5. Add an entry to `public/blog/index.html` inside `.home-film-blog-entries`, after the index line. Remove the test entry and `public/blog/test-post/` when publishing the first real post. Update the published count. Entries go newest first.
+5. Add an entry to `public/blog/index.html` inside `.home-film-blog-entries`, after the index line. Remove the `.home-film-blog-empty` block when publishing the first post. Update the published count. Entries go newest first.
 6. Replace the homepage's "First entries to follow" sentence with a link to the new article. Add the article URL to `public/sitemap.xml`.
 7. Run the checks below. Review the article on mobile and desktop, including code blocks, links, and table overflow. Commit and push to the intended branch.
 

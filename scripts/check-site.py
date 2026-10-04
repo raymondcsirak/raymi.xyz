@@ -95,7 +95,7 @@ for route, page in pages.items():
 home = fetch('/').decode()
 structured = home.split('<script type="application/ld+json">')[1].split('</script>')[0]
 json.loads(structured)
-for path in [f'/{n}/' for n in range(1, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html', '/page-transitions.js']:
+for path in [f'/{n}/' for n in range(1, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html', '/page-transitions.js', '/blog/test-post/']:
     try:
         fetch(path)
     except HTTPError as error:
