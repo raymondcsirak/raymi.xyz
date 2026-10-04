@@ -23,7 +23,7 @@ The discarded design studies and their assets have been removed. Numbered routes
 
 ## Page transitions
 
-The site uses native CSS cross-document View Transitions. Each page opts in with a small inline style in its head, so navigation does not race the external stylesheet request. There is no executable client-side JavaScript, router, or animation dependency. The transparent portrait, name, and navigation are shared between pages. Reduced-motion preferences disable transitions; unsupported browsers navigate normally.
+The site uses native CSS cross-document View Transitions. Each page opts in with a small inline style in its head, so navigation does not race the external stylesheet request. The same inline style sets the dark canvas before external CSS arrives. Page snapshots retain the browser's synchronized crossfade and additive blending to avoid brightness dips; only the named elements move. There is no executable client-side JavaScript, router, or animation dependency. The transparent portrait, name, and navigation are shared between pages. Reduced-motion preferences disable transitions; unsupported browsers navigate normally.
 
 Article titles use the word-level technique observed on [Naman Goel's site](https://nmn.sh/blog/2026-02-01-fixing-web-components): each word has a unique transition name shared between the listing and the article. The article renders each word as SVG text in a wrapping flex layout. Flex growth is proportional to word width, so words fill their rows and scale individually as the viewport changes. The browser matches and animates each word's position and size, including when line breaks change. The heading itself has no transition name.
 

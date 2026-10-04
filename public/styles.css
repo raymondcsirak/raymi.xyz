@@ -216,16 +216,6 @@ body {
   ::view-transition-group(.home-film-title-word),
   ::view-transition-old(.home-film-title-word),
   ::view-transition-new(.home-film-title-word) { animation-duration: 650ms; }
-  ::view-transition-old(root) { animation: home-film-page-out 180ms ease-out both; mix-blend-mode: normal; }
-  ::view-transition-new(root) { animation: home-film-page-in 460ms cubic-bezier(.22,1,.36,1) both; mix-blend-mode: normal; }
-}
-
-@keyframes home-film-page-out {
-  to { opacity: 0; transform: translateY(-12px); }
-}
-@keyframes home-film-page-in {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .home-film-blog-entry > .home-film-entry-status { color: var(--film-muted); }
