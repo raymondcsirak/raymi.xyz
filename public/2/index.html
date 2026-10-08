@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root { color-scheme: light; background: #f3f0e8; }
+      @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+    </style>
+    <title>Line SRE | Raymond Csirák</title>
+    <meta name="description" content="Raymond Csirák, Senior Site Reliability Engineer in Satu Mare, Romania. Kubernetes, Linux, networks, and private cloud since 2008, drawn as a transit map." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://raymi.xyz/2/" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Overpass+Mono:wght@500;700&display=swap" />
+    <link rel="stylesheet" href="/variants/switcher.css" />
+    <link rel="stylesheet" href="/2/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Raymond Csirák",
+        "jobTitle": "Senior Site Reliability Engineer",
+        "worksFor": { "@type": "Organization", "name": "GoDaddy" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Satu Mare", "addressCountry": "RO" },
+        "email": "mailto:hello@raymi.xyz",
+        "url": "https://raymi.xyz/",
+        "sameAs": ["https://linkedin.com/in/raymondcsirak", "https://github.com/raymondcsirak"],
+        "knowsLanguage": ["hu", "ro", "en"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <svg class="defs" aria-hidden="true" focusable="false">
+      <symbol id="arrow" viewBox="0 0 24 24"><path d="M3.5 12h15M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" /></symbol>
+    </svg>
+
+    <header class="topbar">
+      <a class="brand" href="/2/">
+        <span class="bullet l-1" aria-hidden="true">R</span>
+        <span>raymi.xyz</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a href="#map">Map</a>
+        <a href="#departures">Services</a>
+        <a href="#line-1">Career</a>
+        <a href="#journey">Contact</a>
+        <a class="topnav-cv" href="/Raymond_Csirak.pdf"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg>Résumé</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-name">
+        <div class="ceiling" aria-hidden="true"></div>
+
+        <div class="sign">
+          <p class="sign-kicker"><span>Platform 1</span><span>Satu Mare, Romania</span></p>
+          <h1 id="hero-name">Raymond Csirák</h1>
+          <p class="sign-role">Senior Site Reliability Engineer</p>
+          <ul class="sign-lines" aria-label="Lines served">
+            <li><span class="bullet l-1" aria-hidden="true">1</span><span class="sr-only">Career</span></li>
+            <li><span class="bullet l-n" aria-hidden="true">N</span><span class="sr-only">Network</span></li>
+            <li><span class="bullet l-l" aria-hidden="true">L</span><span class="sr-only">Linux</span></li>
+            <li><span class="bullet l-v" aria-hidden="true">V</span><span class="sr-only">Virtualization</span></li>
+            <li><span class="bullet l-k" aria-hidden="true">K</span><span class="sr-only">Kubernetes</span></li>
+            <li><span class="bullet l-o" aria-hidden="true">O</span><span class="sr-only">OpenStack</span></li>
+          </ul>
+        </div>
+
+        <div class="notice">
+          <p class="notice-head">Service information</p>
+          <p class="notice-lede">I keep infrastructure running to timetable. Right now that means private cloud and OpenStack at GoDaddy. Before that, Kubernetes on bare metal, GitOps pipelines, and Linux fleets. In IT since 2008.</p>
+          <dl class="facts">
+            <div><dt>Now</dt><dd>Senior SRE, GoDaddy</dd></div>
+            <div><dt>Base</dt><dd>Satu Mare, Romania. Remote.</dd></div>
+            <div><dt>Announcements</dt><dd>Hungarian, Romanian, English</dd></div>
+          </dl>
+        </div>
+
+        <nav class="wayfinding" aria-label="Wayfinding">
+          <a href="#map"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg><span>Network map</span></a>
+          <a href="#departures"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg><span>Departures</span></a>
+          <a href="#line-1"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg><span>All stops</span></a>
+          <a class="way-exit" href="#journey"><svg class="ar ar-up-right" aria-hidden="true"><use href="#arrow" /></svg><span>Exit to contact</span></a>
+        </nav>
+
+        <figure class="figure">
+          <img src="/variants/raymi.webp" width="902" height="1364" alt="Pixel-art portrait of Raymond Csirák standing with arms crossed, bald with a beard, in a blue flannel shirt, jeans, and dark sneakers." />
+        </figure>
+
+        <div class="platform" aria-hidden="true">
+          <div class="platform-top"></div>
+          <div class="platform-face"><span>Stand behind the yellow line</span></div>
+          <div class="trackbed"></div>
+        </div>
+      </section>
+
+      <section id="map" class="section map-section" aria-labelledby="map-title">
+        <header class="section-sign">
+          <span class="bullet bullet-lg l-1" aria-hidden="true">1</span>
+          <div>
+            <h2 id="map-title">Network map</h2>
+            <p>Career and skill lines since 2008. Each line joins the year it opened and still runs today. Diagram not to scale.</p>
+          </div>
+        </header>
+
+        <div class="network">
+          <div class="map">
+            <svg class="map-svg" viewBox="0 0 1280 560" role="img" aria-labelledby="map-svg-title">
+              <title id="map-svg-title">Transit-style diagram of Raymond Csirák's career. Line 1 runs from Sighetu Marmației in 2008 to GoDaddy in 2026. Network, Linux, Virtualization, Kubernetes, and OpenStack lines join it as each skill began. An education shuttle runs through Cluj-Napoca.</title>
+
+              <text class="area" x="560" y="532">Cluj-Napoca</text>
+
+              <g class="line" data-line="s" style="--c: var(--s)">
+                <path class="ln" d="M110 196 V423.43 A40 40 0 0 0 121.72 451.72 L128.28 458.28 A40 40 0 0 0 156.57 470 H990" />
+                <circle class="tick" cx="110" cy="352" r="3.4" />
+                <circle class="term" cx="990" cy="470" r="8" />
+                <text class="st st-b" x="126" y="348">Babeș-Bolyai University</text>
+                <text class="st st-s" x="126" y="366">Journalism, 2008</text>
+                <text class="st st-b" x="1006" y="466">Technical University</text>
+                <text class="st st-s" x="1006" y="484">Applied Informatics, 2024</text>
+              </g>
+
+              <g class="line" data-line="v" style="--c: var(--v)">
+                <path class="ln" d="M590 440 L690.28 339.72 A40 40 0 0 1 718.57 328 H1100" />
+                <circle class="term" cx="590" cy="440" r="8" />
+                <circle class="tick" cx="640" cy="390" r="3.4" />
+                <text class="st st-b" x="574" y="445" text-anchor="end">Virtualization</text>
+                <text class="st" x="624" y="395" text-anchor="end">Backup and recovery</text>
+              </g>
+
+              <g class="line" data-line="l" style="--c: var(--l)">
+                <path class="ln" d="M570 160 L684.28 274.28 A40 40 0 0 0 712.57 286 H1100" />
+                <circle class="term" cx="570" cy="160" r="8" />
+                <circle class="tick" cx="610" cy="200" r="3.4" />
+                <circle class="tick" cx="645" cy="235" r="3.4" />
+                <text class="st st-b" x="554" y="165" text-anchor="end">Linux</text>
+                <text class="st" x="594" y="205" text-anchor="end">Hardening</text>
+                <text class="st" x="629" y="240" text-anchor="end">Scripting</text>
+              </g>
+
+              <g class="line" data-line="k" style="--c: var(--k)">
+                <path class="ln" d="M766 132 L894.28 260.28 A40 40 0 0 0 922.57 272 H1100" />
+                <circle class="term" cx="766" cy="132" r="8" />
+                <circle class="tick" cx="796" cy="162" r="3.4" />
+                <circle class="tick" cx="826" cy="192" r="3.4" />
+                <circle class="tick" cx="856" cy="222" r="3.4" />
+                <circle class="tick" cx="886" cy="252" r="3.4" />
+                <text class="st st-b" x="750" y="137" text-anchor="end">Kubernetes</text>
+                <text class="st" x="780" y="167" text-anchor="end">Docker</text>
+                <text class="st" x="810" y="197" text-anchor="end">Helm, Kustomize</text>
+                <text class="st" x="840" y="227" text-anchor="end">Argo CD</text>
+                <text class="st" x="870" y="257" text-anchor="end">GitLab CI/CD</text>
+              </g>
+
+              <g class="line" data-line="n" style="--c: var(--n)">
+                <path class="ln" d="M110 184 H223.43 A26 26 0 0 1 241.82 191.62 L348.38 298.18 A54 54 0 0 0 386.57 314 H1100" />
+              </g>
+
+              <g class="line" data-line="1" style="--c: var(--r)">
+                <path class="ln" d="M110 170 H223.43 A40 40 0 0 1 251.72 181.72 L358.28 288.28 A40 40 0 0 0 386.57 300 H1100" />
+              </g>
+
+              <g class="line" data-line="o" style="--c: var(--o)">
+                <path class="ln ln-casing" d="M1100 262 V212.43 A30 30 0 0 1 1108.79 191.21 L1151.21 148.79 A30 30 0 0 0 1160 127.57 V70" />
+                <path class="ln" d="M1100 262 V212.43 A30 30 0 0 1 1108.79 191.21 L1151.21 148.79 A30 30 0 0 0 1160 127.57 V70" />
+                <circle class="tick" cx="1100" cy="232" r="3.4" />
+                <circle class="tick" cx="1130" cy="170" r="3.4" />
+                <circle class="tick" cx="1160" cy="104" r="3.4" />
+                <circle class="term" cx="1160" cy="70" r="8" />
+                <text class="st" x="1116" y="237">OpenStack</text>
+                <text class="st" x="1146" y="175">Puppet</text>
+                <text class="st" x="1176" y="109">Ansible</text>
+                <text class="st st-b" x="1176" y="75">Python</text>
+              </g>
+
+              <g class="interchanges">
+                <rect class="xchg" data-line="1 n s" x="100" y="160" width="20" height="46" rx="10" />
+                <rect class="xchg" data-line="1 n" x="390" y="290" width="20" height="34" rx="10" />
+                <rect class="xchg" data-line="1 n" x="550" y="290" width="20" height="34" rx="10" />
+                <rect class="xchg" data-line="1 n l v" x="722" y="276" width="20" height="62" rx="10" />
+                <rect class="xchg" data-line="1 n l v k" x="930" y="262" width="20" height="76" rx="10" />
+                <rect class="xchg xchg-end" data-line="1 n l v k o" x="1088" y="250" width="24" height="90" rx="12" />
+              </g>
+
+              <g class="train" data-line="1" aria-hidden="true">
+                <rect x="-15" y="-7" width="30" height="14" rx="7" />
+                <circle cx="7" cy="0" r="2.6" />
+              </g>
+            </svg>
+
+            <ol class="stops">
+              <li class="stop p-down a-start" data-line="1 n s" style="--x: 110; --y: 170">
+                <a href="#stop-sighetu" aria-describedby="panel-sighetu"><b>Sighetu Marmației</b><span>2008</span></a>
+                <div class="panel" id="panel-sighetu">
+                  <p class="panel-line"><span class="bullet l-1" aria-hidden="true">1</span><span class="bullet l-n" aria-hidden="true">N</span><span class="bullet l-s" aria-hidden="true">S</span></p>
+                  <p class="panel-role">IT Service Technician</p>
+                  <p class="panel-meta">Ltt Halo. Sep 2008 to Jan 2015.</p>
+                  <ul><li>Support across tiers for business and home clients.</li><li>Planned, built, and maintained client networks.</li></ul>
+                </div>
+              </li>
+              <li class="stop a-mid" data-line="1 n" style="--x: 400; --y: 300">
+                <a href="#stop-satu-mare" aria-describedby="panel-satu-mare"><b>Satu Mare</b><span>2015</span></a>
+                <div class="panel" id="panel-satu-mare">
+                  <p class="panel-line"><span class="bullet l-1" aria-hidden="true">1</span><span class="bullet l-n" aria-hidden="true">N</span></p>
+                  <p class="panel-role">IT Support Specialist, Technical Sales</p>
+                  <p class="panel-meta">noLimits Technologies. Jan 2015 to Jan 2019.</p>
+                  <ul><li>Level 1 support and ticket queues for business clients.</li><li>Technical advice in sales consultations.</li></ul>
+                </div>
+              </li>
+              <li class="stop a-mid" data-line="1 n" style="--x: 560; --y: 300">
+                <a href="#stop-service" aria-describedby="panel-service"><b>Service Manager</b><span>2018</span></a>
+                <div class="panel" id="panel-service">
+                  <p class="panel-line"><span class="bullet l-1" aria-hidden="true">1</span><span class="bullet l-n" aria-hidden="true">N</span></p>
+                  <p class="panel-role">IT Service Manager, Level 2 Support</p>
+                  <p class="panel-meta">noLimits Technologies. Jun 2018 to Jan 2019.</p>
+                  <ul><li>Ran the helpdesk and support team with low MTTR as the target.</li><li>Level 2 support and TCP/IP network configuration.</li></ul>
+                </div>
+              </li>
+              <li class="stop a-start" data-line="1 n l v" style="--x: 732; --y: 300">
+                <a href="#stop-infra" aria-describedby="panel-infra"><b>Head of Infrastructure</b><span>2019</span></a>
+                <div class="panel" id="panel-infra">
+                  <p class="panel-line"><span class="bullet l-1" aria-hidden="true">1</span><span class="bullet l-n" aria-hidden="true">N</span><span class="bullet l-l" aria-hidden="true">L</span><span class="bullet l-v" aria-hidden="true">V</span></p>
+                  <p class="panel-role">Head of Infrastructure, Linux Systems Administrator</p>
+                  <p class="panel-meta">noLimits Technologies, Hexalab. Jan 2019 to Mar 2024.</p>
+                  <ul><li>Led level 3 support for business clients under SLAs.</li><li>Ran virtualization, Linux, and network infrastructure.</li></ul>
+                </div>
+              </li>
+              <li class="stop a-start" data-line="1 n l v k" style="--x: 940; --y: 300">
+                <a href="#stop-hexalab" aria-describedby="panel-hexalab"><b>Hexalab Platform</b><span>2022</span></a>
+                <div class="panel" id="panel-hexalab">
+                  <p class="panel-line"><span class="bullet l-1" aria-hidden="true">1</span><span class="bullet l-n" aria-hidden="true">N</span><span class="bullet l-l" aria-hidden="true">L</span><span class="bullet l-v" aria-hidden="true">V</span><span class="bullet l-k" aria-hidden="true">K</span></p>
+                  <p class="panel-role">DevOps / Platform Engineer</p>
+                  <p class="panel-meta">Hexalab SRL, formerly Hitter Technologies. Mar 2022 to May 2026.</p>
+                  <ul><li>Kubernetes on bare metal, managed as code.</li><li>GitLab CI/CD into Argo CD. Backup and disaster recovery design.</li></ul>
+                </div>
+              </li>
+              <li class="stop stop-end a-end" data-line="1 n l v k o" style="--x: 1100; --y: 300">
+                <a href="#stop-godaddy" aria-describedby="panel-godaddy"><b>GoDaddy SRE</b><span>2026</span></a>
+                <div class="panel" id="panel-godaddy">
+                  <p class="panel-line"><span class="bullet l-1" aria-hidden="true">1</span><span class="bullet l-n" aria-hidden="true">N</span><span class="bullet l-l" aria-hidden="true">L</span><span class="bullet l-v" aria-hidden="true">V</span><span class="bullet l-k" aria-hidden="true">K</span><span class="bullet l-o" aria-hidden="true">O</span></p>
+                  <p class="panel-role">Senior Site Reliability Engineer</p>
+                  <p class="panel-meta">GoDaddy. May 2026 to now. Remote.</p>
+                  <ul><li>Private cloud infrastructure and large-scale OpenStack.</li><li>Puppet and Ansible deployment automation, Python tooling.</li></ul>
+                </div>
+              </li>
+            </ol>
+
+            <div class="here" aria-hidden="true">
+              <img src="/variants/raymi.webp" width="902" height="1364" alt="" />
+              <span>You are here</span>
+            </div>
+          </div>
+
+          <ol class="vmap" aria-label="Career and skill lines, oldest first">
+            <li class="vstop" data-line="1 n s" data-on="1 n s" data-start="1 n s" style="--a: 1; --b: 7">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Sighetu Marmației</b><span>2008. IT Service Technician, Ltt Halo. Lines 1, N, and S open.</span></span>
+            </li>
+            <li class="vstop" data-line="s" data-on="1 n s" style="--a: 7; --b: 7">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Babeș-Bolyai University</b><span>2008. Journalism, Cluj-Napoca.</span></span>
+            </li>
+            <li class="vstop" data-line="1 n" data-on="1 n s" style="--a: 1; --b: 2">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Satu Mare</b><span>2015. IT Support and Technical Sales, noLimits.</span></span>
+            </li>
+            <li class="vstop" data-line="1 n" data-on="1 n s" style="--a: 1; --b: 2">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Service Manager</b><span>2018. IT Service Manager, noLimits.</span></span>
+            </li>
+            <li class="vstop" data-line="1 n l v" data-on="1 n l v s" data-start="l v" style="--a: 1; --b: 4">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Head of Infrastructure</b><span>2019. noLimits and Hexalab. Lines L and V open.</span></span>
+            </li>
+            <li class="vstop" data-line="1 n l v k" data-on="1 n l v k s" data-start="k" style="--a: 1; --b: 5">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Hexalab Platform</b><span>2022. DevOps / Platform Engineer. Line K opens.</span></span>
+            </li>
+            <li class="vstop" data-line="s" data-on="1 n l v k s" data-end="s" style="--a: 7; --b: 7">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>Technical University</b><span>2024. Applied Informatics, Cluj-Napoca.</span></span>
+            </li>
+            <li class="vstop vstop-end" data-line="1 n l v k o" data-on="1 n l v k o" data-start="o" data-end="1 n l v k o" style="--a: 1; --b: 6">
+              <span class="rails" aria-hidden="true"><i class="r-1"></i><i class="r-n"></i><i class="r-l"></i><i class="r-v"></i><i class="r-k"></i><i class="r-o"></i><i class="r-s"></i><b class="vdot"></b></span>
+              <span class="vtext"><b>GoDaddy SRE</b><span>2026 to now. Line O opens. All lines in service.</span><em class="vhere">You are here</em></span>
+            </li>
+          </ol>
+
+          <fieldset class="legend">
+            <legend>Highlight a line</legend>
+            <div class="keys">
+              <input type="radio" name="line" id="show-all" checked />
+              <label for="show-all" class="key key-all"><span class="bullet bullet-all" aria-hidden="true"></span><span><b>All lines</b><span>Full network</span></span></label>
+              <input type="radio" name="line" id="show-1" />
+              <label for="show-1" class="key key-1"><span class="bullet l-1" aria-hidden="true">1</span><span><b>Career line</b><span>Six stops, 2008 to now</span></span></label>
+              <input type="radio" name="line" id="show-n" />
+              <label for="show-n" class="key key-n"><span class="bullet l-n" aria-hidden="true">N</span><span><b>Network line</b><span>TCP/IP, network design, monitoring</span></span></label>
+              <input type="radio" name="line" id="show-l" />
+              <label for="show-l" class="key key-l"><span class="bullet l-l" aria-hidden="true">L</span><span><b>Linux line</b><span>Administration, hardening, scripting</span></span></label>
+              <input type="radio" name="line" id="show-v" />
+              <label for="show-v" class="key key-v"><span class="bullet l-v" aria-hidden="true">V</span><span><b>Virtualization line</b><span>Virtualization, backup, recovery</span></span></label>
+              <input type="radio" name="line" id="show-k" />
+              <label for="show-k" class="key key-k"><span class="bullet l-k" aria-hidden="true">K</span><span><b>Kubernetes line</b><span>Docker, Helm, Argo CD, GitLab CI/CD</span></span></label>
+              <input type="radio" name="line" id="show-o" />
+              <label for="show-o" class="key key-o"><span class="bullet l-o" aria-hidden="true">O</span><span><b>OpenStack line</b><span>Puppet, Ansible, Python</span></span></label>
+              <input type="radio" name="line" id="show-s" />
+              <label for="show-s" class="key key-s"><span class="bullet l-s" aria-hidden="true">S</span><span><b>Education shuttle</b><span>Two degrees, Cluj-Napoca</span></span></label>
+            </div>
+          </fieldset>
+        </div>
+      </section>
+
+      <section id="departures" class="section departures" aria-labelledby="departures-title">
+        <div class="board">
+          <header class="board-head">
+            <h2 id="departures-title">Departures</h2>
+            <p>Services for teams that run their own infrastructure</p>
+          </header>
+          <div class="board-cols" aria-hidden="true"><span>Line</span><span>Destination</span><span>Calling at</span><span>Plat.</span><span>Status</span></div>
+          <ol class="board-rows">
+            <li>
+              <span class="bullet l-k" aria-hidden="true">K</span>
+              <h3>Kubernetes platforms</h3>
+              <p class="via"><span class="lbl">Calling at </span>Bare metal, cluster IaC, Helm, Kustomize</p>
+              <p class="plat"><span class="lbl">Platform </span>1</p>
+              <p class="status status-boarding"><span class="lbl">Status </span>Boarding</p>
+            </li>
+            <li>
+              <span class="bullet l-k" aria-hidden="true">K</span>
+              <h3>GitOps delivery</h3>
+              <p class="via"><span class="lbl">Calling at </span>GitLab CI/CD, Argo CD, Docker images</p>
+              <p class="plat"><span class="lbl">Platform </span>1</p>
+              <p class="status"><span class="lbl">Status </span>On time</p>
+            </li>
+            <li>
+              <span class="bullet l-o" aria-hidden="true">O</span>
+              <h3>Infrastructure as Code</h3>
+              <p class="via"><span class="lbl">Calling at </span>Puppet, Ansible, Python tooling</p>
+              <p class="plat"><span class="lbl">Platform </span>2</p>
+              <p class="status"><span class="lbl">Status </span>On time</p>
+            </li>
+            <li>
+              <span class="bullet l-l" aria-hidden="true">L</span>
+              <h3>Linux servers</h3>
+              <p class="via"><span class="lbl">Calling at </span>Administration, hardening, scripting</p>
+              <p class="plat"><span class="lbl">Platform </span>3</p>
+              <p class="status"><span class="lbl">Status </span>On time</p>
+            </li>
+            <li>
+              <span class="bullet l-n" aria-hidden="true">N</span>
+              <h3>Networks and monitoring</h3>
+              <p class="via"><span class="lbl">Calling at </span>TCP/IP, network design, monitoring</p>
+              <p class="plat"><span class="lbl">Platform </span>4</p>
+              <p class="status"><span class="lbl">Status </span>On time</p>
+            </li>
+            <li>
+              <span class="bullet l-v" aria-hidden="true">V</span>
+              <h3>Backup and recovery</h3>
+              <p class="via"><span class="lbl">Calling at </span>Backup strategy, disaster recovery, virtualization</p>
+              <p class="plat"><span class="lbl">Platform </span>5</p>
+              <p class="status"><span class="lbl">Status </span>On time</p>
+            </li>
+            <li>
+              <span class="bullet l-k" aria-hidden="true">K</span>
+              <h3>AI tooling for engineers</h3>
+              <p class="via"><span class="lbl">Calling at </span>Evaluation, internal demos, safe daily use</p>
+              <p class="plat"><span class="lbl">Platform </span>6</p>
+              <p class="status"><span class="lbl">Status </span>On time</p>
+            </li>
+          </ol>
+          <p class="board-foot"><span>Open to infrastructure projects and consulting.</span><span>No delays to report.</span></p>
+        </div>
+      </section>
+
+      <section id="line-1" class="section strip" aria-labelledby="strip-title">
+        <header class="section-sign">
+          <span class="bullet bullet-lg l-1" aria-hidden="true">1</span>
+          <div>
+            <h2 id="strip-title">Career line, all stops</h2>
+            <p>Read from today back to 2008. Change at each stop for the lines that opened there.</p>
+          </div>
+          <a class="strip-cv" href="/Raymond_Csirak.pdf"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg>Résumé PDF</a>
+        </header>
+
+        <ol class="strip-stops">
+          <li id="stop-godaddy" class="sstop sstop-now">
+            <div class="sstop-where">
+              <p class="sstop-when">May 2026 to now <em>You are here</em></p>
+              <h3>Senior Site Reliability Engineer</h3>
+              <p class="sstop-org">GoDaddy. Remote, Romania.</p>
+              <p class="sstop-change"><span>Change for</span> <span class="bullet l-o" aria-hidden="true">O</span><span class="sr-only">OpenStack line</span></p>
+            </div>
+            <ul class="sstop-notes">
+              <li>Build, run, and support cost-effective private cloud infrastructure.</li>
+              <li>Operate and support large-scale OpenStack public and private clouds.</li>
+              <li>Write and maintain deployment automation in Puppet and Ansible.</li>
+              <li>Build infrastructure tooling in Python. SRE and DevOps support for infrastructure and customers.</li>
+            </ul>
+          </li>
+          <li id="stop-hexalab" class="sstop">
+            <div class="sstop-where">
+              <p class="sstop-when">Mar 2022 to May 2026</p>
+              <h3>DevOps / Platform Engineer</h3>
+              <p class="sstop-org">Hexalab SRL, formerly Hitter Technologies. Satu Mare.</p>
+              <p class="sstop-change"><span>Change for</span> <span class="bullet l-k" aria-hidden="true">K</span><span class="sr-only">Kubernetes line</span></p>
+            </div>
+            <ul class="sstop-notes">
+              <li>Managed Kubernetes clusters through Infrastructure as Code, mostly on bare metal.</li>
+              <li>Packaged and deployed applications into Kubernetes.</li>
+              <li>Tuned GitLab CI/CD pipelines and wired them into Argo CD to cut lead times.</li>
+              <li>Designed backup and disaster recovery strategies.</li>
+              <li>Administered and secured Linux servers. Deployed monitoring.</li>
+              <li>Led the team's adoption of AI tools. Evaluated options, ran internal demos, and coached colleagues on safe use.</li>
+            </ul>
+          </li>
+          <li id="stop-infra" class="sstop">
+            <div class="sstop-where">
+              <p class="sstop-when">Jan 2019 to Mar 2024</p>
+              <h3>Head of Infrastructure, Linux Systems Administrator</h3>
+              <p class="sstop-org">noLimits Technologies, Hexalab SRL. Satu Mare.</p>
+              <p class="sstop-change"><span>Change for</span> <span class="bullet l-l" aria-hidden="true">L</span><span class="sr-only">Linux line</span> <span class="bullet l-v" aria-hidden="true">V</span><span class="sr-only">Virtualization line</span></p>
+            </div>
+            <ul class="sstop-notes">
+              <li>Led level 3 technical support for business clients under service level agreements.</li>
+              <li>Administered virtualization infrastructure.</li>
+              <li>Managed Linux and network infrastructure for clients.</li>
+              <li>Ran IT projects and supplier relationships, including contract negotiation.</li>
+            </ul>
+          </li>
+          <li id="stop-service" class="sstop">
+            <div class="sstop-where">
+              <p class="sstop-when">Jun 2018 to Jan 2019</p>
+              <h3>IT Service Manager, Level 2 Support Specialist</h3>
+              <p class="sstop-org">noLimits Technologies. Satu Mare.</p>
+            </div>
+            <ul class="sstop-notes">
+              <li>Managed a team of helpdesk and support staff, with low MTTR as the target.</li>
+              <li>Level 2 support for complex client issues.</li>
+              <li>Administered TCP/IP network configurations. Ran system upgrade projects.</li>
+            </ul>
+          </li>
+          <li id="stop-satu-mare" class="sstop">
+            <div class="sstop-where">
+              <p class="sstop-when">Jan 2015 to Jan 2019</p>
+              <h3>IT Support Specialist, Technical Sales Representative</h3>
+              <p class="sstop-org">noLimits Technologies. Satu Mare.</p>
+            </div>
+            <ul class="sstop-notes">
+              <li>Level 1 support for business clients. Ran the ticketing system.</li>
+              <li>Tested and validated software against client specifications.</li>
+              <li>Gave technical advice in sales consultations.</li>
+            </ul>
+          </li>
+          <li id="stop-sighetu" class="sstop sstop-origin">
+            <div class="sstop-where">
+              <p class="sstop-when">Sep 2008 to Jan 2015</p>
+              <h3>IT Service Technician</h3>
+              <p class="sstop-org">Ltt Halo. Sighetu Marmației.</p>
+              <p class="sstop-change"><span>Change for</span> <span class="bullet l-n" aria-hidden="true">N</span><span class="sr-only">Network line</span> <span class="bullet l-s" aria-hidden="true">S</span><span class="sr-only">Education shuttle</span></p>
+            </div>
+            <ul class="sstop-notes">
+              <li>Technical support across tiers for business and home clients.</li>
+              <li>Planned, built, and maintained network infrastructure.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="shuttle">
+          <span class="bullet l-s" aria-hidden="true">S</span>
+          <p><b>Education shuttle.</b> Applied Informatics and Programming, Technical University of Cluj-Napoca, 2024. Journalism, Babeș-Bolyai University, Cluj-Napoca, 2008.</p>
+        </div>
+      </section>
+
+      <section id="journey" class="section journey" aria-labelledby="journey-title">
+        <div class="ticket">
+          <p class="ticket-top"><span>Single journey</span><span class="mono">No. 2008</span></p>
+          <h2 id="journey-title">Plan your journey</h2>
+          <p class="ticket-lede">Open to infrastructure projects and consulting. Tell me what you run and where it hurts.</p>
+          <dl class="ticket-grid">
+            <div><dt>From</dt><dd>Your team</dd></div>
+            <div><dt>To</dt><dd>Raymond Csirák</dd></div>
+            <div><dt>Zone</dt><dd>Remote, from Satu Mare</dd></div>
+            <div><dt>Languages</dt><dd>English, Romanian, Hungarian</dd></div>
+          </dl>
+        </div>
+
+        <nav class="exits" aria-label="Contact and links">
+          <p class="exits-head"><span class="exit-word">Exit</span><span>Street level</span></p>
+          <a href="mailto:hello@raymi.xyz"><svg class="ar ar-up-right" aria-hidden="true"><use href="#arrow" /></svg><span><b>hello@raymi.xyz</b><small>Email</small></span></a>
+          <a href="https://linkedin.com/in/raymondcsirak"><svg class="ar ar-up-right" aria-hidden="true"><use href="#arrow" /></svg><span><b>LinkedIn</b><small>in/raymondcsirak</small></span></a>
+          <a href="https://github.com/raymondcsirak"><svg class="ar ar-up-right" aria-hidden="true"><use href="#arrow" /></svg><span><b>GitHub</b><small>raymondcsirak</small></span></a>
+          <a href="/Raymond_Csirak.pdf"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg><span><b>Résumé</b><small>PDF</small></span></a>
+          <a href="/blog/"><svg class="ar" aria-hidden="true"><use href="#arrow" /></svg><span><b>Blog</b><small>Notes from the line</small></span></a>
+        </nav>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-line" aria-hidden="true"><span class="bullet l-1">1</span><span class="bullet l-n">N</span><span class="bullet l-l">L</span><span class="bullet l-v">V</span><span class="bullet l-k">K</span><span class="bullet l-o">O</span><span class="bullet l-s">S</span></p>
+      <p>Raymond Csirák. Satu Mare, Romania. In service since 2008.</p>
+      <p class="footer-small">Diagram not to scale. Set in Overpass, a typeface drawn from American highway signs.</p>
+    </footer>
+
+    <nav class="variant-switcher" aria-label="Design variants">
+      <span>Variant</span>
+      <a href="/1/">1</a>
+      <a href="/2/" aria-current="page">2</a>
+      <a href="/3/">3</a>
+      <a href="/4/">4</a>
+      <a href="/5/">5</a>
+    </nav>
+  </body>
+</html>
