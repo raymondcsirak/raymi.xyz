@@ -19,7 +19,15 @@ Open [http://localhost:8787](http://localhost:8787). The blog is at `/blog/`.
 - `templates/blog-post.html`: unpublished article template. Nothing in `templates/` is deployed.
 - `public/sitemap.xml`: public page URLs.
 
-The discarded design studies and their assets have been removed. Numbered routes `/1/` through `/10/` return the custom 404 page.
+## Design variants
+
+This branch adds five redesign candidates at `/1/` through `/5/`. Each lives in `public/N/` as its own `index.html` and `style.css`, and none of them changes the live homepage. They share two files in `public/variants/`: `raymi.webp`, a trimmed transparent WebP of the pixel portrait, and `switcher.css`, the fixed variant switcher that closes every variant page. The variants are `noindex` and stay out of the sitemap. Routes `/6/` through `/10/` still return the custom 404 page.
+
+1. Night Shift. One night from 23:00 to 07:00, with a scroll-driven sky and clock.
+2. Line SRE. The career and skills drawn as a transit network.
+3. RC-08. A hardware product page with CSS-only switches and a view selector.
+4. The Uptime Collection. A museum retrospective with framed work and room labels.
+5. Pocket Edition. A handheld game console with an instruction booklet.
 
 ## Page transitions
 
