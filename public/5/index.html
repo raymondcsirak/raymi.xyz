@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root { color-scheme: dark; background: #1c2a33; }
+      @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+    </style>
+    <title>Pocket Edition | Raymond Csirák</title>
+    <meta name="description" content="Raymond Csirák, Senior Site Reliability Engineer. Private cloud, Kubernetes, infrastructure as code and Linux, presented as a pocket game console with a printed instruction booklet." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://raymi.xyz/5/" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&amp;family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" />
+    <link rel="stylesheet" href="/variants/switcher.css" />
+    <link rel="stylesheet" href="/5/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Raymond Csirák",
+        "alternateName": "Raymi",
+        "url": "https://raymi.xyz",
+        "jobTitle": "Senior Site Reliability Engineer",
+        "worksFor": { "@type": "Organization", "name": "GoDaddy" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Satu Mare", "addressCountry": "RO" },
+        "knowsLanguage": ["hu", "ro", "en"],
+        "email": "mailto:hello@raymi.xyz",
+        "sameAs": ["https://github.com/raymondcsirak", "https://linkedin.com/in/raymondcsirak"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+      <filter id="dmg" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0 0 0 1 0" />
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0.075 0.239 0.561 0.788" />
+          <feFuncG type="discrete" tableValues="0.188 0.420 0.682 0.843" />
+          <feFuncB type="discrete" tableValues="0.106 0.212 0.353 0.604" />
+        </feComponentTransfer>
+      </filter>
+      <filter id="ink" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0.3 0.59 0.11 0 0  0 0 0 1 0" />
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0.114 0.114 0.784 0.957" />
+          <feFuncG type="discrete" tableValues="0.153 0.153 0.302 0.925" />
+          <feFuncB type="discrete" tableValues="0.278 0.278 0.165 0.855" />
+        </feComponentTransfer>
+      </filter>
+      <symbol id="i-wheel" viewBox="0 0 12 12"><path d="M5 0h2v1h-2zM1 1h2v1h-2zM5 1h2v1h-2zM9 1h2v1h-2zM1 2h3v1h-3zM5 2h2v1h-2zM8 2h3v1h-3zM3 3h6v1h-6zM2 4h2v1h-2zM8 4h2v1h-2zM0 5h4v1h-4zM5 5h2v1h-2zM8 5h4v1h-4zM0 6h4v1h-4zM5 6h2v1h-2zM8 6h4v1h-4zM2 7h2v1h-2zM8 7h2v1h-2zM3 8h6v1h-6zM1 9h3v1h-3zM5 9h2v1h-2zM8 9h3v1h-3zM1 10h2v1h-2zM5 10h2v1h-2zM9 10h2v1h-2zM5 11h2v1h-2z" /></symbol>
+      <symbol id="i-crate" viewBox="0 0 12 12"><path d="M0 1h12v1h-12zM0 2h1v1h-1zM2 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h2v1h-2zM0 3h1v1h-1zM2 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM10 3h2v1h-2zM0 4h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h2v1h-2zM0 5h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h2v1h-2zM0 6h1v1h-1zM2 6h1v1h-1zM4 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h2v1h-2zM0 7h1v1h-1zM2 7h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h12v1h-12zM1 9h2v1h-2zM9 9h2v1h-2z" /></symbol>
+      <symbol id="i-parcel" viewBox="0 0 12 12"><path d="M4 0h4v1h-4zM2 1h2v1h-2zM5 1h2v1h-2zM8 1h2v1h-2zM0 2h2v1h-2zM5 2h2v1h-2zM10 2h2v1h-2zM0 3h1v1h-1zM2 3h2v1h-2zM5 3h2v1h-2zM8 3h2v1h-2zM11 3h1v1h-1zM0 4h1v1h-1zM4 4h4v1h-4zM11 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM6 6h1v1h-1zM11 6h1v1h-1zM0 7h1v1h-1zM6 7h1v1h-1zM11 7h1v1h-1zM0 8h2v1h-2zM6 8h1v1h-1zM10 8h2v1h-2zM2 9h2v1h-2zM6 9h1v1h-1zM8 9h2v1h-2zM4 10h4v1h-4z" /></symbol>
+      <symbol id="i-branch" viewBox="0 0 12 12"><path d="M1 0h3v1h-3zM8 0h3v1h-3zM1 1h1v1h-1zM3 1h1v1h-1zM8 1h1v1h-1zM10 1h1v1h-1zM1 2h3v1h-3zM8 2h3v1h-3zM2 3h1v1h-1zM9 3h1v1h-1zM2 4h1v1h-1zM8 4h1v1h-1zM2 5h1v1h-1zM7 5h1v1h-1zM2 6h1v1h-1zM6 6h1v1h-1zM2 7h1v1h-1zM5 7h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM1 9h3v1h-3zM1 10h1v1h-1zM3 10h1v1h-1zM1 11h3v1h-3z" /></symbol>
+      <symbol id="i-gear" viewBox="0 0 12 12"><path d="M5 0h2v1h-2zM2 1h1v1h-1zM5 1h2v1h-2zM9 1h1v1h-1zM1 2h10v1h-10zM2 3h3v1h-3zM7 3h3v1h-3zM1 4h2v1h-2zM9 4h2v1h-2zM0 5h3v1h-3zM9 5h3v1h-3zM0 6h3v1h-3zM9 6h3v1h-3zM1 7h2v1h-2zM9 7h2v1h-2zM2 8h3v1h-3zM7 8h3v1h-3zM1 9h10v1h-10zM2 10h1v1h-1zM5 10h2v1h-2zM9 10h1v1h-1zM5 11h2v1h-2z" /></symbol>
+      <symbol id="i-book" viewBox="0 0 12 12"><path d="M2 0h9v1h-9zM1 1h1v1h-1zM10 1h1v1h-1zM1 2h1v1h-1zM3 2h5v1h-5zM10 2h1v1h-1zM1 3h1v1h-1zM10 3h1v1h-1zM1 4h1v1h-1zM3 4h4v1h-4zM10 4h1v1h-1zM1 5h1v1h-1zM10 5h1v1h-1zM1 6h1v1h-1zM3 6h5v1h-5zM10 6h1v1h-1zM1 7h1v1h-1zM10 7h1v1h-1zM1 8h9v1h-9zM1 9h1v1h-1zM9 9h1v1h-1zM2 10h7v1h-7z" /></symbol>
+      <symbol id="i-wrench" viewBox="0 0 12 12"><path d="M8 0h1v1h-1zM10 0h1v1h-1zM7 1h2v1h-2zM10 1h2v1h-2zM7 2h5v1h-5zM8 3h3v1h-3zM7 4h3v1h-3zM6 5h3v1h-3zM5 6h3v1h-3zM4 7h3v1h-3zM3 8h3v1h-3zM2 9h3v1h-3zM1 10h3v1h-3zM2 11h1v1h-1z" /></symbol>
+      <symbol id="i-cloud" viewBox="0 0 12 12"><path d="M4 1h3v1h-3zM3 2h5v1h-5zM3 3h6v1h-6zM1 4h10v1h-10zM0 5h12v1h-12zM0 6h12v1h-12zM1 7h10v1h-10zM0 9h12v1h-12zM0 10h1v1h-1zM2 10h1v1h-1zM11 10h1v1h-1zM0 11h12v1h-12z" /></symbol>
+      <symbol id="i-shield" viewBox="0 0 12 12"><path d="M1 0h10v1h-10zM1 1h1v1h-1zM10 1h1v1h-1zM1 2h1v1h-1zM3 2h6v1h-6zM10 2h1v1h-1zM1 3h1v1h-1zM3 3h6v1h-6zM10 3h1v1h-1zM1 4h1v1h-1zM3 4h6v1h-6zM10 4h1v1h-1zM1 5h1v1h-1zM3 5h6v1h-6zM10 5h1v1h-1zM2 6h1v1h-1zM4 6h4v1h-4zM9 6h1v1h-1zM2 7h1v1h-1zM4 7h4v1h-4zM9 7h1v1h-1zM3 8h1v1h-1zM5 8h2v1h-2zM8 8h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM5 10h2v1h-2z" /></symbol>
+      <symbol id="i-network" viewBox="0 0 12 12"><path d="M4 0h4v1h-4zM4 1h4v1h-4zM5 2h2v1h-2zM5 3h2v1h-2zM2 4h8v1h-8zM2 5h1v1h-1zM9 5h1v1h-1zM2 6h1v1h-1zM9 6h1v1h-1zM0 7h4v1h-4zM8 7h4v1h-4zM0 8h4v1h-4zM8 8h4v1h-4z" /></symbol>
+      <symbol id="i-heart" viewBox="0 0 12 12"><path d="M1 1h3v1h-3zM8 1h3v1h-3zM0 2h5v1h-5zM7 2h5v1h-5zM0 3h12v1h-12zM0 4h5v1h-5zM6 4h6v1h-6zM0 5h3v1h-3zM4 5h1v1h-1zM6 5h1v1h-1zM8 5h4v1h-4zM0 6h2v1h-2zM3 6h2v1h-2zM6 6h1v1h-1zM8 6h1v1h-1zM11 6h1v1h-1zM1 7h5v1h-5zM7 7h4v1h-4zM2 8h8v1h-8zM3 9h6v1h-6zM4 10h4v1h-4zM5 11h2v1h-2z" /></symbol>
+      <symbol id="i-floppy" viewBox="0 0 12 12"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM2 1h2v1h-2zM8 1h2v1h-2zM11 1h1v1h-1zM0 2h1v1h-1zM2 2h2v1h-2zM6 2h1v1h-1zM8 2h2v1h-2zM11 2h1v1h-1zM0 3h1v1h-1zM2 3h2v1h-2zM8 3h2v1h-2zM11 3h1v1h-1zM0 4h1v1h-1zM2 4h8v1h-8zM11 4h1v1h-1zM0 5h1v1h-1zM11 5h1v1h-1zM0 6h1v1h-1zM2 6h8v1h-8zM11 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM9 7h1v1h-1zM11 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM0 9h1v1h-1zM2 9h1v1h-1zM9 9h1v1h-1zM11 9h1v1h-1zM0 10h12v1h-12z" /></symbol>
+      <symbol id="i-windows" viewBox="0 0 12 12"><path d="M0 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM0 2h1v1h-1zM2 2h7v1h-7zM0 3h1v1h-1zM2 3h1v1h-1zM8 3h1v1h-1zM0 4h3v1h-3zM4 4h7v1h-7zM2 5h1v1h-1zM4 5h1v1h-1zM10 5h1v1h-1zM2 6h3v1h-3zM10 6h1v1h-1zM4 7h1v1h-1zM10 7h1v1h-1zM4 8h7v1h-7z" /></symbol>
+      <symbol id="i-snake" viewBox="0 0 12 12"><path d="M4 0h4v1h-4zM3 1h2v1h-2zM6 1h3v1h-3zM3 2h6v1h-6zM4 3h2v1h-2zM5 4h2v1h-2zM6 5h2v1h-2zM7 6h2v1h-2zM3 7h1v1h-1zM8 7h2v1h-2zM2 8h2v1h-2zM8 8h2v1h-2zM2 9h7v1h-7zM3 10h4v1h-4z" /></symbol>
+      <symbol id="i-robot" viewBox="0 0 12 12"><path d="M5 0h2v1h-2zM5 1h2v1h-2zM2 2h8v1h-8zM1 3h1v1h-1zM10 3h1v1h-1zM1 4h1v1h-1zM3 4h2v1h-2zM7 4h2v1h-2zM10 4h1v1h-1zM1 5h1v1h-1zM3 5h2v1h-2zM7 5h2v1h-2zM10 5h1v1h-1zM1 6h1v1h-1zM10 6h1v1h-1zM1 7h1v1h-1zM4 7h4v1h-4zM10 7h1v1h-1zM2 8h8v1h-8zM3 9h1v1h-1zM8 9h1v1h-1zM2 10h2v1h-2zM8 10h2v1h-2z" /></symbol>
+      <symbol id="i-bubble" viewBox="0 0 12 12"><path d="M0 0h12v1h-12zM0 1h1v1h-1zM11 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h4v1h-4zM11 2h1v1h-1zM0 3h1v1h-1zM11 3h1v1h-1zM0 4h1v1h-1zM2 4h4v1h-4zM7 4h3v1h-3zM11 4h1v1h-1zM0 5h1v1h-1zM11 5h1v1h-1zM0 6h12v1h-12zM3 7h2v1h-2zM3 8h1v1h-1z" /></symbol>
+    </svg>
+
+    <header class="topbar">
+      <a class="brand" href="/5/" aria-label="Raymi, home"><span aria-hidden="true">Raymi</span></a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#quests">Career</a></li>
+          <li><a href="#party">Services</a></li>
+          <li><a href="#items">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/Raymond_Csirak.pdf">Résumé <small>PDF</small></a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="desk" aria-labelledby="hero-name">
+        <section class="console-wrap" aria-label="Pocket Edition console. Choose a screen with the radio buttons, or read the booklet below.">
+          <div class="console">
+            <fieldset class="screen-picker">
+              <legend class="vh">Console screen</legend>
+              <input type="radio" name="screen" id="s-title" aria-label="Title screen" checked />
+              <input type="radio" name="screen" id="s-profile" aria-label="Profile" />
+              <input type="radio" name="screen" id="s-quests" aria-label="Quest log" />
+              <input type="radio" name="screen" id="s-skills" aria-label="Inventory of skills" />
+              <input type="radio" name="screen" id="s-party" aria-label="Party invite, services" />
+              <input type="radio" name="screen" id="s-contact" aria-label="Contact" />
+            </fieldset>
+
+            <div class="cart" aria-hidden="true"></div>
+            <div class="top" aria-hidden="true">
+              <span class="screw"></span>
+              <span class="power">◀ OFF · ON ▶</span>
+              <span class="screw"></span>
+            </div>
+
+            <div class="bezel">
+              <p class="bezel-print" aria-hidden="true"><span class="led"></span><span class="led-label">Battery</span><span class="rule"></span><span class="bezel-claim">Dot matrix display</span><span class="rule"></span></p>
+              <div class="lcd">
+                <div class="boot" aria-hidden="true"><span>Raymi<sup>®</sup></span></div>
+
+                <div class="scr scr-title">
+                  <p class="t-logo" aria-hidden="true">Raymi</p>
+                  <p class="t-sub">Site Reliability</p>
+                  <div class="t-hero" aria-hidden="true">
+                    <img src="/variants/raymi.webp" width="902" height="1364" alt="" />
+                  </div>
+                  <p class="t-start"><label for="s-profile">Press start</label></p>
+                  <p class="t-foot">Est. 2008 · Satu Mare</p>
+                </div>
+
+                <div class="scr scr-profile">
+                  <p class="bar"><span>Profile</span><span class="pips" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
+                  <div class="body">
+                    <div class="sheet">
+                      <div class="portrait" aria-hidden="true"><img src="/variants/raymi.webp" width="902" height="1364" alt="" /></div>
+                      <div>
+                        <p class="pname">Raymond Csirák</p>
+                        <p class="pclass">Senior SRE</p>
+                        <p class="pguild">GoDaddy</p>
+                      </div>
+                    </div>
+                    <dl class="stats">
+                      <div><dt>Home</dt><dd>Satu Mare, RO</dd></div>
+                      <div><dt>Mode</dt><dd>Remote</dd></div>
+                      <div><dt>Lang</dt><dd>HU · RO · EN</dd></div>
+                      <div><dt>XP</dt><dd>Since 2008</dd></div>
+                    </dl>
+                    <p class="say">Hi, I'm Raymi. I run private cloud at GoDaddy and help teams with theirs.</p>
+                  </div>
+                </div>
+
+                <div class="scr scr-quests">
+                  <p class="bar"><span>Quest log</span><span class="pips" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i><i></i></span></p>
+                  <div class="body scroll" tabindex="0" role="region" aria-label="Quest log, scrollable">
+                    <ol class="qlog">
+                      <li><b>Senior SRE</b><span>GoDaddy</span><span>May 2026 to now</span><em class="live">In progress</em></li>
+                      <li><b>DevOps / Platform Engineer</b><span>Hexalab SRL</span><span>2022 to 2026</span><em>Complete</em></li>
+                      <li><b>Head of Infrastructure</b><span>noLimits / Hexalab</span><span>2019 to 2024</span><em>Complete</em></li>
+                      <li><b>IT Service Manager</b><span>noLimits</span><span>2018 to 2019</span><em>Complete</em></li>
+                      <li><b>IT Support, Tech Sales</b><span>noLimits</span><span>2015 to 2019</span><em>Complete</em></li>
+                      <li><b>IT Service Technician</b><span>Ltt Halo</span><span>2008 to 2015</span><em>Complete</em></li>
+                    </ol>
+                  </div>
+                </div>
+
+                <div class="scr scr-skills">
+                  <p class="bar"><span>Inventory</span><span class="pips" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i></span></p>
+                  <fieldset class="body inv">
+                    <legend class="vh">Items. Choose one to read about it.</legend>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-k8s" checked /><svg aria-hidden="true"><use href="#i-wheel" /></svg><span class="vh">Kubernetes</span></label>
+<p class="desc" id="d-k8s"><b>Kubernetes</b> Clusters on bare metal, run through code.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-docker" /><svg aria-hidden="true"><use href="#i-crate" /></svg><span class="vh">Docker</span></label>
+<p class="desc" id="d-docker"><b>Docker</b> Apps packed into containers.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-helm" /><svg aria-hidden="true"><use href="#i-parcel" /></svg><span class="vh">Helm & Kustomize</span></label>
+<p class="desc" id="d-helm"><b>Helm & Kustomize</b> Apps packaged for Kubernetes.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-argo" /><svg aria-hidden="true"><use href="#i-branch" /></svg><span class="vh">Argo CD</span></label>
+<p class="desc" id="d-argo"><b>Argo CD</b> GitOps. Git says it, the cluster does it.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-cicd" /><svg aria-hidden="true"><use href="#i-gear" /></svg><span class="vh">GitLab CI/CD</span></label>
+<p class="desc" id="d-cicd"><b>GitLab CI/CD</b> Pipelines that build, test and deploy.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-iac" /><svg aria-hidden="true"><use href="#i-book" /></svg><span class="vh">Infra as Code</span></label>
+<p class="desc" id="d-iac"><b>Infra as Code</b> Infrastructure written down and reviewed.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-puppet" /><svg aria-hidden="true"><use href="#i-wrench" /></svg><span class="vh">Puppet & Ansible</span></label>
+<p class="desc" id="d-puppet"><b>Puppet & Ansible</b> Deployment automation at large scale.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-openstack" /><svg aria-hidden="true"><use href="#i-cloud" /></svg><span class="vh">OpenStack</span></label>
+<p class="desc" id="d-openstack"><b>OpenStack</b> Large private and public clouds.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-linux" /><svg aria-hidden="true"><use href="#i-shield" /></svg><span class="vh">Linux</span></label>
+<p class="desc" id="d-linux"><b>Linux</b> Servers administered and hardened.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-net" /><svg aria-hidden="true"><use href="#i-network" /></svg><span class="vh">Networking</span></label>
+<p class="desc" id="d-net"><b>Networking</b> TCP/IP networks, planned and built.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-mon" /><svg aria-hidden="true"><use href="#i-heart" /></svg><span class="vh">Monitoring</span></label>
+<p class="desc" id="d-mon"><b>Monitoring</b> Watches the vitals. Raises the alarm.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-backup" /><svg aria-hidden="true"><use href="#i-floppy" /></svg><span class="vh">Backup & DR</span></label>
+<p class="desc" id="d-backup"><b>Backup & DR</b> Save points for when things go wrong.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-virt" /><svg aria-hidden="true"><use href="#i-windows" /></svg><span class="vh">Virtualization</span></label>
+<p class="desc" id="d-virt"><b>Virtualization</b> Many machines inside one.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-python" /><svg aria-hidden="true"><use href="#i-snake" /></svg><span class="vh">Python</span></label>
+<p class="desc" id="d-python"><b>Python</b> Infrastructure tooling and scripts.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-ai" /><svg aria-hidden="true"><use href="#i-robot" /></svg><span class="vh">AI agents</span></label>
+<p class="desc" id="d-ai"><b>AI agents</b> AI tools brought to teams, safely.</p>
+<label class="slot"><input type="radio" name="item" aria-describedby="d-lang" /><svg aria-hidden="true"><use href="#i-bubble" /></svg><span class="vh">Languages</span></label>
+<p class="desc" id="d-lang"><b>Languages</b> Hungarian, Romanian, English.</p>
+                  </fieldset>
+                </div>
+
+                <div class="scr scr-party">
+                  <p class="bar"><span>Party invite</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i class="on"></i><i></i></span></p>
+                  <div class="body scroll" tabindex="0" role="region" aria-label="Party invite, scrollable">
+                    <p class="say">Raymi wants to join your team.</p>
+                    <ul class="moves">
+                      <li>Kubernetes, bare metal too</li>
+                      <li>Infrastructure as Code</li>
+                      <li>GitOps with Argo CD</li>
+                      <li>GitLab CI/CD pipelines</li>
+                      <li>Helm and Kustomize</li>
+                      <li>Docker and containers</li>
+                      <li>Linux admin, hardening</li>
+                      <li>Network engineering</li>
+                      <li>Monitoring</li>
+                      <li>Backup and recovery</li>
+                      <li>Virtualization</li>
+                      <li>AI tooling, safely</li>
+                    </ul>
+                    <p class="accept">Accept? <label for="s-contact">Yes</label> <label for="s-title">Not now</label></p>
+                  </div>
+                </div>
+
+                <div class="scr scr-contact">
+                  <p class="bar"><span>Contact</span><span class="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i></span></p>
+                  <div class="body">
+                    <p class="say">Open to infrastructure projects and consulting.</p>
+                    <ul class="menu">
+                      <li><a href="mailto:hello@raymi.xyz">Email <span>hello@raymi.xyz</span></a></li>
+                      <li><a href="https://linkedin.com/in/raymondcsirak">LinkedIn</a></li>
+                      <li><a href="https://github.com/raymondcsirak">GitHub</a></li>
+                      <li><a href="/Raymond_Csirak.pdf">Résumé <span>PDF</span></a></li>
+                      <li><a href="/blog/">Blog</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="badge" aria-hidden="true"><b>Raymi</b> <span>Pocket Edition</span></p>
+
+            <div class="pad" aria-hidden="true">
+              <div class="dpad">
+                <span class="cross"><i class="ar ar-u"></i><i class="ar ar-r"></i><i class="ar ar-d"></i><i class="ar ar-l"></i></span>
+                <span class="half half-prev">
+<label class="key on-title" for="s-contact"></label>
+<label class="key on-profile" for="s-title"></label>
+<label class="key on-quests" for="s-profile"></label>
+<label class="key on-skills" for="s-quests"></label>
+<label class="key on-party" for="s-skills"></label>
+<label class="key on-contact" for="s-party"></label>
+                </span>
+                <span class="half half-next">
+<label class="key on-title" for="s-profile"></label>
+<label class="key on-profile" for="s-quests"></label>
+<label class="key on-quests" for="s-skills"></label>
+<label class="key on-skills" for="s-party"></label>
+<label class="key on-party" for="s-contact"></label>
+<label class="key on-contact" for="s-title"></label>
+                </span>
+              </div>
+              <div class="ab">
+                <span class="btn btn-b">
+<label class="key on-title" for="s-contact"></label>
+<label class="key on-profile" for="s-title"></label>
+<label class="key on-quests" for="s-profile"></label>
+<label class="key on-skills" for="s-quests"></label>
+<label class="key on-party" for="s-skills"></label>
+<label class="key on-contact" for="s-party"></label>
+                </span>
+                <span class="btn btn-a">
+<label class="key on-title" for="s-profile"></label>
+<label class="key on-profile" for="s-quests"></label>
+<label class="key on-quests" for="s-skills"></label>
+<label class="key on-skills" for="s-party"></label>
+<label class="key on-party" for="s-contact"></label>
+<label class="key on-contact" for="s-title"></label>
+                </span>
+                <span class="ab-print"><b>B</b><b>A</b></span>
+              </div>
+              <div class="ss">
+                <span class="pill"><label class="key-on" for="s-title"></label><b>Select</b></span>
+                <span class="pill"><label class="key-on" for="s-profile"></label><b>Start</b></span>
+              </div>
+              <span class="speaker"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+          </div>
+          <p class="hint">Press <b>Start</b>. The D-pad flips screens, and so do your arrow keys.</p>
+        </section>
+
+        <div class="box">
+          <div class="box-face">
+            <p class="box-system"><span>Pocket Edition</span></p>
+            <p class="box-logo" aria-hidden="true"><span>Raymi</span><span>Site Reliability</span></p>
+            <div class="box-art">
+              <img src="/variants/raymi.webp" width="902" height="1364" alt="Pixel-art Raymond: bald, bearded, arms crossed, in a blue flannel shirt, jeans and dark sneakers." />
+            </div>
+            <div class="box-label">
+              <h1 id="hero-name">Raymond Csirák <span>Senior Site Reliability Engineer at GoDaddy</span></h1>
+              <p>Private cloud by day. Kubernetes, automation and Linux for teams that need a hand. Remote from Satu Mare, Romania.</p>
+            </div>
+            <p class="box-seal"><span>In IT</span> <b>since 2008</b></p>
+            <ul class="box-facts">
+              <li>1 player</li>
+              <li>Remote</li>
+              <li>HU · RO · EN</li>
+            </ul>
+          </div>
+          <p class="box-cta">
+            <a class="sticker sticker-mail" href="mailto:hello@raymi.xyz"><small>Say hello</small> hello@raymi.xyz</a>
+            <a class="sticker sticker-book" href="#booklet"><small>Plain print</small> Read the booklet</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="booklet" id="booklet" aria-labelledby="booklet-title">
+        <header class="booklet-head">
+          <p class="kicker">Read this before you play</p>
+          <h2 id="booklet-title">Instruction booklet</h2>
+          <p>Everything on the cartridge, printed in plain type. No buttons needed.</p>
+        </header>
+
+        <div class="spread">
+          <article class="page" id="before-you-play" aria-labelledby="h-before">
+            <p class="running" aria-hidden="true">Raymi: Site Reliability</p>
+            <h3 id="h-before"><span class="num" aria-hidden="true">1</span> Before you play</h3>
+            <p class="lede">Thank you for choosing <i>Raymi: Site Reliability</i>. Please read this booklet before you start, and keep it for reference.</p>
+            <p>Raymond Csirák, called Raymi, is a Senior Site Reliability Engineer at GoDaddy. He builds and runs private cloud infrastructure, including large-scale OpenStack, and writes the automation and Python tooling around it.</p>
+            <p>He has worked in IT since 2008: service technician, support, service manager, head of infrastructure, platform engineer. He works remotely from Satu Mare, Romania, in Hungarian, Romanian and English.</p>
+            <h4 class="toc-title">Contents</h4>
+            <ol class="toc">
+              <li><a href="#controls">Controls</a> <span>2</span></li>
+              <li><a href="#profile">The hero</a> <span>3</span></li>
+              <li><a href="#quests">Quest log</a> <span>4</span></li>
+              <li><a href="#party">Party invite</a> <span>6</span></li>
+              <li><a href="#items">Item list</a> <span>7</span></li>
+              <li><a href="#contact">Customer service</a> <span>8</span></li>
+            </ol>
+            <p class="folio" aria-hidden="true">1</p>
+          </article>
+
+          <article class="page" id="controls" aria-labelledby="h-controls">
+            <p class="running" aria-hidden="true">Instruction booklet</p>
+            <h3 id="h-controls"><span class="num" aria-hidden="true">2</span> Controls</h3>
+            <ul class="ctl">
+              <li>
+                <svg class="fig" viewBox="0 0 48 48" aria-hidden="true"><path d="M17 3h14v14h14v14H31v14H17V31H3V17h14z" /><path class="cut" d="M24 8l4 5h-8zM24 40l4-5h-8zM8 24l5-4v8zM40 24l-5-4v8z" /></svg>
+                <p><b>Control pad</b> Up or left shows the previous screen. Down or right shows the next one.</p>
+              </li>
+              <li>
+                <svg class="fig" viewBox="0 0 48 48" aria-hidden="true"><circle cx="15" cy="30" r="10" /><circle cx="35" cy="18" r="10" /><path class="cut" d="M31.5 23l3.5-10 3.5 10M32.6 20h4.8M12 25h4a2.5 2.5 0 010 5h-4zM12 30h4.5a2.5 2.5 0 010 5H12z" /></svg>
+                <p><b>A and B</b> A moves forward a screen. B goes back.</p>
+              </li>
+              <li>
+                <svg class="fig" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="20" width="20" height="8" rx="4" transform="rotate(-25 12 24)" /><rect x="26" y="20" width="20" height="8" rx="4" transform="rotate(-25 36 24)" /></svg>
+                <p><b>Select and Start</b> Start opens the profile. Select returns to the title screen.</p>
+              </li>
+              <li>
+                <svg class="fig" viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="12" width="42" height="24" rx="3" /><path class="cut" d="M8 18h6v5H8zM16 18h6v5h-6zM24 18h6v5h-6zM32 18h8v5h-8zM12 27h24v4H12z" /></svg>
+                <p><b>Keyboard</b> Press Tab to reach the console, then use the arrow keys. Tab again to reach the links on screen.</p>
+              </li>
+            </ul>
+            <p class="note"><b>Tip.</b> On the Inventory screen, the control pad belongs to the item cursor. Use Tab to get back to it.</p>
+            <p class="folio" aria-hidden="true">2</p>
+          </article>
+        </div>
+
+        <div class="spread">
+          <article class="page" id="profile" aria-labelledby="h-profile">
+            <p class="running" aria-hidden="true">Raymi: Site Reliability</p>
+            <h3 id="h-profile"><span class="num" aria-hidden="true">3</span> The hero</h3>
+            <div class="hero-sheet">
+              <figure class="inkfig" aria-hidden="true"><img src="/variants/raymi.webp" width="902" height="1364" alt="" /></figure>
+              <dl class="charsheet">
+                <div><dt>Name</dt><dd>Raymond Csirák, “Raymi”</dd></div>
+                <div><dt>Class</dt><dd>Senior Site Reliability Engineer</dd></div>
+                <div><dt>Guild</dt><dd>GoDaddy, since May 2026</dd></div>
+                <div><dt>Home base</dt><dd>Satu Mare, Romania</dd></div>
+                <div><dt>Works</dt><dd>Remotely</dd></div>
+                <div><dt>Languages</dt><dd>Hungarian, Romanian, English</dd></div>
+                <div><dt>Experience</dt><dd>In IT since 2008</dd></div>
+                <div><dt>Training</dt><dd>Applied Informatics, Technical University of Cluj-Napoca, 2024. Journalism, Babeș-Bolyai University, 2008.</dd></div>
+              </dl>
+            </div>
+            <p class="note"><b>Special ability.</b> Explains infrastructure in plain words. The journalism degree helps.</p>
+            <p class="folio" aria-hidden="true">3</p>
+          </article>
+
+          <article class="page" id="quests" aria-labelledby="h-quests">
+            <p class="running" aria-hidden="true">Instruction booklet</p>
+            <h3 id="h-quests"><span class="num" aria-hidden="true">4</span> Quest log</h3>
+            <p class="lede">Six quests so far, newest first.</p>
+            <article class="quest">
+              <h4>Senior Site Reliability Engineer</h4>
+              <p class="qmeta">GoDaddy · Remote, Romania · May 2026 to present</p>
+              <p class="stamp stamp-live">In progress</p>
+              <ul>
+                <li>Builds, runs and supports cost-effective private cloud infrastructure.</li>
+                <li>Operates and supports large-scale OpenStack public and private clouds.</li>
+                <li>Writes deployment automation with Puppet and Ansible.</li>
+                <li>Develops infrastructure tooling in Python. Takes part in SRE and DevOps work for infrastructure and customers.</li>
+              </ul>
+            </article>
+            <article class="quest">
+              <h4>DevOps / Platform Engineer</h4>
+              <p class="qmeta">Hexalab SRL, formerly Hitter Technologies · Satu Mare · Mar 2022 to May 2026</p>
+              <p class="stamp">Quest complete</p>
+              <ul>
+                <li>Managed Kubernetes clusters through Infrastructure as Code, mostly on bare metal.</li>
+                <li>Packaged and deployed applications into Kubernetes.</li>
+                <li>Tuned GitLab CI/CD pipelines and connected them to Argo CD for shorter lead times.</li>
+                <li>Designed backup and disaster recovery strategies.</li>
+                <li>Ran and secured Linux servers, with monitoring in place.</li>
+                <li>Led the team's adoption of AI tools: evaluations, internal demos, and guidance on secure use.</li>
+              </ul>
+            </article>
+            <p class="folio" aria-hidden="true">4</p>
+          </article>
+        </div>
+
+        <div class="spread">
+          <article class="page" aria-labelledby="h-quests-2">
+            <p class="running" aria-hidden="true">Raymi: Site Reliability</p>
+            <h3 id="h-quests-2"><span class="num" aria-hidden="true">5</span> Quest log, continued</h3>
+            <article class="quest">
+              <h4>Head of Infrastructure, Linux Systems Administrator</h4>
+              <p class="qmeta">noLimits Technologies / Hexalab SRL · Satu Mare · Jan 2019 to Mar 2024</p>
+              <p class="stamp">Quest complete</p>
+              <ul>
+                <li>Led Level 3 support for business clients under service level agreements.</li>
+                <li>Ran virtualization infrastructure and the Linux and network estate.</li>
+                <li>Managed IT projects and supplier contracts.</li>
+              </ul>
+            </article>
+            <article class="quest">
+              <h4>IT Service Manager, Level 2 Support Specialist</h4>
+              <p class="qmeta">noLimits Technologies · Satu Mare · Jun 2018 to Jan 2019</p>
+              <p class="stamp">Quest complete</p>
+              <ul>
+                <li>Level 2 support and TCP/IP network configuration for clients.</li>
+                <li>Managed the helpdesk team and kept time to repair low.</li>
+              </ul>
+            </article>
+            <article class="quest">
+              <h4>IT Support Specialist, Technical Sales Representative</h4>
+              <p class="qmeta">noLimits Technologies · Satu Mare · Jan 2015 to Jan 2019</p>
+              <p class="stamp">Quest complete</p>
+              <ul>
+                <li>Level 1 support for business clients, ticketing, and software testing.</li>
+                <li>Technical support for the sales team in client meetings.</li>
+              </ul>
+            </article>
+            <article class="quest">
+              <h4>IT Service Technician</h4>
+              <p class="qmeta">Ltt Halo · Sighetu Marmației · Sep 2008 to Jan 2015</p>
+              <p class="stamp">Quest complete</p>
+              <ul>
+                <li>Support across tiers for business and home clients.</li>
+                <li>Planned, built and maintained network infrastructure.</li>
+              </ul>
+            </article>
+            <p class="folio" aria-hidden="true">5</p>
+          </article>
+
+          <article class="page" id="party" aria-labelledby="h-party">
+            <p class="running" aria-hidden="true">Instruction booklet</p>
+            <h3 id="h-party"><span class="num" aria-hidden="true">6</span> Party invite</h3>
+            <p class="lede">Raymi can join your team for infrastructure projects and consulting. What he brings:</p>
+            <dl class="services">
+              <div><dt>Kubernetes, on bare metal too</dt><dd>Clusters built and managed as code, on your hardware or in the cloud.</dd></div>
+              <div><dt>Infrastructure as Code</dt><dd>Servers and clusters described in files your team can review.</dd></div>
+              <div><dt>GitOps with Argo CD</dt><dd>Git holds the desired state. Argo CD keeps the cluster in line with it.</dd></div>
+              <div><dt>GitLab CI/CD</dt><dd>Pipelines that build, test and ship with fewer manual steps.</dd></div>
+              <div><dt>Helm and Kustomize</dt><dd>Apps packaged once and deployed the same way everywhere.</dd></div>
+              <div><dt>Docker and containers</dt><dd>Applications moved into containers and kept tidy there.</dd></div>
+              <div><dt>Linux administration</dt><dd>Servers patched, hardened and watched.</dd></div>
+              <div><dt>Network engineering</dt><dd>TCP/IP networks planned, built and maintained.</dd></div>
+              <div><dt>Monitoring</dt><dd>Alerts and dashboards for the things that matter.</dd></div>
+              <div><dt>Backup and disaster recovery</dt><dd>A recovery strategy worked out before it is needed.</dd></div>
+              <div><dt>Virtualization</dt><dd>Virtual infrastructure that makes good use of the hardware.</dd></div>
+              <div><dt>AI tooling for engineers</dt><dd>Tools evaluated, demoed and introduced with security in mind.</dd></div>
+            </dl>
+            <p class="folio" aria-hidden="true">6</p>
+          </article>
+        </div>
+
+        <div class="spread">
+          <article class="page" id="items" aria-labelledby="h-items">
+            <p class="running" aria-hidden="true">Raymi: Site Reliability</p>
+            <h3 id="h-items"><span class="num" aria-hidden="true">7</span> Item list</h3>
+            <p class="lede">Everything in the inventory, and what it does.</p>
+            <ul class="items">
+<li><svg aria-hidden="true"><use href="#i-wheel" /></svg><b>Kubernetes</b> Clusters on bare metal, run through code.</li>
+<li><svg aria-hidden="true"><use href="#i-crate" /></svg><b>Docker</b> Apps packed into containers.</li>
+<li><svg aria-hidden="true"><use href="#i-parcel" /></svg><b>Helm & Kustomize</b> Apps packaged for Kubernetes.</li>
+<li><svg aria-hidden="true"><use href="#i-branch" /></svg><b>Argo CD</b> GitOps. Git says it, the cluster does it.</li>
+<li><svg aria-hidden="true"><use href="#i-gear" /></svg><b>GitLab CI/CD</b> Pipelines that build, test and deploy.</li>
+<li><svg aria-hidden="true"><use href="#i-book" /></svg><b>Infra as Code</b> Infrastructure written down and reviewed.</li>
+<li><svg aria-hidden="true"><use href="#i-wrench" /></svg><b>Puppet & Ansible</b> Deployment automation at large scale.</li>
+<li><svg aria-hidden="true"><use href="#i-cloud" /></svg><b>OpenStack</b> Large private and public clouds.</li>
+<li><svg aria-hidden="true"><use href="#i-shield" /></svg><b>Linux</b> Servers administered and hardened.</li>
+<li><svg aria-hidden="true"><use href="#i-network" /></svg><b>Networking</b> TCP/IP networks, planned and built.</li>
+<li><svg aria-hidden="true"><use href="#i-heart" /></svg><b>Monitoring</b> Watches the vitals. Raises the alarm.</li>
+<li><svg aria-hidden="true"><use href="#i-floppy" /></svg><b>Backup & DR</b> Save points for when things go wrong.</li>
+<li><svg aria-hidden="true"><use href="#i-windows" /></svg><b>Virtualization</b> Many machines inside one.</li>
+<li><svg aria-hidden="true"><use href="#i-snake" /></svg><b>Python</b> Infrastructure tooling and scripts.</li>
+<li><svg aria-hidden="true"><use href="#i-robot" /></svg><b>AI agents</b> AI tools brought to teams, safely.</li>
+<li><svg aria-hidden="true"><use href="#i-bubble" /></svg><b>Languages</b> Hungarian, Romanian, English.</li>
+            </ul>
+            <p class="folio" aria-hidden="true">7</p>
+          </article>
+
+          <article class="page" id="contact" aria-labelledby="h-contact">
+            <p class="running" aria-hidden="true">Instruction booklet</p>
+            <h3 id="h-contact"><span class="num" aria-hidden="true">8</span> Customer service</h3>
+            <p class="lede">Open to infrastructure projects and consulting. The fastest way in is an email.</p>
+            <ul class="service-desk">
+              <li><span>Email</span> <a href="mailto:hello@raymi.xyz">hello@raymi.xyz</a></li>
+              <li><span>LinkedIn</span> <a href="https://linkedin.com/in/raymondcsirak">linkedin.com/in/raymondcsirak</a></li>
+              <li><span>GitHub</span> <a href="https://github.com/raymondcsirak">github.com/raymondcsirak</a></li>
+              <li><span>Résumé</span> <a href="/Raymond_Csirak.pdf">Raymond_Csirak.pdf</a></li>
+              <li><span>Blog</span> <a href="/blog/">raymi.xyz/blog</a></li>
+            </ul>
+            <aside class="warning" aria-label="Health and safety">
+              <p class="warning-title">Health and safety</p>
+              <p>Take a short break every hour, even when every dashboard is green. Avoid deploying on Friday afternoons.</p>
+            </aside>
+            <p class="folio" aria-hidden="true">8</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p class="foot-mark">Raymi: Site Reliability. Pocket Edition.</p>
+      <p>Assembled in Satu Mare, Romania. Batteries not included.</p>
+      <p>© 2026 Raymond Csirák · <a href="mailto:hello@raymi.xyz">hello@raymi.xyz</a> · <a href="#main">Back to the console</a></p>
+    </footer>
+    <nav class="variant-switcher" aria-label="Design variants">
+      <span>Variant</span>
+      <a href="/1/">1</a>
+      <a href="/2/">2</a>
+      <a href="/3/">3</a>
+      <a href="/4/">4</a>
+      <a href="/5/" aria-current="page">5</a>
+    </nav>
+  </body>
+</html>
