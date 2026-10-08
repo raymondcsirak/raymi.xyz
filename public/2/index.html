@@ -71,6 +71,10 @@
           </ul>
         </div>
 
+        <figure class="figure">
+          <img src="/variants/raymi.webp" width="902" height="1364" alt="Pixel-art portrait of Raymond Csirák standing with arms crossed, bald with a beard, in a blue flannel shirt, jeans, and dark sneakers." />
+        </figure>
+
         <div class="notice">
           <p class="notice-head">Service information</p>
           <p class="notice-lede">I keep infrastructure running to timetable. Right now that means private cloud and OpenStack at GoDaddy. Before that, Kubernetes on bare metal, GitOps pipelines, and Linux fleets. In IT since 2008.</p>
@@ -87,10 +91,6 @@
           <a href="#line-1"><svg class="ar ar-down" aria-hidden="true"><use href="#arrow" /></svg><span>All stops</span></a>
           <a class="way-exit" href="#journey"><svg class="ar ar-up-right" aria-hidden="true"><use href="#arrow" /></svg><span>Exit to contact</span></a>
         </nav>
-
-        <figure class="figure">
-          <img src="/variants/raymi.webp" width="902" height="1364" alt="Pixel-art portrait of Raymond Csirák standing with arms crossed, bald with a beard, in a blue flannel shirt, jeans, and dark sneakers." />
-        </figure>
 
         <div class="platform" aria-hidden="true">
           <div class="platform-top"></div>
@@ -113,7 +113,7 @@
             <svg class="map-svg" viewBox="0 0 1280 560" role="img" aria-labelledby="map-svg-title">
               <title id="map-svg-title">Transit-style diagram of Raymond Csirák's career. Line 1 runs from Sighetu Marmației in 2008 to GoDaddy in 2026. Network, Linux, Virtualization, Kubernetes, and OpenStack lines join it as each skill began. An education shuttle runs through Cluj-Napoca.</title>
 
-              <text class="area" x="560" y="532">Cluj-Napoca</text>
+              <text class="area" x="290" y="532">Cluj-Napoca</text>
 
               <g class="line" data-line="s" style="--c: var(--s)">
                 <path class="ln" d="M110 196 V423.43 A40 40 0 0 0 121.72 451.72 L128.28 458.28 A40 40 0 0 0 156.57 470 H990" />
@@ -121,8 +121,8 @@
                 <circle class="term" cx="990" cy="470" r="8" />
                 <text class="st st-b" x="126" y="348">Babeș-Bolyai University</text>
                 <text class="st st-s" x="126" y="366">Journalism, 2008</text>
-                <text class="st st-b" x="1006" y="466">Technical University</text>
-                <text class="st st-s" x="1006" y="484">Applied Informatics, 2024</text>
+                <text class="st st-b" x="990" y="503" text-anchor="middle">Technical University</text>
+                <text class="st st-s" x="990" y="521" text-anchor="middle">Applied Informatics, 2024</text>
               </g>
 
               <g class="line" data-line="v" style="--c: var(--v)">
@@ -188,8 +188,10 @@
               </g>
 
               <g class="train" data-line="1" aria-hidden="true">
-                <rect x="-15" y="-7" width="30" height="14" rx="7" />
-                <circle cx="7" cy="0" r="2.6" />
+                <g class="car">
+                  <rect x="-15" y="-7" width="30" height="14" rx="7" />
+                  <circle cx="7" cy="0" r="2.6" />
+                </g>
               </g>
             </svg>
 
@@ -250,7 +252,7 @@
               </li>
             </ol>
 
-            <div class="here" aria-hidden="true">
+            <div class="here" data-line="1 n l v k o" aria-hidden="true">
               <img src="/variants/raymi.webp" width="902" height="1364" alt="" />
               <span>You are here</span>
             </div>

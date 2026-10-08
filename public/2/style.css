@@ -103,30 +103,31 @@ b { font-weight: 800; }
 .topnav-cv:hover { background: var(--r) !important; }
 .topnav .ar { width: .85em; height: .85em; }
 
-/* Hero: a platform with a hanging station sign */
+/* Hero: one platform scene. The sign hangs across the back wall, Raymi stands in front of its right end. */
 .hero {
   --plat: 112px;
+  --fig: clamp(300px, 29vw, 480px);
+  --gap: clamp(24px, 3vw, 48px);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, .5fr);
-  grid-template-areas: "sign figure" "notice figure" "way figure";
-  grid-template-rows: auto auto 1fr;
-  column-gap: clamp(24px, 4vw, 64px);
-  min-height: max(640px, calc(100dvh - 67px));
-  padding: 0 var(--gutter) calc(var(--plat) - 18px);
+  grid-template-columns: minmax(0, 1fr) var(--fig);
+  grid-template-rows: auto auto auto;
+  align-content: end;
+  column-gap: var(--gap);
+  min-height: max(620px, min(calc(100dvh - 67px), 880px));
+  padding: 64px max(var(--gutter), (100% - var(--wrap)) / 2) calc(var(--plat) - 18px);
   overflow: clip;
   isolation: isolate;
 }
 .ceiling {
-  position: absolute; inset: 0 0 auto; height: 12px; z-index: -1;
+  position: absolute; inset: 0 0 auto; height: 12px; z-index: 2;
   background: repeating-linear-gradient(90deg, var(--ink-2) 0 120px, #3a3a3a 120px 122px);
 }
 
 .sign {
-  grid-area: sign;
+  grid-column: 1 / -1; grid-row: 1;
   position: relative;
-  margin-top: clamp(44px, 7vh, 72px);
-  padding: clamp(26px, 3vw, 40px) clamp(22px, 3vw, 44px) clamp(22px, 2.6vw, 34px);
+  padding: clamp(26px, 3vw, 40px) calc(var(--fig) + var(--gap)) clamp(22px, 2.6vw, 34px) clamp(22px, 3vw, 44px);
   background: linear-gradient(var(--ink) 0 12px, #fff 12px 15px, var(--ink) 15px);
   color: #fff;
   border-radius: 4px;
@@ -134,19 +135,19 @@ b { font-weight: 800; }
 }
 .sign::before,
 .sign::after {
-  content: ""; position: absolute; bottom: 100%; width: 6px; height: clamp(44px, 7vh, 72px);
+  content: ""; position: absolute; bottom: 100%; width: 6px; height: 100vh;
   background: linear-gradient(90deg, #4a4a4a, #8a8a8a 50%, #4a4a4a);
 }
-.sign::before { left: 14%; }
-.sign::after { right: 14%; }
+.sign::before { left: 9%; }
+.sign::after { right: 9%; }
 .sign-kicker {
-  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  display: flex; gap: 6px 28px; flex-wrap: wrap;
   font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--on-dark-muted);
 }
 .sign h1 {
   margin: clamp(10px, 1.4vw, 18px) 0 clamp(6px, .8vw, 10px);
-  font-size: clamp(44px, 6.3vw, 116px);
+  font-size: clamp(44px, 6.6vw, 112px);
   white-space: nowrap;
   font-weight: 800; line-height: .9; letter-spacing: -.035em;
 }
@@ -156,30 +157,46 @@ b { font-weight: 800; }
 .sign-lines { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(16px, 2vw, 26px); }
 .sign-lines .bullet { font-size: clamp(17px, 1.7vw, 23px); }
 
+.figure {
+  --head: clamp(18px, 3vh, 36px);
+  grid-column: 2; grid-row: 1 / -1;
+  position: relative; z-index: 1;
+}
+.figure img {
+  position: absolute; left: -32px; top: var(--head);
+  width: calc(100% + 64px); height: calc(100% - var(--head) + 4px);
+  object-fit: contain; object-position: 50% 100%;
+  filter: drop-shadow(8px 0 0 rgb(20 20 20 / .14));
+}
+.figure::after {
+  content: ""; position: absolute; left: 18%; right: 18%; bottom: -10px; height: 16px; z-index: -1;
+  background: radial-gradient(closest-side, rgb(20 20 20 / .35), transparent);
+}
+
 .notice {
-  grid-area: notice;
-  align-self: start;
-  max-width: 640px;
-  margin-top: clamp(24px, 4vh, 40px);
+  grid-column: 1; grid-row: 2;
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  max-width: 900px;
+  margin-top: clamp(20px, 3vh, 32px);
   background: var(--white);
   border: 2px solid var(--ink);
   border-radius: 4px;
 }
 .notice-head {
+  grid-column: 1 / -1;
   padding: 8px 18px 5px; background: var(--ink); color: #fff;
   font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
 }
-.notice-lede { padding: 16px 18px 6px; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.45; }
-.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 22px; padding: 10px 18px 16px; }
-.facts div { display: grid; gap: 2px; }
+.notice-lede { padding: 14px 20px 16px; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.45; }
+.facts { display: grid; align-content: start; gap: 8px; padding: 14px 20px 16px; border-left: 2px solid var(--paper-2); }
+.facts div { display: grid; gap: 1px; }
 .facts dt { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .facts dd { font-weight: 700; font-size: 15px; line-height: 1.25; }
 
 .wayfinding {
-  grid-area: way;
-  align-self: start;
+  grid-column: 1; grid-row: 3;
   display: flex; flex-wrap: wrap; gap: 8px;
-  margin-top: 20px;
+  margin: 18px 0 30px;
 }
 .wayfinding a {
   display: inline-flex; align-items: center; gap: 10px;
@@ -196,14 +213,6 @@ b { font-weight: 800; }
 .wayfinding a span { padding-top: 3px; }
 .wayfinding a:hover { background: var(--r); }
 .wayfinding .way-exit .ar { background: var(--o); }
-
-.figure {
-  grid-area: figure;
-  align-self: end; justify-self: center;
-  position: relative; z-index: 1;
-  width: min(100%, calc(min(74dvh, 720px) * .661));
-}
-.figure img { width: 100%; filter: drop-shadow(10px 6px 0 rgb(20 20 20 / .1)); }
 
 .platform {
   position: absolute; inset: auto 0 0; height: var(--plat); z-index: 0;
@@ -271,7 +280,7 @@ b { font-weight: 800; }
 .xchg-end { stroke-width: 4.5; }
 .line, .xchg, .stop, .train, .vstop, .rails i, .here { transition: opacity .25s; }
 
-.train {
+.car {
   offset-path: path("M110 170 H223.43 A40 40 0 0 1 251.72 181.72 L358.28 288.28 A40 40 0 0 0 386.57 300 H1100");
   offset-rotate: auto;
   offset-distance: 92%;
@@ -279,7 +288,7 @@ b { font-weight: 800; }
 .train rect { fill: #fff; stroke: var(--ink); stroke-width: 3; }
 .train circle { fill: var(--r); }
 @media (prefers-reduced-motion: no-preference) {
-  .train { animation: run 24s infinite ease-in-out; }
+  .car { animation: run 24s infinite ease-in-out; }
 }
 @keyframes run {
   0% { offset-distance: 0%; opacity: 0; }
@@ -360,11 +369,11 @@ b { font-weight: 800; }
 
 .here {
   position: absolute;
-  left: calc(1068 / 1280 * 100%); top: calc(352 / 560 * 100%);
-  width: calc(62 / 1280 * 100%);
+  left: calc(1126 / 1280 * 100%); top: calc(338 / 560 * 100%);
+  width: calc(60 / 1280 * 100%);
 }
 .here span {
-  position: absolute; left: calc(100% + 10px); top: 22%;
+  position: absolute; left: 0; top: calc(100% + 6px);
   display: inline-flex; align-items: center; gap: 6px;
   padding: 4px 8px 2px; background: var(--r); color: #fff;
   font-size: clamp(11px, 1cqw, 13px); font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
@@ -566,18 +575,14 @@ b { font-weight: 800; }
 }
 .ticket {
   --notch: 18px;
+  --pad: clamp(24px, 3vw, 40px);
   position: relative;
-  padding: clamp(24px, 3vw, 40px);
+  display: flex; flex-direction: column;
+  padding: var(--pad);
   background: #fbf3d9;
   border-radius: 10px;
-  mask:
-    radial-gradient(circle var(--notch) at 0 62%, transparent 98%, #000) left / 51% 100% no-repeat,
-    radial-gradient(circle var(--notch) at 100% 62%, transparent 98%, #000) right / 51% 100% no-repeat;
+  overflow: hidden;
   box-shadow: inset 0 0 0 2px var(--ink);
-}
-.ticket::after {
-  content: ""; position: absolute; left: calc(var(--notch) + 8px); right: calc(var(--notch) + 8px); top: 62%;
-  border-top: 2px dashed rgb(20 20 20 / .4);
 }
 .ticket-top {
   display: flex; justify-content: space-between; gap: 12px;
@@ -588,9 +593,21 @@ b { font-weight: 800; }
 .ticket h2 { margin-top: 18px; font-size: clamp(36px, 5vw, 68px); font-weight: 800; line-height: .92; letter-spacing: -.035em; }
 .ticket-lede { margin-top: 14px; max-width: 34ch; font-size: clamp(17px, 1.5vw, 21px); line-height: 1.4; }
 .ticket-grid {
+  position: relative;
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px;
-  margin-top: clamp(48px, 6vw, 72px);
+  margin-top: auto;
+  padding-top: clamp(22px, 3vw, 30px);
+  border-top: 2px dashed rgb(20 20 20 / .4);
 }
+.ticket-lede { margin-bottom: clamp(32px, 4vw, 48px); }
+.ticket-grid::before,
+.ticket-grid::after {
+  content: ""; position: absolute; top: calc(-1 * var(--notch) - 1px);
+  width: calc(2 * var(--notch)); height: calc(2 * var(--notch));
+  border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px var(--ink);
+}
+.ticket-grid::before { left: calc(-1 * var(--pad) - var(--notch)); }
+.ticket-grid::after { right: calc(-1 * var(--pad) - var(--notch)); }
 .ticket-grid div { display: grid; gap: 2px; }
 .ticket-grid dt { font: 700 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .ticket-grid dd { font-weight: 800; font-size: 17px; line-height: 1.25; }
@@ -638,16 +655,36 @@ b { font-weight: 800; }
 .footer-small { font-weight: 400; font-size: 14px; color: var(--muted); }
 
 /* Narrower screens */
-@media (max-width: 1080px) {
-  .keys { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .facts { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1180px) {
+  .st { font-size: 16.5px; }
+  .st-b { font-size: 17.5px; }
+  .st-s { font-size: 14px; }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
+  .keys { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .notice { grid-template-columns: 1fr; }
+  .notice-lede { padding-bottom: 10px; }
+  .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 18px; padding-top: 12px; border-left: 0; border-top: 2px solid var(--paper-2); }
+  .wayfinding { gap: 6px; }
+  .wayfinding a { font-size: 15px; gap: 8px; padding-right: 11px; }
+  .wayfinding .ar { width: 26px; height: 26px; padding: 5px; }
+}
+
+@media (max-width: 980px) {
   .map { display: none; }
   .vmap { display: block; margin-inline: -4px; }
   .vstop { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 8px; }
   .vstop .rails { margin-left: 8px; }
+}
+
+@media (max-width: 900px) {
+  .facts { grid-template-columns: 1fr; gap: 6px; padding: 10px 16px 14px; }
+  .facts div { grid-template-columns: 9.4em minmax(0, 1fr); align-items: baseline; gap: 8px; }
+  .facts dt { font-size: 11.5px; }
+}
+
+@media (max-width: 860px) {
 
   .board-cols { display: none; }
   .board-rows li {
@@ -681,43 +718,49 @@ b { font-weight: 800; }
 
   .hero {
     --plat: 96px;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-areas: "sign sign" "notice notice" "way figure";
-    grid-template-rows: auto auto 1fr;
-    column-gap: 12px;
+    --gap: 12px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-rows: auto auto auto auto;
+    align-content: start;
     min-height: 0;
+    padding: 44px var(--gutter) 0;
   }
-  .sign { margin-top: 36px; }
-  .sign::before, .sign::after { height: 36px; }
+  .sign { padding: 22px 20px 20px; }
+  .sign::before { left: 12%; }
+  .sign::after { right: 12%; }
   .sign h1 { font-size: clamp(42px, 13.4vw, 64px); white-space: normal; }
-  .notice { margin-top: 18px; }
-  .notice-lede { font-size: 16.5px; padding-top: 12px; }
-  .facts { grid-template-columns: 1fr; padding-top: 6px; }
-  .facts div { grid-template-columns: 110px 1fr; align-items: baseline; }
-  .wayfinding { flex-direction: column; align-items: stretch; align-self: end; margin: 24px 0 18px; gap: 6px; }
+  .figure { --head: 16px; grid-column: 2; grid-row: 2; min-height: clamp(250px, 76vw, 380px); }
+  .figure img { left: -6px; width: calc(100% + 12px); height: calc(100% - var(--head) + 10px); }
+  .wayfinding { grid-column: 1; grid-row: 2; flex-direction: column; align-items: stretch; align-self: end; margin: 20px 0 22px; gap: 6px; }
   .wayfinding a { font-size: 15px; padding-right: 10px; }
   .wayfinding .ar { width: 26px; height: 26px; padding: 5px; }
-  .figure { width: 100%; max-width: 240px; margin-top: 24px; justify-self: end; }
+  .platform { position: relative; grid-column: 1 / -1; grid-row: 3; height: var(--plat); margin-inline: calc(-1 * var(--gutter)); }
+  .notice { grid-column: 1 / -1; grid-row: 4; margin-top: 28px; }
+  .notice-lede { font-size: 16.5px; padding: 12px 16px 10px; }
   .platform { grid-template-rows: 30px 1fr 24px; }
   .platform-top { background-position: 0 19px, 0 0; background-image: radial-gradient(circle at 5px 5px, #c79e00 2px, transparent 2.6px), linear-gradient(#d6d1c4 0 14px, var(--o) 14px 30px); }
   .platform-face { font-size: 10px; letter-spacing: .2em; }
 
   .section-sign { flex-wrap: wrap; }
   .strip-cv { order: 3; }
-  .keys { grid-template-columns: 1fr; }
-  .key { padding-block: 8px 7px; }
   .sstop { padding: 24px 0 26px; }
   .sstop-notes li { font-size: 16px; }
-  .ticket-grid { grid-template-columns: 1fr; gap: 10px; margin-top: 56px; }
   .ticket { --notch: 14px; }
-  .ticket::after { top: 54%; }
-  .ticket { mask:
-    radial-gradient(circle var(--notch) at 0 54%, transparent 98%, #000) left / 51% 100% no-repeat,
-    radial-gradient(circle var(--notch) at 100% 54%, transparent 98%, #000) right / 51% 100% no-repeat; }
+  .ticket-grid { grid-template-columns: 1fr; gap: 10px; }
+  .section-sign > div { flex-basis: calc(100% - 64px); }
+  .strip-cv { margin-left: calc(1.75 * 22px + 14px); }
+  .keys { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+  .key { padding: 8px 8px 7px; gap: 8px; align-items: center; }
+  .key b + span { display: none; }
+}
+
+@media (max-width: 520px) {
+  .topnav a:is(:nth-child(1), :nth-child(3)) { display: none; }
 }
 
 @media (max-width: 380px) {
-  .topnav a:not(.topnav-cv):nth-child(3) { display: none; }
+  .hero { grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); }
+  .wayfinding a { font-size: 14px; white-space: nowrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {
