@@ -51,6 +51,7 @@ for file in PUBLIC.rglob('index.html'):
     route = '/' + file.relative_to(PUBLIC).as_posix().removesuffix('index.html')
     pages[route] = Page(fetch(route).decode())
 
+assert all(f'/{n}/' in pages for n in range(1, 6)), 'missing design variant route'
 checked = set()
 for route, page in pages.items():
     assert len(page.ids) == len(set(page.ids)), f'{route}: duplicate IDs'
@@ -80,6 +81,10 @@ for route, page in pages.items():
             assert listing.get(word['name']) == word['text'], f'{route}: title word does not match listing: {word}'
         label = next(attrs.get('aria-label') for tag, attrs in page.tags if tag == 'h1')
         assert label == ' '.join(word['text'] for word in page.words), f'{route}: incorrect accessible title'
+    if re.fullmatch(r'/[1-5]/', route):
+        switcher = [attrs.get('href') for tag, attrs in page.tags if tag == 'a' and attrs.get('aria-current') == 'page']
+        assert route in switcher, f'{route}: variant switcher does not mark the current page'
+        assert any(tag == 'meta' and attrs.get('name') == 'robots' and 'noindex' in attrs.get('content', '') for tag, attrs in page.tags), f'{route}: design variant must be noindex'
     print(f'PASS {route}: content, metadata, links, fragments, assets, title words')
 
 for path in ('/robots.txt', '/sitemap.xml', '/favicon.ico', '/styles.css', '/profile-pixel-transparent.png', '/Raymond_Csirak.pdf'):
@@ -95,7 +100,7 @@ for route, page in pages.items():
 home = fetch('/').decode()
 structured = home.split('<script type="application/ld+json">')[1].split('</script>')[0]
 json.loads(structured)
-for path in [f'/{n}/' for n in range(1, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html', '/page-transitions.js', '/blog/test-post/']:
+for path in [f'/{n}/' for n in range(6, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html', '/page-transitions.js', '/blog/test-post/']:
     try:
         fetch(path)
     except HTTPError as error:

@@ -1,0 +1,7 @@
+.variant-switcher { position: fixed; z-index: 2147483000; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid rgb(255 255 255 / .16); border-radius: 999px; background: rgb(17 19 24 / .82); color: #f0eee8; font: 600 12px/1 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: 0; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 6px 24px rgb(0 0 0 / .25); }
+.variant-switcher span { padding: 0 8px 0 10px; opacity: .6; text-transform: none; }
+.variant-switcher a { display: grid; min-width: 32px; height: 32px; place-items: center; padding: 0 9px; border-radius: 999px; color: inherit; text-decoration: none; }
+.variant-switcher a:hover { background: rgb(255 255 255 / .12); }
+.variant-switcher a[aria-current="page"] { background: #f0eee8; color: #111318; }
+.variant-switcher a:focus-visible { outline: 2px solid #f0eee8; outline-offset: 2px; }
+@media print { .variant-switcher { display: none; } }
