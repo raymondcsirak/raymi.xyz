@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root { color-scheme: light; background: #e4e2dd; }
+      @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+    </style>
+    <title>RC-08 Reliability Unit | Raymond Csirák</title>
+    <meta name="description" content="Raymond Csirák, Senior Site Reliability Engineer, presented as the RC-08 Reliability Unit. Kubernetes, Linux, private cloud, CI/CD and infrastructure automation. In service since 2008." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://raymi.xyz/3/" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,300..700&family=Michroma&display=swap" />
+    <link rel="stylesheet" href="/variants/switcher.css" />
+    <link rel="stylesheet" href="/3/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Raymond Csirák",
+        "alternateName": "Raymi",
+        "jobTitle": "Senior Site Reliability Engineer",
+        "worksFor": { "@type": "Organization", "name": "GoDaddy" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Satu Mare", "addressCountry": "RO" },
+        "email": "mailto:hello@raymi.xyz",
+        "url": "https://raymi.xyz/",
+        "knowsLanguage": ["hu", "ro", "en"],
+        "sameAs": ["https://linkedin.com/in/raymondcsirak", "https://github.com/raymondcsirak"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="bar">
+      <div class="wrap bar-inner">
+        <a class="brand" href="#top" aria-label="RC-08, back to top">
+          <span class="brand-model">RC-08</span>
+          <span class="brand-name">Raymond Csirák</span>
+        </a>
+        <nav class="nav" aria-label="Product sections">
+          <ul>
+            <li><a href="#capabilities">Capabilities</a></li>
+            <li><a href="#specifications">Specs</a></li>
+            <li><a href="#firmware">Firmware</a></li>
+            <li><a href="#support">Support</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+        <a class="key key-sm key-primary" href="mailto:hello@raymi.xyz?subject=RC-08%20unit%20request"><span>Request a unit</span></a>
+        <span class="meter" aria-hidden="true"></span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" id="top" aria-labelledby="title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>Raymond Csirák</span><span>Senior Site Reliability Engineer</span></p>
+          <h1 class="title" id="title"><span class="title-model">RC-08</span> <span class="title-name">Reliability Unit</span></h1>
+          <p class="lede">One senior site reliability engineer in a durable housing. Builds and runs private cloud, Kubernetes and Linux infrastructure. Currently deployed at GoDaddy. In service since&nbsp;2008.</p>
+          <p class="status"><span class="led led-blink" aria-hidden="true"></span>Open to infrastructure projects and consulting</p>
+        </div>
+
+        <div class="stage" role="region" aria-label="Product view">
+          <p class="stage-tag" aria-hidden="true">
+            <span class="v-front">Fig. 1 / Front view</span>
+            <span class="v-specs">Fig. 2 / Key dimensions</span>
+            <span class="v-exploded">Fig. 3 / Exploded view</span>
+          </p>
+          <div class="unit">
+            <span class="plinth" aria-hidden="true"></span>
+            <div class="figure">
+              <span class="axis v-exploded" aria-hidden="true"></span>
+              <span class="dim dim-h v-specs" aria-hidden="true"><span>H / 1 engineer</span></span>
+              <span class="dim dim-w v-specs" aria-hidden="true"><span>W / arms crossed<span class="dim-more">, factory setting</span></span></span>
+              <div class="slice s1">
+                <div class="cut"><img src="/variants/raymi.webp" width="902" height="1364" alt="Pixel-art portrait of Raymond Csirák standing with arms crossed: bald, bearded, in a blue flannel shirt, jeans and dark sneakers." /></div>
+                <span class="callout to-l v-exploded" style="--x: 46%; --y: 8%; --mx: 63%; --my: 10%"><span class="callout-label"><span><b>01</b> Control unit</span> <small>Python, Puppet, Ansible. 2026</small></span></span>
+              </div>
+              <div class="slice s2">
+                <div class="cut"><img src="/variants/raymi.webp" width="902" height="1364" alt="" /></div>
+                <span class="callout to-r v-exploded" style="--x: 68%; --y: 25%; --my: 21%"><span class="callout-label"><span><b>02</b> Platform core</span> <small>Kubernetes, Argo CD. 2022</small></span></span>
+                <span class="callout to-l v-exploded" style="--x: 55%; --y: 36.5%"><span class="callout-label"><span><b>03</b> Monitoring module</span> <small>Wrist-mounted. 2022</small></span></span>
+              </div>
+              <div class="slice s3">
+                <div class="cut"><img src="/variants/raymi.webp" width="902" height="1364" alt="" /></div>
+                <span class="callout to-r v-exploded" style="--x: 62%; --y: 70%"><span class="callout-label"><span><b>04</b> Linux chassis</span> <small>Servers, virtualization. 2019</small></span></span>
+              </div>
+              <div class="slice s4">
+                <div class="cut"><img src="/variants/raymi.webp" width="902" height="1364" alt="" /></div>
+                <span class="callout to-l v-exploded" style="--x: 34%; --y: 95%; --mx: 70%"><span class="callout-label"><span><b>05</b> Network footing</span> <small>Load-bearing since 2008</small></span></span>
+              </div>
+            </div>
+          </div>
+          <dl class="readout v-specs" aria-label="Key specifications">
+            <div><dt>Origin</dt><dd>Satu Mare, RO</dd></div>
+            <div><dt>Languages</dt><dd>HU / RO / EN</dd></div>
+            <div><dt>In service</dt><dd>Since 2008</dd></div>
+            <div><dt>Deployed at</dt><dd>GoDaddy, Senior SRE</dd></div>
+            <div><dt>Mode</dt><dd>Remote</dd></div>
+          </dl>
+          <p class="stage-note" aria-hidden="true">
+            <span class="v-front"><i class="swatch"></i>Shown in Flannel Blue</span>
+            <span class="v-specs">Dimensions approximate</span>
+            <span class="v-exploded">Five assemblies. Serviced by email</span>
+          </p>
+        </div>
+
+        <div class="panel" role="group" aria-label="Control panel">
+          <span class="screw" aria-hidden="true"></span><span class="screw" aria-hidden="true"></span><span class="screw" aria-hidden="true"></span><span class="screw" aria-hidden="true"></span>
+          <fieldset class="module view">
+            <legend class="module-label">01 View</legend>
+            <div class="dial">
+              <span class="dial-scale" aria-hidden="true"></span>
+              <span class="knob" aria-hidden="true"></span>
+              <input class="vh" type="radio" name="view" id="view-front" checked />
+              <label class="pos pos-front" for="view-front">Front</label>
+              <input class="vh" type="radio" name="view" id="view-specs" />
+              <label class="pos pos-specs" for="view-specs">Specs</label>
+              <input class="vh" type="radio" name="view" id="view-exploded" />
+              <label class="pos pos-exploded" for="view-exploded">Exploded</label>
+            </div>
+          </fieldset>
+
+          <div class="module power">
+            <p class="module-label" aria-hidden="true">02 Power</p>
+            <input class="vh" type="checkbox" role="switch" id="power" />
+            <label class="switch" for="power">
+              <span class="led led-night" aria-hidden="true"></span>
+              <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+              <span class="switch-text">Night mode</span>
+            </label>
+          </div>
+
+          <div class="module lcd-module">
+            <p class="module-label" aria-hidden="true">03 Readout</p>
+            <div class="lcd" role="img" aria-label="Display reads: in service since 2008">
+              <span class="ann">
+                <i class="a-front">Front</i><i class="a-specs">Specs</i><i class="a-exploded">Expl</i>
+                <i class="a-night">Night</i>
+              </span>
+              <svg class="seg" viewBox="0 0 186 66" aria-hidden="true">
+                <defs>
+                  <polygon id="seg-h" points="0,3 3,0 23,0 26,3 23,6 3,6" />
+                  <polygon id="seg-v" points="3,0 6,3 6,25 3,28 0,25 0,3" />
+                </defs>
+                <g transform="translate(8 0) skewX(-6)">
+                  <g>
+                    <use href="#seg-h" x="5" y="0" class="on" /><use href="#seg-v" x="30" y="4" class="on" /><use href="#seg-v" x="30" y="34" /><use href="#seg-h" x="5" y="60" class="on" /><use href="#seg-v" x="0" y="34" class="on" /><use href="#seg-v" x="0" y="4" /><use href="#seg-h" x="5" y="30" class="on" />
+                  </g>
+                  <g transform="translate(46 0)">
+                    <use href="#seg-h" x="5" y="0" class="on" /><use href="#seg-v" x="30" y="4" class="on" /><use href="#seg-v" x="30" y="34" class="on" /><use href="#seg-h" x="5" y="60" class="on" /><use href="#seg-v" x="0" y="34" class="on" /><use href="#seg-v" x="0" y="4" class="on" /><use href="#seg-h" x="5" y="30" />
+                  </g>
+                  <g transform="translate(92 0)">
+                    <use href="#seg-h" x="5" y="0" class="on" /><use href="#seg-v" x="30" y="4" class="on" /><use href="#seg-v" x="30" y="34" class="on" /><use href="#seg-h" x="5" y="60" class="on" /><use href="#seg-v" x="0" y="34" class="on" /><use href="#seg-v" x="0" y="4" class="on" /><use href="#seg-h" x="5" y="30" />
+                  </g>
+                  <g transform="translate(138 0)">
+                    <use href="#seg-h" x="5" y="0" class="on" /><use href="#seg-v" x="30" y="4" class="on" /><use href="#seg-v" x="30" y="34" class="on" /><use href="#seg-h" x="5" y="60" class="on" /><use href="#seg-v" x="0" y="34" class="on" /><use href="#seg-v" x="0" y="4" class="on" /><use href="#seg-h" x="5" y="30" class="on" />
+                  </g>
+                </g>
+              </svg>
+              <span class="lcd-foot">In service since</span>
+            </div>
+          </div>
+
+          <div class="keys">
+            <a class="key key-primary" href="mailto:hello@raymi.xyz?subject=RC-08%20unit%20request"><small aria-hidden="true">Mail</small><span>Request a unit</span></a>
+            <a class="key" href="/Raymond_Csirak.pdf"><small aria-hidden="true">PDF</small><span>Datasheet</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="capabilities" aria-labelledby="capabilities-title">
+        <header class="sec-head">
+          <p class="sec-rule"><span>02</span><span>Rear I/O</span></p>
+          <h2 id="capabilities-title">Capabilities</h2>
+          <p class="sec-sub">Twelve ports on the back. Each one connects the unit to a team that needs that kind of help.</p>
+        </header>
+
+        <div class="cap">
+          <div class="rear" aria-hidden="true">
+            <span class="screw"></span><span class="screw"></span><span class="screw"></span><span class="screw"></span>
+            <p class="rear-silk"><span>RC-08 / Rear panel</span><span>Assembled in Satu Mare, RO</span></p>
+            <ol class="ports">
+              <li class="port"><b>01</b><svg viewBox="0 0 64 40"><circle cx="32" cy="20" r="15" /><g class="fill"><circle cx="32" cy="11" r="1.6" /><circle cx="39" cy="14.4" r="1.6" /><circle cx="40.8" cy="22" r="1.6" /><circle cx="35.9" cy="28.1" r="1.6" /><circle cx="28.1" cy="28.1" r="1.6" /><circle cx="23.2" cy="22" r="1.6" /><circle cx="25" cy="14.4" r="1.6" /></g><circle cx="32" cy="20" r="3" /></svg><span>K8s</span><i class="port-led"></i></li>
+              <li class="port"><b>02</b><svg viewBox="0 0 64 40"><path d="M12 11h40l-4 19H16z" /><g class="fill"><circle cx="20" cy="17" r="1.3" /><circle cx="26" cy="17" r="1.3" /><circle cx="32" cy="17" r="1.3" /><circle cx="38" cy="17" r="1.3" /><circle cx="44" cy="17" r="1.3" /><circle cx="23" cy="24" r="1.3" /><circle cx="29" cy="24" r="1.3" /><circle cx="35" cy="24" r="1.3" /><circle cx="41" cy="24" r="1.3" /></g><circle cx="5" cy="20.5" r="2.5" /><circle cx="59" cy="20.5" r="2.5" /></svg><span>IaC</span><i class="port-led"></i></li>
+              <li class="port"><b>03</b><svg viewBox="0 0 64 40"><circle cx="32" cy="20" r="13" /><circle cx="32" cy="20" r="6" /><circle class="fill" cx="32" cy="20" r="1.8" /><path class="fill" d="M16 18.5h3v3h-3zM45 18.5h3v3h-3z" /></svg><span>GitOps</span><i class="port-led"></i></li>
+              <li class="port"><b>04</b><svg viewBox="0 0 64 40"><rect x="13" y="13" width="38" height="14" rx="7" /><rect class="fill" x="20" y="18.5" width="24" height="3" rx="1.5" /></svg><span>CI/CD</span><i class="port-led"></i></li>
+              <li class="port"><b>05</b><svg viewBox="0 0 64 40"><path d="M22 8h20l5 5v20H17V13z" /><rect x="25" y="15" width="14" height="12" rx="1" /><path class="fill" d="M28 18h2v6h-2zM34 18h2v6h-2z" /></svg><span>Helm</span><i class="port-led"></i></li>
+              <li class="port"><b>06</b><svg viewBox="0 0 64 40"><rect x="9" y="11" width="21" height="18" rx="1" /><rect x="34" y="11" width="21" height="18" rx="1" /><path d="M13 15h13M38 15h13M13 25h13M38 25h13" /></svg><span>OCI</span><i class="port-led"></i></li>
+              <li class="port"><b>07</b><svg viewBox="0 0 64 40"><circle cx="32" cy="20" r="12" /><circle cx="32" cy="20" r="7" /><circle class="fill" cx="32" cy="20" r="3" /></svg><span>Linux</span><i class="port-led"></i></li>
+              <li class="port"><b>08</b><svg viewBox="0 0 64 40"><path d="M17 9h30v19h-8v4H25v-4h-8z" /><path d="M22.5 12v5M25.5 12v5M28.5 12v5M31.5 12v5M34.5 12v5M37.5 12v5M40.5 12v5M43.5 12v5" /></svg><span>Net</span><i class="port-led"></i></li>
+              <li class="port"><b>09</b><svg viewBox="0 0 64 40"><rect x="11" y="9" width="42" height="22" rx="2" /><path d="M15 21h7l3-7 5 12 4-9 2 4h11" /></svg><span>Mon</span><i class="port-led"></i></li>
+              <li class="port"><b>10</b><svg viewBox="0 0 64 40"><path d="M18 10h22l6 6v14H18z" /><path d="M23 13v5M27 13v5M31 13v5M35 13v5" /><path class="fill" d="M23 24h18v2H23z" /></svg><span>Bkp</span><i class="port-led"></i></li>
+              <li class="port"><b>11</b><svg viewBox="0 0 64 40"><path d="M10 13h44v9l-5 6H15l-5-6z" /><path d="M16 18h32" /></svg><span>VM</span><i class="port-led"></i></li>
+              <li class="port"><b>12</b><svg viewBox="0 0 64 40"><rect x="12" y="11" width="40" height="18" rx="1.5" /><g class="fill"><rect x="16" y="14" width="4" height="4" /><rect x="23" y="14" width="4" height="4" /><rect x="30" y="14" width="4" height="4" /><rect x="37" y="14" width="4" height="4" /><rect x="44" y="14" width="4" height="4" /><rect x="16" y="22" width="4" height="4" /><rect x="23" y="22" width="4" height="4" /><rect x="30" y="22" width="4" height="4" /><rect x="37" y="22" width="4" height="4" /><rect x="44" y="22" width="4" height="4" /></g></svg><span>AI</span><i class="port-led"></i></li>
+            </ol>
+            <div class="rear-base">
+              <span class="vent"></span>
+              <span class="inlet"><svg viewBox="0 0 64 48"><path d="M16 9h32v19l-8 10H24l-8-10z" /><path class="fill" d="M22.5 17h3v8h-3zM38.5 17h3v8h-3zM30.5 28h3v6h-3z" /></svg><b>Power</b></span>
+              <dl class="rating">
+                <div><dt>Model</dt><dd>RC-08</dd></div>
+                <div><dt>Origin</dt><dd>Satu Mare, RO</dd></div>
+                <div><dt>In service</dt><dd>Since 2008</dd></div>
+                <div><dt>Input</dt><dd>hello@raymi.xyz</dd></div>
+              </dl>
+              <p class="warn">No user-serviceable parts inside</p>
+            </div>
+            <span class="feet"></span>
+          </div>
+
+          <ol class="legend">
+            <li class="cap-item"><b>01</b><h3>Kubernetes, on cloud or bare metal</h3><p>Clusters designed, built and operated, including on hardware you own.</p></li>
+            <li class="cap-item"><b>02</b><h3>Infrastructure as Code</h3><p>Servers and clusters described in versioned code, so rebuilding one is routine.</p></li>
+            <li class="cap-item"><b>03</b><h3>GitOps with Argo CD</h3><p>Git becomes the deploy button. Argo CD keeps clusters matching what was merged.</p></li>
+            <li class="cap-item"><b>04</b><h3>GitLab CI/CD pipelines</h3><p>Pipelines tuned for shorter lead times from merge to production.</p></li>
+            <li class="cap-item"><b>05</b><h3>Helm and Kustomize packaging</h3><p>Applications packaged once and deployed the same way to every environment.</p></li>
+            <li class="cap-item"><b>06</b><h3>Docker and containerization</h3><p>Existing applications moved into containers your team can build and run.</p></li>
+            <li class="cap-item"><b>07</b><h3>Linux administration and hardening</h3><p>Servers kept patched, secured and watched.</p></li>
+            <li class="cap-item"><b>08</b><h3>Network engineering</h3><p>TCP/IP networks planned, built and maintained. The oldest port on the unit.</p></li>
+            <li class="cap-item"><b>09</b><h3>Monitoring</h3><p>Monitoring and alerting set up so the right person sees a problem early.</p></li>
+            <li class="cap-item"><b>10</b><h3>Backup and disaster recovery</h3><p>A backup strategy and a recovery plan, written down before you need them.</p></li>
+            <li class="cap-item"><b>11</b><h3>Virtualization</h3><p>Virtualization platforms run to get more out of the hardware you already have.</p></li>
+            <li class="cap-item"><b>12</b><h3>AI tooling for engineering teams</h3><p>AI tools evaluated, demonstrated and introduced with guidance on secure use.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section wrap" id="specifications" aria-labelledby="specifications-title">
+        <header class="sec-head">
+          <p class="sec-rule"><span>03</span><span>Datasheet extract</span></p>
+          <h2 id="specifications-title">Specifications</h2>
+          <p class="sec-sub">The full datasheet is a PDF. This is the part most people ask about.</p>
+        </header>
+
+        <div class="specs">
+          <table class="spec">
+            <caption>General</caption>
+            <tbody>
+              <tr><th scope="row">Model</th><td>RC-08 Reliability Unit</td></tr>
+              <tr><th scope="row">Operator</th><td>Raymond Csirák</td></tr>
+              <tr><th scope="row">Origin</th><td>Satu Mare, Romania</td></tr>
+              <tr><th scope="row">Operating languages</th><td>HU / RO / EN <span class="muted">Hungarian, Romanian, English</span></td></tr>
+              <tr><th scope="row">In service since</th><td>2008</td></tr>
+              <tr><th scope="row">Operating mode</th><td>Remote</td></tr>
+              <tr><th scope="row">Current deployment</th><td>GoDaddy, Senior Site Reliability Engineer <span class="muted">May 2026 to present</span></td></tr>
+              <tr><th scope="row">Current workload</th><td>Private cloud, large-scale OpenStack, Puppet and Ansible deployment automation, Python infrastructure tooling</td></tr>
+              <tr><th scope="row">Availability</th><td><span class="led" aria-hidden="true"></span> Open to infrastructure projects and consulting</td></tr>
+            </tbody>
+          </table>
+
+          <table class="spec">
+            <caption>Interfaces</caption>
+            <tbody>
+              <tr><th scope="row">Operating system</th><td>Linux</td></tr>
+              <tr><th scope="row">Cloud</th><td>OpenStack, private cloud</td></tr>
+              <tr><th scope="row">Orchestration</th><td>Kubernetes, bare metal included</td></tr>
+              <tr><th scope="row">Packaging</th><td>Helm, Kustomize, Docker</td></tr>
+              <tr><th scope="row">Delivery</th><td>GitLab CI/CD, Argo CD</td></tr>
+              <tr><th scope="row">Configuration</th><td>Puppet, Ansible, Infrastructure as Code</td></tr>
+              <tr><th scope="row">Scripting</th><td>Python</td></tr>
+              <tr><th scope="row">Networking</th><td>TCP/IP network design and maintenance</td></tr>
+              <tr><th scope="row">Data protection</th><td>Backups, disaster recovery</td></tr>
+              <tr><th scope="row">Also fitted</th><td>Virtualization, AI agents</td></tr>
+            </tbody>
+          </table>
+
+          <table class="spec">
+            <caption>Training</caption>
+            <tbody>
+              <tr><th scope="row">2024</th><td>Applied Informatics and Programming <span class="muted">Technical University of Cluj-Napoca</span></td></tr>
+              <tr><th scope="row">2008</th><td>Journalism <span class="muted">Babeș-Bolyai University, Cluj-Napoca</span></td></tr>
+            </tbody>
+          </table>
+
+          <table class="spec">
+            <caption>Documentation</caption>
+            <tbody>
+              <tr><th scope="row">Datasheet</th><td><a href="/Raymond_Csirak.pdf">Raymond_Csirak.pdf</a></td></tr>
+              <tr><th scope="row">Field notes</th><td><a href="/blog/">raymi.xyz/blog</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section wrap" id="firmware" aria-labelledby="firmware-title">
+        <header class="sec-head">
+          <p class="sec-rule"><span>04</span><span>Changelog</span></p>
+          <h2 id="firmware-title">Firmware history</h2>
+          <p class="sec-sub">Six major releases since 2008. Some ran in parallel. Release notes are taken from the field.</p>
+        </header>
+
+        <ol class="releases">
+          <li class="release is-current">
+            <div class="rel-ver"><span class="ver">v6.0</span><span class="tag"><span class="led led-blink" aria-hidden="true"></span>Installed</span></div>
+            <div class="rel-meta">
+              <h3>Senior Site Reliability Engineer</h3>
+              <p>GoDaddy</p>
+              <p class="muted"><time datetime="2026-05">May 2026</time> to present. Remote, Romania</p>
+            </div>
+            <ul class="notes">
+              <li><b>Added</b> Operation and support of large-scale OpenStack public and private clouds.</li>
+              <li><b>Added</b> Deployment automation for large-scale infrastructure with Puppet and Ansible.</li>
+              <li><b>Added</b> Infrastructure tooling in Python.</li>
+              <li><b>Scope</b> Builds, runs and supports cost-effective private cloud infrastructure.</li>
+            </ul>
+          </li>
+          <li class="release">
+            <div class="rel-ver"><span class="ver">v5.0</span></div>
+            <div class="rel-meta">
+              <h3>DevOps / Platform Engineer</h3>
+              <p>Hexalab SRL, formerly Hitter Technologies</p>
+              <p class="muted"><time datetime="2022-03">Mar 2022</time> to <time datetime="2026-05">May 2026</time>. Satu Mare</p>
+            </div>
+            <ul class="notes">
+              <li><b>Added</b> Kubernetes clusters managed through Infrastructure as Code, mostly on bare metal.</li>
+              <li><b>Added</b> GitLab CI/CD pipelines integrated with Argo CD, with reduced lead times.</li>
+              <li><b>Added</b> Backup and disaster recovery strategies.</li>
+              <li><b>Added</b> Led adoption of AI tools across the engineering team, with demos and secure-usage guidance.</li>
+              <li><b>Improved</b> Linux server security and monitoring.</li>
+            </ul>
+          </li>
+          <li class="release">
+            <div class="rel-ver"><span class="ver">v4.0</span></div>
+            <div class="rel-meta">
+              <h3>Head of Infrastructure, Linux Systems Administrator</h3>
+              <p>noLimits Technologies, Hexalab SRL</p>
+              <p class="muted"><time datetime="2019-01">Jan 2019</time> to <time datetime="2024-03">Mar 2024</time>. Satu Mare</p>
+            </div>
+            <ul class="notes">
+              <li><b>Added</b> Level 3 support for business clients within service level agreements.</li>
+              <li><b>Added</b> Virtualization infrastructure administration.</li>
+              <li><b>Added</b> Linux and network infrastructure management.</li>
+              <li><b>Added</b> IT project management and supplier contracts.</li>
+            </ul>
+          </li>
+          <li class="release">
+            <div class="rel-ver"><span class="ver">v3.0</span></div>
+            <div class="rel-meta">
+              <h3>IT Service Manager, Level 2 Support</h3>
+              <p>noLimits Technologies</p>
+              <p class="muted"><time datetime="2018-06">Jun 2018</time> to <time datetime="2019-01">Jan 2019</time>. Satu Mare</p>
+            </div>
+            <ul class="notes">
+              <li><b>Added</b> Management of a helpdesk and support team, with low MTTR as the target.</li>
+              <li><b>Added</b> TCP/IP network configuration for clients.</li>
+              <li><b>Added</b> Project management for system upgrades.</li>
+            </ul>
+          </li>
+          <li class="release">
+            <div class="rel-ver"><span class="ver">v2.0</span></div>
+            <div class="rel-meta">
+              <h3>IT Support Specialist, Technical Sales</h3>
+              <p>noLimits Technologies</p>
+              <p class="muted"><time datetime="2015-01">Jan 2015</time> to <time datetime="2019-01">Jan 2019</time>. Satu Mare</p>
+            </div>
+            <ul class="notes">
+              <li><b>Added</b> Level 1 support and ticketing for business clients.</li>
+              <li><b>Added</b> Testing and validation of software for client specifications.</li>
+              <li><b>Added</b> Technical input during sales consultations.</li>
+            </ul>
+          </li>
+          <li class="release">
+            <div class="rel-ver"><span class="ver">v1.0</span></div>
+            <div class="rel-meta">
+              <h3>IT Service Technician</h3>
+              <p>Ltt Halo</p>
+              <p class="muted"><time datetime="2008-09">Sep 2008</time> to <time datetime="2015-01">Jan 2015</time>. Sighetu Marmației</p>
+            </div>
+            <ul class="notes">
+              <li><b>Initial</b> Multi-tier technical support for business and individual clients.</li>
+              <li><b>Added</b> Planning, building and maintaining network infrastructure.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section wrap" id="support" aria-labelledby="support-title">
+        <header class="sec-head">
+          <p class="sec-rule"><span>05</span><span>Service</span></p>
+          <h2 id="support-title">Support and warranty</h2>
+          <p class="sec-sub">How an engagement works, printed plainly.</p>
+        </header>
+
+        <dl class="terms">
+          <div><dt><span>A</span> Coverage</dt><dd>Remote. The unit is based in Satu Mare, Romania, and works with teams wherever they are.</dd></div>
+          <div><dt><span>B</span> Languages</dt><dd>Hungarian, Romanian and English. Pick whichever your team speaks.</dd></div>
+          <div><dt><span>C</span> Scope</dt><dd>Infrastructure projects and consulting. Kubernetes, CI/CD, Linux, networks, backups and the tooling between them.</dd></div>
+          <div><dt><span>D</span> Getting started</dt><dd>Send an email to <a href="mailto:hello@raymi.xyz">hello@raymi.xyz</a>. Describe what you run and what you need. A conversation comes before any commitment.</dd></div>
+          <div><dt><span>E</span> Warranty</dt><dd>None printed. The track record is in the firmware history.</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="foot" id="order" aria-labelledby="order-title">
+      <div class="wrap foot-inner">
+        <div class="order">
+          <p class="sec-rule"><span>06</span><span>Order</span></p>
+          <h2 id="order-title">Order an <span class="nowrap">RC-08</span></h2>
+          <p class="order-copy">Start with an email. One unit available. Currently deployed, and open to infrastructure projects and consulting.</p>
+          <div class="keys">
+            <a class="key key-primary" href="mailto:hello@raymi.xyz?subject=RC-08%20unit%20request"><small aria-hidden="true">Mail</small><span>hello@raymi.xyz</span></a>
+            <a class="key" href="/Raymond_Csirak.pdf"><small aria-hidden="true">PDF</small><span>Datasheet</span></a>
+          </div>
+        </div>
+        <div class="box">
+          <p class="box-title">In the box</p>
+          <ul>
+            <li><span>1 ×</span> Senior Site Reliability Engineer</li>
+            <li><span>3 ×</span> Operating languages</li>
+            <li><span>1 ×</span> Datasheet, PDF</li>
+          </ul>
+        </div>
+        <nav class="links" aria-label="Elsewhere">
+          <p class="box-title">Accessories</p>
+          <ul>
+            <li><a href="https://linkedin.com/in/raymondcsirak" rel="me">LinkedIn</a></li>
+            <li><a href="https://github.com/raymondcsirak" rel="me">GitHub</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </nav>
+        <p class="fine"><span>© 2026 Raymond Csirák</span><span>RC-08 Reliability Unit. Designed and assembled in Satu Mare, Romania.</span></p>
+      </div>
+    </footer>
+    <nav class="variant-switcher" aria-label="Design variants">
+      <span>Variant</span>
+      <a href="/1/">1</a>
+      <a href="/2/">2</a>
+      <a href="/3/" aria-current="page">3</a>
+      <a href="/4/">4</a>
+      <a href="/5/">5</a>
+    </nav>
+  </body>
+</html>
