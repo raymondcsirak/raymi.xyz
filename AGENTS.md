@@ -4,7 +4,7 @@ Guidelines for agents working in this repository.
 
 ## Project overview
 
-This is Raymond Csirák's personal portfolio and blog. It is a static, editorial-style site built with semantic HTML and custom CSS and deployed with Cloudflare Workers Static Assets.
+This is Raymond Csirák's personal portfolio. It is a static, pixel-art site that plays a career as six levels, built with semantic HTML and custom CSS and deployed with Cloudflare Workers Static Assets.
 
 ## Commands
 
@@ -20,8 +20,8 @@ npm run deploy       # Deploy to Cloudflare Workers
 ```text
 public/index.html        Homepage markup, metadata, and structured data
 public/styles.css        Homepage design and responsive rules
-public/blog/index.html   Blog index, initially without published posts
-templates/blog-post.html Unpublished article template (not deployed)
+public/paging.js         One gesture moves one stop, from the hero to Level 5
+public/art/              Generated pixel-art scenes
 scripts/check-site.py    Local route, link, asset, and metadata checks
 public/404.html          Custom not-found page
 public/robots.txt        Crawler directives
@@ -31,10 +31,9 @@ public/                  Portrait, résumé, and favicon assets
 
 ## Conventions
 
-- Keep the site free of client-side JavaScript unless a feature genuinely needs state or interaction.
+- Keep the site free of client-side JavaScript unless a feature genuinely needs state or interaction. `public/paging.js` is the one exception.
 - Keep homepage content and metadata in `public/index.html`.
-- Use the existing `home-film-*` class naming in `public/styles.css`.
-- Preserve the current Arial/Georgia type pairing and the charcoal, slate, and orange palette unless a redesign is requested.
+- Preserve the Libre Franklin type and the petrol and amber palette in `public/styles.css` unless a redesign is requested.
 - Prefer semantic HTML and keep the skip link, focus styles, alt text, and reduced-motion rules intact.
 - Do not add a framework, build tool, component library, or client-side animation dependency for simple markup and styling.
 - Never commit secrets or local environment files.
@@ -49,6 +48,6 @@ public/                  Portrait, résumé, and favicon assets
 
 Before committing, run `npm run build`, then smoke-test the homepage, static metadata files, assets, and 404 response through `wrangler dev`. Fix all warnings and errors introduced by the work.
 
-With `wrangler dev` running on port 8787, use `python3 scripts/check-site.py`. Follow the publishing steps in `README.md` when adding articles. Keep draft templates outside `public/`.
+With `wrangler dev` running on port 8787, use `python3 scripts/check-site.py`.
 
 Always use conventional commits for git commit messages.
