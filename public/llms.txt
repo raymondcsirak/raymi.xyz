@@ -1,0 +1,34 @@
+# Raymond Csirák
+
+> Freelance Senior Site Reliability Engineer, available for remote consulting. 18 years in infrastructure, from network builds and support to large-scale OpenStack private cloud. Based in Satu Mare, Romania (EU). Works in English, Hungarian and Romanian. Contact: hello@raymi.xyz
+
+Currently Senior Site Reliability Engineer at GoDaddy (since May 2026), operating large-scale OpenStack with Puppet, Ansible and Python. Takes freelance and consulting work alongside that.
+
+## Hire for
+
+- OpenStack and private cloud: build, operate and support it, and keep the cost down.
+- Kubernetes on bare metal: clusters managed as Infrastructure as Code, with Helm and Kustomize.
+- GitOps and CI/CD: GitLab CI wired into Argo CD.
+- Configuration automation: Puppet, Ansible and Python infrastructure tooling.
+- Backup and disaster recovery: designed, documented and tested from scratch.
+- Linux hardening and monitoring across an estate.
+- AI and agentic engineering: putting AI agents to work on engineering, including how to use them securely.
+
+## Experience
+
+- 2026 – now: Senior Site Reliability Engineer, GoDaddy. Large-scale OpenStack, public and private clouds; deployment automation in Puppet and Ansible; infrastructure tooling in Python.
+- 2022 – 2026: DevOps / Platform Engineer, Hexalab. Kubernetes on bare metal via IaC, GitLab CI and Argo CD, backup and disaster recovery, Linux hardening and monitoring, team adoption of AI tooling.
+- 2019 – 2024: Head of Infrastructure, Linux Systems Administrator, noLimits and Hexalab. Linux and network infrastructure for business clients, virtualization, Level 3 support and SLAs.
+- 2018 – 2019: IT Service Manager, Level 2 Support, noLimits and Hitter Technologies. TCP/IP, MTTR, system upgrades.
+- 2015 – 2019: IT Support Specialist, noLimits Technologies.
+- 2008 – 2015: IT Service Technician, Ltt Halo. Network infrastructure for businesses, hardware and software support.
+
+Education: Applied Informatics and Programming, Technical University of Cluj-Napoca, 2024.
+
+## Links
+
+- [Portfolio](https://raymi.xyz/): career history and services
+- [Résumé (PDF)](https://raymi.xyz/Raymond_Csirak.pdf)
+- [LinkedIn](https://www.linkedin.com/in/raymondcsirak)
+- [GitHub](https://github.com/raymondcsirak)
+- [Email](mailto:hello@raymi.xyz)
