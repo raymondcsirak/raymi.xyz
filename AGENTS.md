@@ -20,7 +20,8 @@ npm run deploy       # Deploy to Cloudflare Workers
 ```text
 public/index.html        Homepage markup, metadata, and structured data
 public/styles.css        Homepage design and responsive rules
-public/paging.js         One gesture moves one stop, from the hero to Level 5
+public/paging.js         One gesture moves one stop, from the hero to Level 5 (wider than 900px)
+public/_headers          Security headers and image caching
 public/art/              Generated pixel-art scenes
 scripts/check-site.py    Local route, link, asset, and metadata checks
 public/404.html          Custom not-found page

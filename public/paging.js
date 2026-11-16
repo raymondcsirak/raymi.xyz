@@ -1,6 +1,8 @@
 // From the hero to Level 5, one flick, swipe or key press moves one stop, eased. Below Level 5 the page scrolls normally.
 (() => {
-  if (!matchMedia("(prefers-reduced-motion: no-preference)").matches) return;
+  // Under 901px the rooms are not full screens, so the page scrolls natively.
+  // shortcut: read once at load, so a window resized across 900px keeps its mode until reload.
+  if (!matchMedia("(prefers-reduced-motion: no-preference) and (min-width: 901px)").matches) return;
 
   const DURATION = 750;
   const GESTURE_GAP = 100;

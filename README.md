@@ -15,7 +15,8 @@ Open [http://localhost:8787](http://localhost:8787).
 
 - `public/index.html`: homepage and career history.
 - `public/styles.css`: site styles.
-- `public/paging.js`: one flick, swipe or key press moves one stop, from the hero to Level 5.
+- `public/paging.js`: one flick, swipe or key press moves one stop, from the hero to Level 5, on screens wider than 900px.
+- `public/_headers`: security headers and image caching.
 - `public/art/`: generated pixel-art scenes.
 - `public/sitemap.xml`: public page URLs.
 

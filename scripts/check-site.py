@@ -67,6 +67,13 @@ for route, page in pages.items():
         assert 'https://raymi.xyz' + route not in locations, f'{route}: test content in sitemap'
     else:
         assert 'https://raymi.xyz' + route in locations, f'{route}: missing from sitemap'
+with urlopen(BASE + '/', timeout=15) as response:
+    assert "frame-ancestors 'none'" in response.headers.get('Content-Security-Policy', ''), '/: missing security headers'
+    assert response.headers.get('X-Content-Type-Options') == 'nosniff', '/: missing nosniff'
+with urlopen(BASE + '/Raymond_Csirak.pdf', timeout=15) as response:
+    assert 'Content-Security-Policy' not in response.headers, 'résumé: page policy on the PDF'
+with urlopen(BASE + '/art/l1.webp', timeout=15) as response:
+    assert response.headers.get('Cache-Control') == 'public, max-age=604800', 'art: not cached'
 home = fetch('/').decode()
 structured = home.split('<script type="application/ld+json">')[1].split('</script>')[0]
 json.loads(structured)

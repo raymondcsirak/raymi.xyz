@@ -1,0 +1,18 @@
+# shortcut: script-src keeps 'unsafe-inline' because Cloudflare JavaScript Detections injects an inline script with a per-request ID; drop it once that zone setting is off.
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+
+# Browser PDF viewers are embedded plugins; the page policy does not belong on the file.
+/*.pdf
+  ! Content-Security-Policy
+
+# Images are not fingerprinted: a replaced file can show stale for up to a week.
+/art/*
+  Cache-Control: public, max-age=604800
+/profile-pixel-transparent.png
+  Cache-Control: public, max-age=604800
