@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.error import HTTPError
 from urllib.parse import urlsplit
 from urllib.request import urlopen
+from datetime import datetime
 import json
 import xml.etree.ElementTree as ET
 
@@ -76,7 +77,8 @@ with urlopen(BASE + '/art/l1.webp', timeout=15) as response:
     assert response.headers.get('Cache-Control') == 'public, max-age=604800', 'art: not cached'
 home = fetch('/').decode()
 structured = home.split('<script type="application/ld+json">')[1].split('</script>')[0]
-json.loads(structured)
+modified = json.loads(structured)['dateModified']
+assert 'T' in modified and datetime.fromisoformat(modified).tzinfo, f'dateModified needs a datetime with timezone: {modified}'
 for path in [f'/{n}/' for n in range(1, 11)] + ['/missing-page', '/variants/character.png', '/templates/blog-post.html', '/page-transitions.js', '/blog/', '/blog/test-post/', '/drafts/1/']:
     try:
         fetch(path)
